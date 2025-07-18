@@ -16,7 +16,7 @@ const Imprint = () => {
           <div className="space-y-8">
             <section>
               <h3 className="text-lg font-medium mb-3">Company Information</h3>
-              <p className="text-white/80 mb-2">Telemetry Drops GmbH</p>
+              <p className="text-white/80 mb-2">Dose de Telemetria GmbH</p>
             </section>
 
             <section>
