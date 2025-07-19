@@ -49,6 +49,7 @@ The GitHub workflow (`deploy-supabase.yml`) will:
 2. **Deploy process**:
    - Install Supabase CLI
    - Link to your Supabase project
+   - Run database migrations to create required tables
    - Deploy all functions in the `supabase/functions` directory
    - Set necessary environment variables/secrets for the functions
 
@@ -68,6 +69,9 @@ supabase link --project-ref madeprjbbnaanhhsxxav
 
 # Start local development
 supabase start
+
+# Run migrations locally
+supabase db push
 
 # Deploy functions manually
 supabase functions deploy
