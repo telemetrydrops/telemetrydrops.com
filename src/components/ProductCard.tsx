@@ -81,16 +81,12 @@ const ProductCard = ({
                   : "bg-secondary hover:bg-telemetria-yellow hover:text-telemetria-dark"
                 : "bg-secondary/40 text-muted-foreground cursor-not-allowed"
             )}
-            disabled={!available}
+            disabled={false}
           >
-            {available ? (
-              isExternalLink ? (
-                <a href={ctaLink} target="_blank" rel="noopener noreferrer">{ctaText}</a>
-              ) : (
-                <Link to={ctaLink}>{ctaText}</Link>
-              )
+            {isExternalLink ? (
+              <a href={ctaLink} target="_blank" rel="noopener noreferrer">{ctaText}</a>
             ) : (
-              <span>{ctaText}</span>
+              <Link to={ctaLink}>{ctaText}</Link>
             )}
           </Button>
         </div>

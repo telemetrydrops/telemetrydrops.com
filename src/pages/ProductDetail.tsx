@@ -80,6 +80,12 @@ const ProductDetail = () => {
                     size="lg" 
                     className="bg-white/20 text-white hover:bg-telemetria-yellow/90 hover:text-telemetria-dark font-medium"
                     disabled={false}
+                    onClick={() => {
+                      const waitlistSection = document.querySelector('.section-padding.bg-telemetria-darker');
+                      if (waitlistSection) {
+                        waitlistSection.scrollIntoView({ behavior: 'smooth' });
+                      }
+                    }}
                   >
                     {product.ctaText}
                   </Button>

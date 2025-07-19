@@ -140,7 +140,7 @@ const Products = () => {
                 </tr>
                 <tr>
                   <td className="py-4 px-6 text-white">Price</td>
-                  <td className="py-4 px-6 text-center font-semibold text-white">€1,297</td>
+                  <td className="py-4 px-6 text-center font-semibold text-white">€2,497</td>
                   <td className="py-4 px-6 text-center font-semibold text-white">€597</td>
                 </tr>
                 <tr className="bg-telemetria-dark/50">

@@ -211,7 +211,7 @@ export const productData: Product[] = [
         ]
       }
     ],
-    price: "€1,297",
+    price: "€2,497",
     ctaText: "Join waitlist",
     ctaLink: "/waiting-list",
     available: false
