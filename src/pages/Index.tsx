@@ -12,9 +12,9 @@ const Index = () => {
       <section className="relative w-full min-h-[90vh] flex flex-col items-center justify-center overflow-hidden bg-telemetria-darker">
         <div className="absolute inset-0 z-0">
           <div className="absolute inset-0 bg-telemetria-dark">
-            <div className="absolute inset-0 opacity-30 bg-[radial-gradient(circle_at_center,rgba(255,193,7,0.1),transparent_70%)]"></div>
+            <div className="absolute inset-0 opacity-30 bg-[radial-gradient(circle_at_center,rgba(234,88,12,0.1),transparent_70%)]"></div>
           </div>
-          <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-telemetria-yellow/30 to-transparent"></div>
+          <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-telemetria-orange/30 to-transparent"></div>
         </div>
 
         <div className="container-custom relative z-10 pt-16 md:pt-20">
@@ -22,13 +22,13 @@ const Index = () => {
             <div className="animate-fade-in">
               <div className="inline-block mb-4">
                 <img 
-                  src="/logo.png" 
+                  src="/logo.svg" 
                   alt="Telemetry Drops Logo" 
                   className="h-24 w-24 animate-pulse-subtle"
                 />
               </div>
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-6">
-                Become an <span className="text-telemetria-yellow">OpenTelemetry</span> expert in your company.
+                Become an <span className="bg-gradient-to-r from-telemetria-orange via-orange-400 to-yellow-400 bg-clip-text text-transparent">OpenTelemetry</span> expert in your company.
               </h1>
               <p className="text-xl text-white/80 mb-8 max-w-2xl mx-auto">
               Learn all aspects of OpenTelemetry, including the main semantic conventions, API, SDK, Collector, Operator, and much more.
@@ -37,21 +37,11 @@ const Index = () => {
                 <Button 
                   asChild
                   size="lg" 
-                  className="bg-telemetria-yellow text-telemetria-dark hover:bg-telemetria-yellow/90"
+                  className="bg-telemetria-orange text-telemetria-dark hover:bg-telemetria-orange/90"
                 >
                   <Link to="/products">
                     Explore our products
                   </Link>
-                </Button>
-                <Button 
-                  asChild
-                  size="lg" 
-                  variant="outline" 
-                  className="border-white/20 hover:bg-white/20 hover:border-white/30 text-white hover:text-white"
-                >
-                  <a href="https://blog.telemetrydrops.com" target="_blank" rel="noopener noreferrer">
-                    Read our blog
-                  </a>
                 </Button>
               </div>
             </div>
@@ -73,10 +63,10 @@ const Index = () => {
             centered
           />
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto items-stretch">
             <div className="glass-morphism rounded-xl p-8 flex flex-col h-full">
               <h3 className="text-2xl font-bold mb-4">OTel Specialization</h3>
-              <div className="inline-block ml-0 mb-4 px-3 py-1 bg-telemetria-yellow/10 border border-telemetria-yellow/20 text-xs rounded-full text-telemetria-yellow">
+              <div className="inline-block ml-0 mb-4 px-3 py-1 bg-telemetria-orange/10 border border-telemetria-orange/20 text-xs rounded-full text-telemetria-orange">
                 Coming soon
               </div>
               <p className="text-white/80 mb-6">
@@ -87,7 +77,7 @@ const Index = () => {
                 <Button 
                   asChild
                   variant="outline" 
-                  className="w-full border-telemetria-yellow/30 text-telemetria-yellow hover:bg-telemetria-yellow hover:text-telemetria-dark hover:border-telemetria-yellow"
+                  className="w-full border-telemetria-orange/30 text-telemetria-orange hover:bg-telemetria-orange hover:text-telemetria-dark hover:border-telemetria-orange"
                 >
                   <Link to="/products#specialization">
                     Learn more <ArrowRight className="ml-2 h-4 w-4" />
@@ -98,7 +88,7 @@ const Index = () => {
             
             <div className="glass-morphism rounded-xl p-8 flex flex-col h-full">
               <h3 className="text-2xl font-bold mb-4">OTel Track</h3>
-              <div className="inline-block ml-0 mb-4 px-3 py-1 bg-telemetria-yellow/20 border border-telemetria-yellow/30 text-xs rounded-full text-telemetria-yellow">
+              <div className="inline-block ml-0 mb-4 px-3 py-1 bg-telemetria-orange/20 border border-telemetria-orange/30 text-xs rounded-full text-telemetria-orange">
                 Available now
               </div>
               <p className="text-white/80 mb-6">
@@ -108,7 +98,7 @@ const Index = () => {
               <div className="mt-auto">
                 <Button 
                   asChild
-                  className="w-full bg-telemetria-yellow text-telemetria-dark hover:bg-telemetria-yellow/90"
+                  className="w-full bg-telemetria-orange text-telemetria-dark hover:bg-telemetria-orange/90"
                 >
                   <Link to="/products#track">
                     Explore course <ArrowRight className="ml-2 h-4 w-4" />
@@ -128,7 +118,7 @@ const Index = () => {
               <div className="animate-fade-in-right">
                 <SectionHeading
                   title="Our YouTube Channel"
-                  subtitle="Live every Friday, 10:00 AM EST."
+                  subtitle="Live every second Friday, 15:00 CET / 9:00 AM EST."
                 />
                 <div className="space-y-6">
                   <p className="text-white/80">

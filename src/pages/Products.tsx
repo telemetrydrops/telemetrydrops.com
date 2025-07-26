@@ -15,25 +15,25 @@ const Products = () => {
   return (
     <div className="flex flex-col w-full">
       {/* Hero Section */}
-      <section className="relative w-full min-h-[60vh] flex flex-col items-center justify-center overflow-hidden bg-telemetria-darker">
+      <section className="relative w-full min-h-[90vh] flex flex-col items-center justify-center overflow-hidden bg-telemetria-darker">
         <div className="absolute inset-0 z-0">
           <div className="absolute inset-0 bg-telemetria-dark">
-            <div className="absolute inset-0 opacity-30 bg-[radial-gradient(circle_at_center,rgba(255,193,7,0.1),transparent_70%)]"></div>
+            <div className="absolute inset-0 opacity-30 bg-[radial-gradient(circle_at_center,rgba(234,88,12,0.1),transparent_70%)]"></div>
           </div>
-          <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-telemetria-yellow/30 to-transparent"></div>
+          <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-telemetria-orange/30 to-transparent"></div>
         </div>
 
         <div className="container-custom relative z-10 py-20">
           <div className="max-w-4xl mx-auto text-center">
             <div className="animate-fade-in">
               <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-6">
-                Our <span className="text-telemetria-yellow">Products</span>
+                Our <span className="bg-gradient-to-r from-telemetria-orange via-orange-400 to-yellow-400 bg-clip-text text-transparent">Products</span>
               </h1>
               <p className="text-xl text-white/80 mb-8 max-w-2xl mx-auto">
                 High-quality courses and specializations in OpenTelemetry (OTel) to boost your career in observability
               </p>
               <div className="mt-8 flex justify-center">
-                <a href="#products" className="text-white/70 hover:text-telemetria-yellow transition-colors animate-bounce">
+                <a href="#products" className="text-white/70 hover:text-telemetria-orange transition-colors animate-bounce">
                   <ArrowDown className="h-6 w-6" />
                 </a>
               </div>
@@ -51,7 +51,7 @@ const Products = () => {
             centered
           />
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-10 max-w-5xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-10 max-w-5xl mx-auto items-stretch">
             {productData.map((product) => (
               <ProductCard
                 key={product.id}
@@ -168,7 +168,7 @@ const Products = () => {
             <Button 
               asChild
               size="lg" 
-              className="bg-telemetria-yellow text-telemetria-dark hover:bg-telemetria-yellow/90"
+              className="bg-telemetria-orange text-telemetria-dark hover:bg-telemetria-orange/90"
             >
               <a href="mailto:contact@telemetrydrops.com">
                 Contact us

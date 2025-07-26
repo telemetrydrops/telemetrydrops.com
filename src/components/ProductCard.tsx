@@ -40,12 +40,12 @@ const ProductCard = ({
       className={cn(
         "relative rounded-2xl border bg-card p-6 shadow-sm transition-all duration-200",
         popular
-          ? "border-telemetria-yellow/50 scale-[1.02] shadow-xl shadow-telemetria-yellow/10"
-          : "border-border hover:border-telemetria-yellow/30 hover:shadow-lg"
+          ? "border-telemetria-orange/50 scale-[1.02] shadow-xl shadow-telemetria-orange/10"
+          : "border-border hover:border-telemetria-orange/30 hover:shadow-lg"
       )}
     >
       {popular && (
-        <div className="absolute -top-4 left-1/2 -translate-x-1/2 rounded-full bg-telemetria-yellow px-3 py-1 text-xs font-semibold text-telemetria-dark">
+        <div className="absolute -top-4 left-1/2 -translate-x-1/2 rounded-full bg-telemetria-orange px-3 py-1 text-xs font-semibold text-telemetria-dark">
           Available
         </div>
       )}
@@ -61,7 +61,7 @@ const ProductCard = ({
           <ul className="space-y-2">
             {features.map((feature, index) => (
               <li key={index} className="flex items-start">
-                <CheckCircle className="mr-2 h-5 w-5 flex-shrink-0 text-telemetria-yellow" />
+                <CheckCircle className="mr-2 h-5 w-5 flex-shrink-0 text-telemetria-orange" />
                 <span className="text-sm">{feature.text}</span>
               </li>
             ))}
@@ -74,11 +74,11 @@ const ProductCard = ({
             className={cn(
               "w-full font-medium text-base transition-all duration-300",
               popular
-                ? "bg-telemetria-yellow text-telemetria-dark hover:bg-telemetria-yellow/90"
+                ? "bg-telemetria-orange text-telemetria-dark hover:bg-telemetria-orange/90"
                 : available
                 ? ctaText === "Join waitlist" 
-                  ? "bg-white/20 text-white hover:bg-telemetria-yellow hover:text-telemetria-dark"
-                  : "bg-secondary hover:bg-telemetria-yellow hover:text-telemetria-dark"
+                  ? "bg-white/20 text-white hover:bg-telemetria-orange hover:text-telemetria-dark"
+                  : "bg-secondary hover:bg-telemetria-orange hover:text-telemetria-dark"
                 : "bg-secondary/40 text-muted-foreground cursor-not-allowed"
             )}
             disabled={false}

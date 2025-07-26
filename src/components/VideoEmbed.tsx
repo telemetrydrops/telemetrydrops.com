@@ -44,11 +44,11 @@ const VideoEmbed = ({ videoId, title, thumbnail }: VideoEmbedProps) => {
           />
           <div className="absolute inset-0 bg-telemetria-darker/40 group-hover:bg-telemetria-darker/50 transition-all duration-300"></div>
           <div className="relative flex flex-col items-center gap-4 z-10 p-4">
-            <div className="flex items-center justify-center w-16 h-16 rounded-full bg-telemetria-yellow/90 text-telemetria-dark transition-transform duration-300 group-hover:scale-110 group-hover:bg-telemetria-yellow">
+            <div className="flex items-center justify-center w-16 h-16 rounded-full bg-telemetria-orange/90 text-telemetria-dark transition-transform duration-300 group-hover:scale-110 group-hover:bg-telemetria-orange">
               <Play fill="currentColor" size={24} className="ml-1" />
             </div>
             <div className="text-center">
-              <h3 className="text-white text-lg font-medium group-hover:text-telemetria-yellow transition-colors">
+              <h3 className="text-white text-lg font-medium group-hover:text-telemetria-orange transition-colors">
                 {title}
               </h3>
               <p className="text-white/80 text-sm mt-1">Clique para assistir</p>
@@ -59,7 +59,7 @@ const VideoEmbed = ({ videoId, title, thumbnail }: VideoEmbedProps) => {
         <>
           {isLoading && (
             <div className="absolute inset-0 flex items-center justify-center bg-telemetria-dark">
-              <div className="w-10 h-10 border-4 border-telemetria-yellow/20 border-t-telemetria-yellow rounded-full animate-spin"></div>
+              <div className="w-10 h-10 border-4 border-telemetria-orange/20 border-t-telemetria-orange rounded-full animate-spin"></div>
             </div>
           )}
           <iframe

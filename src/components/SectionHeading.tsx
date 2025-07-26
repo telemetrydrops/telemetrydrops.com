@@ -22,7 +22,7 @@ const SectionHeading = ({ title, subtitle, centered = false, className }: Sectio
         </p>
       )}
       <div className={cn(
-        "h-1 w-20 mt-6 bg-telemetria-yellow",
+        "h-1 w-20 mt-6 bg-telemetria-orange",
         centered ? "mx-auto" : "ml-0"
       )} />
     </div>

@@ -25,7 +25,6 @@ const Navbar = () => {
   const navLinks = [
     { name: "Home", path: "/" },
     { name: "Products", path: "/products" },
-    { name: "Blog", path: "https://blog.telemetrydrops.com", external: true },
   ];
 
   const isActive = (path: string) => {
@@ -43,7 +42,7 @@ const Navbar = () => {
         <div className="flex items-center justify-between">
           <Link to="/" className="flex items-center gap-2 z-50" onClick={closeMenu}>
             <img 
-              src="/logo.png" 
+              src="/logo.svg" 
               alt="Telemetry Drops" 
               className="h-10 w-10"
             />
@@ -57,7 +56,7 @@ const Navbar = () => {
                 <a
                   key={link.path}
                   href={link.path}
-                  className="hover-link text-sm font-medium transition-colors hover:text-telemetria-yellow text-white/90 flex items-center"
+                  className="hover-link text-sm font-medium transition-colors hover:text-telemetria-orange text-white/90 flex items-center"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -69,8 +68,8 @@ const Navbar = () => {
                   key={link.path}
                   to={link.path}
                   className={cn(
-                    "hover-link text-sm font-medium transition-colors hover:text-telemetria-yellow",
-                    isActive(link.path) ? "text-telemetria-yellow" : "text-white/90"
+                    "hover-link text-sm font-medium transition-colors hover:text-telemetria-orange",
+                    isActive(link.path) ? "text-telemetria-orange" : "text-white/90"
                   )}
                 >
                   {link.name}
@@ -79,7 +78,7 @@ const Navbar = () => {
             ))}
             <Button 
               asChild
-              className="bg-telemetria-yellow text-telemetria-dark hover:bg-telemetria-yellow/90 font-medium"
+              className="bg-telemetria-orange text-telemetria-dark hover:bg-telemetria-orange/90 font-medium"
             >
               <a href="https://www.youtube.com/@TelemetryDrops" target="_blank" rel="noopener noreferrer">
                 Subscribe
@@ -111,7 +110,7 @@ const Navbar = () => {
               <a
                 key={link.path}
                 href={link.path}
-                className="text-xl font-medium transition-colors hover:text-telemetria-yellow text-white/90 flex items-center"
+                className="text-xl font-medium transition-colors hover:text-telemetria-orange text-white/90 flex items-center"
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={closeMenu}
@@ -124,8 +123,8 @@ const Navbar = () => {
                 key={link.path}
                 to={link.path}
                 className={cn(
-                  "text-xl font-medium transition-colors hover:text-telemetria-yellow",
-                  isActive(link.path) ? "text-telemetria-yellow" : "text-white/90"
+                  "text-xl font-medium transition-colors hover:text-telemetria-orange",
+                  isActive(link.path) ? "text-telemetria-orange" : "text-white/90"
                 )}
                 onClick={closeMenu}
               >
@@ -135,7 +134,7 @@ const Navbar = () => {
           ))}
           <Button 
             asChild
-            className="bg-telemetria-yellow text-telemetria-dark hover:bg-telemetria-yellow/90 mt-4 w-full max-w-[200px]"
+            className="bg-telemetria-orange text-telemetria-dark hover:bg-telemetria-orange/90 mt-4 w-full max-w-[200px]"
           >
             <a href="https://www.youtube.com/@TelemetryDrops" target="_blank" rel="noopener noreferrer">
               Subscribe

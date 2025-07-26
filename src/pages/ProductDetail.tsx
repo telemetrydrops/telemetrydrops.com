@@ -38,18 +38,18 @@ const ProductDetail = () => {
   return (
     <div className="flex flex-col w-full">
       {/* Hero Section */}
-      <section className="relative w-full min-h-[40vh] flex flex-col items-center justify-center overflow-hidden bg-telemetria-darker">
+      <section className="relative w-full min-h-[90vh] flex flex-col items-center justify-center overflow-hidden bg-telemetria-darker">
         <div className="absolute inset-0 z-0">
           <div className="absolute inset-0 bg-telemetria-dark">
-            <div className="absolute inset-0 opacity-30 bg-[radial-gradient(circle_at_center,rgba(255,193,7,0.1),transparent_70%)]"></div>
+            <div className="absolute inset-0 opacity-30 bg-[radial-gradient(circle_at_center,rgba(234,88,12,0.1),transparent_70%)]"></div>
           </div>
-          <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-telemetria-yellow/30 to-transparent"></div>
+          <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-telemetria-orange/30 to-transparent"></div>
         </div>
 
         <div className="container-custom relative z-10 py-16 md:py-20">
           <Link 
             to="/products" 
-            className="inline-flex items-center text-white/70 hover:text-telemetria-yellow transition-colors mb-8"
+            className="inline-flex items-center text-white/70 hover:text-telemetria-orange transition-colors mb-8"
           >
             <ArrowLeft className="mr-2 h-4 w-4" />
             Back to products
@@ -69,7 +69,7 @@ const ProductDetail = () => {
                   <Button 
                     asChild
                     size="lg" 
-                    className="bg-telemetria-yellow text-telemetria-dark hover:bg-telemetria-yellow/90 font-medium"
+                    className="bg-telemetria-orange text-telemetria-dark hover:bg-telemetria-orange/90 font-medium"
                   >
                     <a href={product.ctaLink} target="_blank" rel="noopener noreferrer">
                       {product.ctaText}
@@ -78,7 +78,7 @@ const ProductDetail = () => {
                 ) : (
                   <Button 
                     size="lg" 
-                    className="bg-white/20 text-white hover:bg-telemetria-yellow/90 hover:text-telemetria-dark font-medium"
+                    className="bg-white/20 text-white hover:bg-telemetria-orange/90 hover:text-telemetria-dark font-medium"
                     disabled={false}
                     onClick={() => {
                       const waitlistSection = document.querySelector('.section-padding.bg-telemetria-darker');
@@ -164,7 +164,7 @@ const ProductDetail = () => {
               <div key={index} className="bg-telemetria-darker/70 rounded-lg border border-white/10 overflow-hidden">
                 <div className="p-5 border-b border-white/10">
                   <h3 className="text-xl font-bold flex items-center">
-                    <span className="flex items-center justify-center w-8 h-8 rounded-full bg-telemetria-yellow/20 text-telemetria-yellow mr-3 text-sm">
+                    <span className="flex items-center justify-center w-8 h-8 rounded-full bg-telemetria-orange/20 text-telemetria-orange mr-3 text-sm">
                       {index + 1}
                     </span>
                     {module.title}
@@ -191,7 +191,7 @@ const ProductDetail = () => {
         <div className="container-custom">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-3xl md:text-4xl font-bold mb-6">
-              Ready to start your <span className="text-telemetria-yellow">OpenTelemetry</span> journey?
+              Ready to start your <span className="bg-gradient-to-r from-telemetria-orange via-orange-400 to-yellow-400 bg-clip-text text-transparent">OpenTelemetry</span> journey?
             </h2>
             <p className="text-white/80 text-lg mb-8 max-w-2xl mx-auto">
               Master observability and OpenTelemetry and stand out in the market with skills that are in high demand.
@@ -200,7 +200,7 @@ const ProductDetail = () => {
               <Button 
                 asChild
                 size="lg" 
-                className="bg-telemetria-yellow text-telemetria-dark hover:bg-telemetria-yellow/90 font-medium"
+                className="bg-telemetria-orange text-telemetria-dark hover:bg-telemetria-orange/90 font-medium"
               >
                 <a href={product.ctaLink} target="_blank" rel="noopener noreferrer">
                   {product.ctaText}
@@ -210,7 +210,7 @@ const ProductDetail = () => {
               <div className="space-y-4">
                 <Button 
                   size="lg" 
-                  className="bg-white/20 text-white hover:bg-telemetria-yellow/90 hover:text-telemetria-dark font-medium"
+                  className="bg-white/20 text-white hover:bg-telemetria-orange/90 hover:text-telemetria-dark font-medium"
                   disabled={false}
                   onClick={() => {
                     const waitlistSection = document.querySelector('.section-padding.bg-telemetria-darker');

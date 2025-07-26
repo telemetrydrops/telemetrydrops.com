@@ -39,7 +39,7 @@
 
 @layer base {
   * {
-    @apply border-border selection:bg-telemetria-yellow/30 selection:text-white;
+    @apply border-border selection:bg-telemetria-orange/30 selection:text-white;
   }
   
   body {
@@ -67,7 +67,7 @@
   }
   
   .hover-link {
-    @apply relative after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-telemetria-yellow after:transition-all after:duration-300 hover:after:w-full;
+    @apply relative after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-telemetria-orange after:transition-all after:duration-300 hover:after:w-full;
   }
   
   .section-padding {

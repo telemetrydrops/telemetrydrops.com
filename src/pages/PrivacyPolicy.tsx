@@ -7,7 +7,7 @@ const PrivacyPolicy = () => {
     <div className="bg-telemetria-dark min-h-screen">
       <div className="container-custom py-16 md:py-24 animate-fade-in">
         <h1 className="text-3xl md:text-4xl font-bold mb-6">Privacy Policy</h1>
-        <Separator className="bg-telemetria-yellow/30 mb-8" />
+        <Separator className="bg-telemetria-orange/30 mb-8" />
 
         <div className="bg-telemetria-darker border border-white/5 rounded-xl p-6 md:p-8 max-w-4xl">
           <div className="space-y-10">

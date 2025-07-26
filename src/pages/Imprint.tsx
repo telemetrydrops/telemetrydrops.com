@@ -6,10 +6,10 @@ const Imprint = () => {
     <div className="bg-telemetria-dark min-h-screen">
       <div className="container-custom py-16 md:py-24 animate-fade-in">
         <h1 className="text-3xl md:text-4xl font-bold mb-6">Imprint</h1>
-        <Separator className="bg-telemetria-yellow/30 mb-8" />
+        <Separator className="bg-telemetria-orange/30 mb-8" />
 
         <div className="bg-telemetria-darker border border-white/5 rounded-xl p-6 md:p-8 max-w-3xl">
-          <h2 className="text-xl md:text-2xl font-semibold mb-6 text-telemetria-yellow">
+          <h2 className="text-xl md:text-2xl font-semibold mb-6 text-telemetria-orange">
             Legal Information (Imprint)
           </h2>
 

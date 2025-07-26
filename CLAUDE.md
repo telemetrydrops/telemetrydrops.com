@@ -86,7 +86,7 @@ npm run lint
 ### Development Notes
 
 **Styling System**:
-- Uses Tailwind with custom color palette (`telemetria-yellow`, `telemetria-dark`, etc.)
+- Uses Tailwind with custom color palette (`telemetria-orange`, `telemetria-dark`, etc.)
 - Component variants managed via `class-variance-authority`
 - Responsive design with mobile-first approach
 

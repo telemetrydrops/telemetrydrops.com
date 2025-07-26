@@ -12,7 +12,7 @@ const Footer = () => {
           <div className="space-y-4">
             <div className="flex items-center gap-2 mb-4">
               <img 
-                src="/logo.png" 
+                src="/logo.svg" 
                 alt="Telemetry Drops" 
                 className="h-10 w-10"
               />
@@ -28,7 +28,7 @@ const Footer = () => {
                 href="https://www.youtube.com/@TelemetryDrops" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="text-white/70 hover:text-telemetria-yellow transition-colors"
+                className="text-white/70 hover:text-telemetria-orange transition-colors"
                 aria-label="YouTube"
               >
                 <Youtube size={20} />
@@ -37,14 +37,14 @@ const Footer = () => {
                 href="https://www.linkedin.com/company/telemetrydrops" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="text-white/70 hover:text-telemetria-yellow transition-colors"
+                className="text-white/70 hover:text-telemetria-orange transition-colors"
                 aria-label="LinkedIn"
               >
                 <Linkedin size={20} />
               </a>
               <a 
                 href="mailto:contact@telemetrydrops.com"
-                className="text-white/70 hover:text-telemetria-yellow transition-colors"
+                className="text-white/70 hover:text-telemetria-orange transition-colors"
                 aria-label="Email"
               >
                 <Mail size={20} />
@@ -56,24 +56,14 @@ const Footer = () => {
             <h3 className="font-semibold text-white mb-4">Quick Links</h3>
             <ul className="space-y-2">
               <li>
-                <Link to="/" className="text-white/70 hover:text-telemetria-yellow transition-colors text-sm">
+                <Link to="/" className="text-white/70 hover:text-telemetria-orange transition-colors text-sm">
                   Home
                 </Link>
               </li>
               <li>
-                <Link to="/products" className="text-white/70 hover:text-telemetria-yellow transition-colors text-sm">
+                <Link to="/products" className="text-white/70 hover:text-telemetria-orange transition-colors text-sm">
                   Products
                 </Link>
-              </li>
-              <li>
-                <a 
-                  href="https://blog.telemetrydrops.com" 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
-                  className="text-white/70 hover:text-telemetria-yellow transition-colors text-sm flex items-center"
-                >
-                  Blog
-                </a>
               </li>
             </ul>
           </div>
@@ -82,12 +72,12 @@ const Footer = () => {
             <h3 className="font-semibold text-white mb-4">Products</h3>
             <ul className="space-y-2">
               <li>
-                <Link to="/products/otel-specialization" className="text-white/70 hover:text-telemetria-yellow transition-colors text-sm">
+                <Link to="/products/otel-specialization" className="text-white/70 hover:text-telemetria-orange transition-colors text-sm">
                   OTel Specialization
                 </Link>
               </li>
               <li>
-                <Link to="/products/otel-track" className="text-white/70 hover:text-telemetria-yellow transition-colors text-sm">
+                <Link to="/products/otel-track" className="text-white/70 hover:text-telemetria-orange transition-colors text-sm">
                   OTel Track
                 </Link>
               </li>
@@ -101,13 +91,13 @@ const Footer = () => {
               &copy; {currentYear} Dose de Telemetria GmbH. All rights reserved.
             </p>
             <div className="flex space-x-6 mt-4 md:mt-0">
-              <Link to="/privacy-policy" className="text-sm text-white/70 hover:text-telemetria-yellow transition-colors">
+              <Link to="/privacy-policy" className="text-sm text-white/70 hover:text-telemetria-orange transition-colors">
                 Privacy Policy
               </Link>
-              <Link to="/terms-of-use" className="text-sm text-white/70 hover:text-telemetria-yellow transition-colors">
+              <Link to="/terms-of-use" className="text-sm text-white/70 hover:text-telemetria-orange transition-colors">
                 Terms of Use
               </Link>
-              <Link to="/imprint" className="text-sm text-white/70 hover:text-telemetria-yellow transition-colors">
+              <Link to="/imprint" className="text-sm text-white/70 hover:text-telemetria-orange transition-colors">
                 Imprint
               </Link>
             </div>
