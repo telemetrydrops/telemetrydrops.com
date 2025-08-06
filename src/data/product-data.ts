@@ -398,7 +398,7 @@ export const productData: Product[] = [
     ],
     price: "€597",
     ctaText: "Buy now",
-    ctaLink: "https://mn.dosedetelemetria.com/plans/1877687?bundle_token=20b8baf8eed8dd9be87074a03c4da362&utm_source=website",
+    ctaLink: "https://mn.dosedetelemetria.com/plans/1891200?bundle_token=d45d84d8fe78847f490ec416f9326179&utm_source=website",
     available: true,
     popular: true
   }
