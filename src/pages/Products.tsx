@@ -7,13 +7,23 @@ import ProductCard from "@/components/ProductCard";
 import Testimonial from "@/components/Testimonial";
 import { productData } from "@/data/product-data";
 import { getRandomTestimonials } from "@/data/testimonial-data";
+import { SEO } from "@/components/SEO";
+import { seoData } from "@/data/seo-data";
 
 const Products = () => {
   // Get two random testimonials
   const testimonials = getRandomTestimonials(2);
   
   return (
-    <div className="flex flex-col w-full">
+    <>
+      <SEO 
+        title={seoData.products.title}
+        description={seoData.products.description}
+        keywords={seoData.products.keywords}
+        canonical="/products"
+        jsonLd={seoData.products.jsonLd}
+      />
+      <div className="flex flex-col w-full">
       {/* Hero Section */}
       <section className="relative w-full min-h-[90vh] flex flex-col items-center justify-center overflow-hidden bg-telemetria-darker">
         <div className="absolute inset-0 z-0">
@@ -177,7 +187,8 @@ const Products = () => {
           </div>
         </div>
       </section>
-    </div>
+      </div>
+    </>
   );
 };
 

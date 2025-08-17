@@ -4,21 +4,49 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Development Commands
 
+**Package Manager**: Use `bun` instead of `npm` for all package operations.
+
 ```bash
 # Development server (auto-reloading with instant preview)
-npm run dev
+bun run dev
 
 # Build for production
-npm run build
+bun run build
 
 # Build for development environment
-npm run build:dev
+bun run build:dev
 
 # Preview production build locally
-npm run preview
+bun run preview
 
 # Lint the codebase
-npm run lint
+bun run lint
+
+# Run tests (watch mode for development)
+bun run test
+
+# Run tests once (CI/CD)
+bun run test:run
+
+# Run tests with coverage
+bun run test:coverage
+
+## Testing Standards
+
+**Test Co-location**: Tests are placed next to their subjects (not in `__tests__` directories)
+- `src/components/SEO.tsx` → `src/components/SEO.integration.test.tsx`
+- `src/data/seo-data.ts` → `src/data/seo-data.test.ts`
+
+**Test Strategy**: Focus on business logic and value, avoid implementation details
+- Use real data and actual business flows
+- Test user-facing functionality and SEO requirements
+- Avoid mocking external libraries when possible
+
+# Install packages
+bun add <package-name>
+
+# Install dev dependencies
+bun add -D <package-name>
 ```
 
 ## Architecture Overview
@@ -98,3 +126,11 @@ npm run lint
 **Type Safety**:
 - Comprehensive TypeScript interfaces for products, testimonials, and forms
 - Supabase types auto-generated in `src/integrations/supabase/types.ts`
+
+### CI/CD Pipeline
+
+**GitHub Actions** (`.github/workflows/ci.yml`):
+- **Main Job**: Lint, test, and build on every push/PR to main
+- **SEO Validation Job**: Validates SEO files (robots.txt, sitemap.xml) and runs SEO-specific tests
+- **Uses Bun**: All package management and script execution uses Bun
+- **Automated Checks**: Ensures code quality and SEO implementation integrity
