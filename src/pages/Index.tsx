@@ -4,10 +4,20 @@ import { ArrowRight, Youtube, Linkedin } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import SectionHeading from "@/components/SectionHeading";
 import VideoEmbed from "@/components/VideoEmbed";
+import { SEO } from "@/components/SEO";
+import { seoData } from "@/data/seo-data";
 
 const Index = () => {
   return (
-    <div className="flex flex-col w-full">
+    <>
+      <SEO 
+        title={seoData.home.title}
+        description={seoData.home.description}
+        keywords={seoData.home.keywords}
+        canonical="/"
+        jsonLd={seoData.home.jsonLd}
+      />
+      <div className="flex flex-col w-full">
       {/* Hero Section */}
       <section className="relative w-full min-h-[90vh] flex flex-col items-center justify-center overflow-hidden bg-telemetria-darker">
         <div className="absolute inset-0 z-0">
@@ -28,10 +38,10 @@ const Index = () => {
                 />
               </div>
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-6">
-                Become an <span className="bg-gradient-to-r from-telemetria-orange via-orange-400 to-yellow-400 bg-clip-text text-transparent">OpenTelemetry</span> expert in your company.
+                Master <span className="bg-gradient-to-r from-telemetria-orange via-orange-400 to-yellow-400 bg-clip-text text-transparent">OpenTelemetry</span> with Expert-Led Training Courses
               </h1>
               <p className="text-xl text-white/80 mb-8 max-w-2xl mx-auto">
-              Learn all aspects of OpenTelemetry, including the main semantic conventions, API, SDK, Collector, Operator, and much more.
+                Master observability and distributed tracing with comprehensive OpenTelemetry training. Learn from project contributors through hands-on courses, get certified, and advance your career in modern observability.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Button 
@@ -166,7 +176,8 @@ const Index = () => {
           </Button>
         </div>
       </section>
-    </div>
+      </div>
+    </>
   );
 };
 

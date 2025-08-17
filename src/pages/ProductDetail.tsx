@@ -5,13 +5,15 @@ import { Button } from "@/components/ui/button";
 import SectionHeading from "@/components/SectionHeading";
 import Testimonial from "@/components/Testimonial";
 import { useEffect, useState } from "react";
-import { productData } from "@/data/product-data";
+import { productData, type Product, type DetailedFeature, type CurriculumModule } from "@/data/product-data";
 import { getProductTestimonials } from "@/data/testimonial-data";
 import LeadCaptureForm from "@/components/LeadCaptureForm";
+import { SEO } from "@/components/SEO";
+import { seoData } from "@/data/seo-data";
 
 const ProductDetail = () => {
   const { slug } = useParams();
-  const [product, setProduct] = useState<any>(null);
+  const [product, setProduct] = useState<Product | null>(null);
   
   useEffect(() => {
     const foundProduct = productData.find(p => p.slug === slug);
@@ -35,8 +37,30 @@ const ProductDetail = () => {
   // Get three specific testimonials for this product
   const testimonials = getProductTestimonials(product.id, 3);
 
+  // Get SEO data based on product
+  const getSEOData = () => {
+    switch (slug) {
+      case 'otel-track':
+        return seoData.otelTrack;
+      case 'otel-specialization':
+        return seoData.otelSpecialization;
+      default:
+        return seoData.products;
+    }
+  };
+
+  const seoInfo = getSEOData();
+
   return (
-    <div className="flex flex-col w-full">
+    <>
+      <SEO 
+        title={seoInfo.title}
+        description={seoInfo.description}
+        keywords={seoInfo.keywords}
+        canonical={`/products/${slug}`}
+        jsonLd={seoInfo.jsonLd}
+      />
+      <div className="flex flex-col w-full">
       {/* Hero Section */}
       <section className="relative w-full min-h-[90vh] flex flex-col items-center justify-center overflow-hidden bg-telemetria-darker">
         <div className="absolute inset-0 z-0">
@@ -105,7 +129,7 @@ const ProductDetail = () => {
           />
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {product.detailedFeatures?.map((feature: any, index: number) => (
+            {product.detailedFeatures?.map((feature: DetailedFeature, index: number) => (
               <div key={index} className="bg-telemetria-dark/50 p-6 rounded-lg border border-white/10">
                 <h3 className="text-xl font-bold mb-3">{feature.title}</h3>
                 <p className="text-white/70">{feature.description}</p>
@@ -160,7 +184,7 @@ const ProductDetail = () => {
           />
 
           <div className="max-w-3xl mx-auto space-y-6">
-            {product.curriculum?.map((module: any, index: number) => (
+            {product.curriculum?.map((module: CurriculumModule, index: number) => (
               <div key={index} className="bg-telemetria-darker/70 rounded-lg border border-white/10 overflow-hidden">
                 <div className="p-5 border-b border-white/10">
                   <h3 className="text-xl font-bold flex items-center">
@@ -171,7 +195,7 @@ const ProductDetail = () => {
                   </h3>
                 </div>
                 <div className="p-5 space-y-3">
-                  {module.lessons.map((lesson: any, idx: number) => (
+                  {module.lessons.map((lesson: string, idx: number) => (
                     <div key={idx} className="flex items-start">
                       <span className="mr-3 w-6 h-6 flex-shrink-0 bg-secondary/50 rounded-full flex items-center justify-center text-xs">
                         {idx + 1}
@@ -233,7 +257,8 @@ const ProductDetail = () => {
           </div>
         </div>
       </section>
-    </div>
+      </div>
+    </>
   );
 };
 

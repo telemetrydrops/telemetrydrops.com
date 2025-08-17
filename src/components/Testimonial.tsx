@@ -1,6 +1,7 @@
 
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { cn } from "@/lib/utils";
+import { Helmet } from "react-helmet-async";
 
 interface TestimonialProps {
   quote: string;
@@ -25,14 +26,42 @@ const Testimonial = ({
     .join("")
     .toUpperCase();
 
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "Review",
+    "reviewBody": quote,
+    "author": {
+      "@type": "Person",
+      "name": author,
+      ...(role && { "jobTitle": role }),
+      ...(company && {
+        "worksFor": {
+          "@type": "Organization",
+          "name": company
+        }
+      })
+    },
+    "reviewRating": {
+      "@type": "Rating",
+      "ratingValue": 5,
+      "bestRating": 5
+    }
+  };
+
   return (
-    <div className={cn(
-      "flex flex-col h-full rounded-lg border bg-card p-6 shadow",
-      className
-    )}>
-      <div className="text-lg italic text-muted-foreground flex-grow mb-6">
-        "{quote}"
-      </div>
+    <>
+      <Helmet>
+        <script type="application/ld+json">
+          {JSON.stringify(structuredData)}
+        </script>
+      </Helmet>
+      <div className={cn(
+        "flex flex-col h-full rounded-lg border bg-card p-6 shadow",
+        className
+      )}>
+        <div className="text-lg italic text-muted-foreground flex-grow mb-6">
+          "{quote}"
+        </div>
       
       <div className="flex items-center space-x-4 mt-auto">
         <Avatar className="h-12 w-12 border-2 border-telemetria-orange/30">
@@ -53,7 +82,8 @@ const Testimonial = ({
           )}
         </div>
       </div>
-    </div>
+      </div>
+    </>
   );
 };
 
