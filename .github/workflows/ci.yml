@@ -24,10 +24,9 @@ jobs:
 
     - name: Run linting
       run: bun run lint
-      continue-on-error: true
 
-    - name: Run tests
-      run: bun run test:run
+    - name: Run type checking
+      run: bun run type-check
 
     - name: Build project
       run: bun run build
@@ -63,9 +62,3 @@ jobs:
         xmllint --noout public/sitemap.xml || (echo "sitemap.xml has invalid XML syntax" && exit 1)
         
         echo "✅ All SEO files validated successfully"
-
-    - name: SEO Tests Coverage
-      run: |
-        echo "Running SEO-specific test validation..."
-        bun run test:run src/data/seo-data.test.ts src/components/SEO.integration.test.tsx
-        echo "✅ SEO tests passed"

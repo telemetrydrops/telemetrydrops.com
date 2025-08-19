@@ -1,4 +1,4 @@
-
+import "jsr:@supabase/functions-js/edge-runtime.d.ts";
 import { serve } from "https://deno.land/std@0.190.0/http/server.ts";
 import { Resend } from "npm:resend@2.0.0";
 
@@ -30,8 +30,8 @@ const handler = async (req: Request): Promise<Response> => {
     console.log(`Received waitlist entry for ${name} (${email}) for product: ${productName}`);
 
     const emailResponse = await resend.emails.send({
-      from: "Telemetry Drops <contato@dosedetelemetria.com>",
-      to: ["contato@dosedetelemetria.com"],
+      from: "Telemetry Drops <contact@telemetrydrops.com>",
+      to: ["contact@telemetrydrops.com"],
       subject: `New waitlist signup - ${productName}`,
       html: `
         <h1>New waitlist signup</h1>
