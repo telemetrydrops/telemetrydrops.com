@@ -1,5 +1,5 @@
 // Test file to verify all data layer imports work correctly
-import { productData, getTestimonialsForProduct, getRandomTestimonials, type Product } from './product-data';
+import { productData, getTestimonialsForProduct, getRandomTestimonialIds, type Product } from './product-data';
 import { testimonialData, getProductTestimonials, getRandomTestimonials as getRandomTestimonialsAlt, type Testimonial } from './testimonial-data';
 import { seoData } from './seo-data';
 import { cn } from '../lib/utils';
@@ -20,13 +20,13 @@ export function testDataLayerMigration() {
   // Test helper functions
   const trackTestimonials = getTestimonialsForProduct('track');
   const productTestimonials = getProductTestimonials('track', 2);
-  const randomTestimonials = getRandomTestimonials(1);
+  const randomTestimonials = getRandomTestimonialIds(1);
   const randomTestimonialsAlt = getRandomTestimonialsAlt(1);
   
   console.log(`✅ Helper functions work:
     - getTestimonialsForProduct: ${trackTestimonials.length}
     - getProductTestimonials: ${productTestimonials.length}
-    - getRandomTestimonials: ${randomTestimonials.length}
+    - getRandomTestimonialIds: ${randomTestimonials.length}
     - getRandomTestimonialsAlt: ${randomTestimonialsAlt.length}`);
 
   // Test SEO data

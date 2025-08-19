@@ -415,7 +415,7 @@ export function getTestimonialsForProduct(productId: string): string[] {
   return productTestimonialMapping[productId as keyof typeof productTestimonialMapping] || [];
 }
 
-export function getRandomTestimonials(count: number): string[] {
+export function getRandomTestimonialIds(count: number): string[] {
   const allTestimonials = Object.values(productTestimonialMapping).flat();
   const uniqueTestimonials = [...new Set(allTestimonials)];
   return uniqueTestimonials.sort(() => Math.random() - 0.5).slice(0, count);

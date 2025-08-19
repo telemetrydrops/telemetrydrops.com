@@ -1,6 +1,4 @@
 ---
-import { cn } from "../../lib/utils";
-
 export interface Props {
   videoId: string;
   title: string;
@@ -62,7 +60,7 @@ const usedThumbnail = thumbnail || defaultThumbnail;
       
       if (!thumbnail || !loading || !iframeContainer) return;
       
-      thumbnail.addEventListener('click', function() {
+      thumbnail.addEventListener('click', function(this: HTMLElement) {
         const videoId = this.getAttribute('data-video-id');
         if (!videoId) return;
         

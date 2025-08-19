@@ -128,17 +128,17 @@ const isActive = (path: string) => {
       isOpen = !isOpen;
       
       if (isOpen) {
-        menu.classList.remove('translate-x-full');
-        menu.classList.add('translate-x-0');
-        menuIcon.classList.add('hidden');
-        closeIcon.classList.remove('hidden');
-        button.setAttribute('aria-label', 'Close menu');
+        menu!.classList.remove('translate-x-full');
+        menu!.classList.add('translate-x-0');
+        menuIcon!.classList.add('hidden');
+        closeIcon!.classList.remove('hidden');
+        button!.setAttribute('aria-label', 'Close menu');
       } else {
-        menu.classList.add('translate-x-full');
-        menu.classList.remove('translate-x-0');
-        menuIcon.classList.remove('hidden');
-        closeIcon.classList.add('hidden');
-        button.setAttribute('aria-label', 'Open menu');
+        menu!.classList.add('translate-x-full');
+        menu!.classList.remove('translate-x-0');
+        menuIcon!.classList.remove('hidden');
+        closeIcon!.classList.add('hidden');
+        button!.setAttribute('aria-label', 'Open menu');
       }
     }
 

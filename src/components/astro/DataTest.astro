@@ -26,7 +26,7 @@ console.log(`🎲 Random testimonials: ${randomTestimonials.length}`);
       <p class="text-gray-600">Successfully loaded {products.length} products:</p>
       <ul class="list-disc list-inside mt-2">
         {products.map(product => (
-          <li key={product.id} class="text-sm">
+          <li class="text-sm">
             <strong>{product.title}</strong> - {product.price} ({product.available ? 'Available' : 'Waitlist'})
           </li>
         ))}
@@ -38,7 +38,7 @@ console.log(`🎲 Random testimonials: ${randomTestimonials.length}`);
       <p class="text-gray-600">Successfully loaded {testimonials.length} testimonials:</p>
       <ul class="list-disc list-inside mt-2">
         {testimonials.map(testimonial => (
-          <li key={testimonial.id} class="text-sm">
+          <li class="text-sm">
             <strong>{testimonial.author}</strong> - {testimonial.role} at {testimonial.company}
           </li>
         ))}
@@ -61,7 +61,7 @@ console.log(`🎲 Random testimonials: ${randomTestimonials.length}`);
       <p class="text-gray-600">Random testimonials function works:</p>
       <ul class="list-disc list-inside mt-2">
         {randomTestimonials.map(testimonial => (
-          <li key={testimonial.id} class="text-sm">
+          <li class="text-sm">
             {testimonial.author} ({testimonial.role})
           </li>
         ))}
