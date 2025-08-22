@@ -56,13 +56,13 @@ const isExternalLink = ctaLink.startsWith('http');
     </div>
   )}
 
-  <div class="flex flex-col space-y-6 h-full">
-    <div class="space-y-2">
+  <div class="flex flex-col h-full">
+    <div class="space-y-2 mb-6">
       <h3 class="text-2xl font-bold">{title}</h3>
       <p class="text-muted-foreground">{description}</p>
     </div>
 
-    <div class="mt-4 space-y-4">
+    <div class="flex-1 space-y-4">
       <div class="space-y-3">
         {discount && (
           <div class="space-y-1.5">
@@ -103,7 +103,7 @@ const isExternalLink = ctaLink.startsWith('http');
       </ul>
     </div>
 
-    <div class="mt-auto pt-4">
+    <div class="mt-auto pt-6">
       {isExternalLink ? (
         <a 
           href={ctaLink} 
