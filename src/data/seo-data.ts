@@ -28,9 +28,9 @@ export const seoData = {
     }
   },
   otelTrack: {
-    title: "Complete OpenTelemetry Course - Self-Paced Learning | €597",
-    description: "Master OpenTelemetry at your own pace with our comprehensive course. 50+ lessons covering API, SDK, Collector, and more. Get certified in observability and telemetry.",
-    keywords: "OpenTelemetry course, OTel track, self-paced learning, observability course, telemetry training, OpenTelemetry certification",
+    title: "Complete OpenTelemetry Course - Self-Paced Learning | €477 (Early Bird)",
+    description: "Master OpenTelemetry at your own pace with our comprehensive course. 50+ lessons covering API, SDK, Collector, and more. Get certified in observability and telemetry. Early bird pricing available!",
+    keywords: "OpenTelemetry course, OTel track, self-paced learning, observability course, telemetry training, OpenTelemetry certification, early bird discount",
     jsonLd: {
       "@context": "https://schema.org",
       "@type": "Course",
@@ -47,9 +47,10 @@ export const seoData = {
       },
       "offers": {
         "@type": "Offer",
-        "price": "597",
+        "price": "477",
         "priceCurrency": "EUR",
-        "availability": "https://schema.org/InStock"
+        "availability": "https://schema.org/InStock",
+        "eligibilityToWorkFor": "Early Bird Special - 20% off original price of €597"
       }
     }
   },

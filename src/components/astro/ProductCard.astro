@@ -11,6 +11,12 @@ export interface Props {
   description: string;
   features: ProductFeature[];
   price: string;
+  originalPrice?: string;
+  discount?: {
+    percentage: number;
+    label: string;
+    couponCode?: string;
+  };
   ctaText: string;
   ctaLink: string;
   available: boolean;
@@ -23,6 +29,8 @@ const {
   description,
   features,
   price,
+  originalPrice,
+  discount,
   ctaText,
   ctaLink,
   available,
@@ -55,7 +63,33 @@ const isExternalLink = ctaLink.startsWith('http');
     </div>
 
     <div class="mt-4 space-y-4">
-      <div class="text-3xl font-bold">{price}</div>
+      <div class="space-y-3">
+        {discount && (
+          <div class="space-y-1.5">
+            <div class="inline-flex items-center gap-2">
+              <span class="text-xs px-2 py-0.5 bg-telemetria-orange/10 text-telemetria-orange border border-telemetria-orange/20 rounded-full font-medium">
+                -{discount.percentage}% {discount.label}
+              </span>
+            </div>
+            {discount.couponCode && (
+              <div class="inline-flex items-center gap-1.5 px-2 py-1 bg-slate-800/20 border border-slate-700/20 rounded text-xs font-mono text-white cursor-pointer group hover:bg-slate-700/30 transition-colors" onclick={`navigator.clipboard.writeText('${discount.couponCode}').then(() => { const el = this.querySelector('.copy-feedback'); el.style.display = 'inline'; setTimeout(() => el.style.display = 'none', 2000); }).catch(console.error)`}>
+                <span class="text-gray-500">Code:</span>
+                <span class="font-medium text-telemetria-orange">{discount.couponCode}</span>
+                <svg class="w-2.5 h-2.5 text-gray-500 group-hover:text-telemetria-orange transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
+                </svg>
+                <span class="copy-feedback text-xs text-green-400" style="display: none;">Copied!</span>
+              </div>
+            )}
+          </div>
+        )}
+        <div class="flex items-baseline gap-2">
+          <div class="text-3xl font-bold">{price}</div>
+          {originalPrice && (
+            <div class="text-lg text-gray-500 line-through">{originalPrice}</div>
+          )}
+        </div>
+      </div>
       <ul class="space-y-2">
         {features.map((feature) => (
           <li class="flex items-start">
@@ -69,14 +103,14 @@ const isExternalLink = ctaLink.startsWith('http');
       </ul>
     </div>
 
-    <div class="mt-auto pt-6">
+    <div class="mt-auto pt-4">
       {isExternalLink ? (
         <a 
           href={ctaLink} 
           target="_blank" 
           rel="noopener noreferrer"
           class={cn(
-            "w-full font-medium text-base transition-all duration-300 px-4 py-2 rounded-md inline-flex items-center justify-center text-center",
+            "w-full font-medium text-sm transition-all duration-300 px-4 py-2.5 rounded-md inline-flex items-center justify-center text-center",
             popular
               ? "bg-telemetria-orange text-telemetria-dark hover:bg-telemetria-orange/90"
               : available
@@ -92,7 +126,7 @@ const isExternalLink = ctaLink.startsWith('http');
         <a 
           href={ctaLink}
           class={cn(
-            "w-full font-medium text-base transition-all duration-300 px-4 py-2 rounded-md inline-flex items-center justify-center text-center",
+            "w-full font-medium text-sm transition-all duration-300 px-4 py-2.5 rounded-md inline-flex items-center justify-center text-center",
             popular
               ? "bg-telemetria-orange text-telemetria-dark hover:bg-telemetria-orange/90"
               : available
