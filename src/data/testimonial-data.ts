@@ -44,6 +44,40 @@ export const testimonialData: Testimonial[] = [
     company: "PicPay",
     avatarUrl: "/testimonials/rafael.webp",
     productIds: ["track"]
+  },
+  {
+    id: "ezequiel",
+    quote: "The course goes far beyond theory. From observability fundamentals to advanced topics like manual instrumentation, OpenTelemetry Operator, and understanding the OTel API - each module has direct application in my daily work. Every day I use something I learned, whether implementing the Collector at scale, adjusting telemetry pipelines, or helping other teams with instrumentation. This course is transforming my mindset about observability and how to apply it practically for real-world results.",
+    author: "Ezequiel de Souza Barros",
+    role: "Observability Specialist",
+    company: "PagBank",
+    avatarUrl: "/testimonials/ezequiel.webp",
+    productIds: ["track"]
+  },
+  {
+    id: "kaio",
+    quote: "Working in AIOps, I needed deep OpenTelemetry knowledge for our implementation. After taking several courses that only scratched the surface, I discovered Dose de Telemetria on YouTube. Just one video showed me the content was far richer than any course I'd taken. When I found out about your course, I knew immediately I'd found exactly what I was looking for. The content is incredible!",
+    author: "Kaio Fonseca",
+    role: "AIOps Specialist",
+    company: "Bradesco",
+    avatarUrl: "/testimonials/kaio.webp",
+    productIds: ["track"]
+  },
+  {
+    id: "diogo",
+    quote: "The specialization course made a total difference in advancing my career to an international company with OpenTelemetry at its core. The deep technical content goes beyond the surface level - I'm now the Technical Reference for OpenTelemetry at my company. Having direct access to knowledge from someone connected to the OpenTelemetry source has transformed my ability to solve complex problems and be a reference for others. This course directly enabled my international career move.",
+    author: "Diogo Amaral",
+    role: "Site Reliability Engineer",
+    company: "dLocal",
+    avatarUrl: "/testimonials/diogo.webp",
+    productIds: ["track", "specialization"]
+  },
+  {
+    id: "marcos",
+    quote: "Searching for deep, practical OpenTelemetry content in Portuguese led me to this course. The well-structured curriculum progresses from fundamentals through API, SDK, Collector, and Operator with clear examples and real applications. I'm implementing OpenTelemetry at work, and being able to ask specific questions on the platform - which often generate additional content - is a true differentiator. I'm applying the new knowledge immediately and evolving significantly.",
+    author: "Marcos Muniz",
+    role: "Software Engineer",
+    productIds: ["track"]
   }
 ];
 
