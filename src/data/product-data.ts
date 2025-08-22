@@ -22,6 +22,12 @@ export interface Product {
   detailedFeatures: DetailedFeature[];
   curriculum: CurriculumModule[];
   price: string;
+  originalPrice?: string;
+  discount?: {
+    percentage: number;
+    label: string;
+    couponCode?: string;
+  };
   ctaText: string;
   ctaLink: string;
   available: boolean;
@@ -73,17 +79,17 @@ export const productData: Product[] = [
       {
         title: "The Basics in 3 Lessons",
         lessons: [
-          "Instrumenting an application",
-          "Visualizing telemetry",
-          "Placing a Collector in the middle"
+          "Instrumenting an Application",
+          "Visualizing Telemetry",
+          "Placing a Collector in the Middle"
         ]
       },
       {
         title: "Fundamentals",
         lessons: [
-          "Problems we solve",
+          "Problems We Solve",
           "Audiences",
-          "Project philosophy",
+          "Project Philosophy",
           "Instrumentation",
           "Telemetry",
           "Observability",
@@ -93,7 +99,7 @@ export const productData: Product[] = [
         ]
       },
       {
-        title: "Observability signals",
+        title: "Observability Signals",
         lessons: [
           "Logs",
           "Metrics",
@@ -103,20 +109,20 @@ export const productData: Product[] = [
         ]
       },
       {
-        title: "OTel in practice",
+        title: "OTel in Practice",
         lessons: [
-          "What are we going to observe?",
-          "What are our pain points?",
-          "Adding the OTel SDK",
-          "Instrumenting our initialization",
-          "Observing HTTP calls",
-          "New spans, or events?",
-          "Understanding normal latency between services",
-          "Propagating context manually"
+          "What Are We Going to Observe?",
+          "What Are Our Pain Points?",
+          "Adding OTel SDK",
+          "Instrumenting Our Initialization",
+          "Observing HTTP Calls",
+          "Propagating Context Manually",
+          "New Spans, or Events?",
+          "Understanding Normal Latency Between Services"
         ]
       },
       {
-        title: "Data model",
+        title: "Data Model",
         lessons: [
           "Introduction",
           "Attributes",
@@ -134,80 +140,97 @@ export const productData: Product[] = [
       {
         title: "OpenTelemetry API",
         lessons: [
+          "Events",
           "Audience",
           "Tracing",
-          "Metrics"
+          "Metrics",
+          "Profiles",
+          "Log Bridge"
         ]
       },
       {
         title: "OpenTelemetry SDK",
         lessons: [
-          "The basics to survive",
-          "SDKs in detail",
-          "Using a configuration file"
+          "SDKs in Detail",
+          "The Basics to Survive",
+          "Resources",
+          "Distributed Tracing",
+          "Metrics",
+          "Logs",
+          "Using a Configuration File"
         ]
       },
       {
         title: "OpenTelemetry Collector",
         lessons: [
           "Introduction",
-          "Component types",
+          "Component Types",
           "Getting the Collector",
           "Configuration",
           "Agents vs. Gateways vs. Collectors",
-          "Scaling the Collector",
           "Monitoring Collectors",
           "OTTL",
-          "Resilience techniques",
-          "Security",
-          "Building your Collector"
+          "Resilience Techniques - Queues",
+          "Resilience Techniques - WAL",
+          "Resilience Techniques - Messaging",
+          "Security - TLS",
+          "Security - Authentication",
+          "Building Your Collector",
+          "Connectors: Span Metrics"
+        ]
+      },
+      {
+        title: "OpenTelemetry Operator",
+        lessons: [
+          "Introduction",
+          "Operators for Kubernetes",
+          "CRD - Collector",
+          "Collector Operation Modes",
+          "Installation",
+          "CRD - Auto-Instrumentation",
+          "Target Allocator"
         ]
       },
       {
         title: "Extending the Collector",
         lessons: [
           "Introduction",
+          "Extensions",
           "Receivers",
           "Processors",
           "Exporters",
-          "Extensions",
           "Connectors"
-        ]
-      },
-      {
-        title: "OpenTelemetry Operator",
-        lessons: [
-          "Coming soon",
         ]
       },
       {
         title: "OpAMP",
         lessons: [
-          "Coming soon",
+          "OpAMP"
         ]
       },
       {
         title: "Architecture",
         lessons: [
-          "Coming soon",
+          "Architecture - Instrumentation",
+          "Architecture - Pipeline"
         ]
       },
       {
         title: "Interoperability",
         lessons: [
-          "Coming soon",
+          "Coming soon"
         ]
       },
       {
         title: "Migration",
         lessons: [
-          "Coming soon",
+          "Coming soon"
         ]
       },
       {
-        title: "Observability culture",
+        title: "Observability Culture",
         lessons: [
-          "Coming soon",
+          "Observability Culture"
         ]
       }
     ],
@@ -221,7 +244,7 @@ export const productData: Product[] = [
     slug: "otel-track",
     title: "OTel Track",
     description: "Complete course to learn at your own pace",
-    fullDescription: "The OTel Track is a complete and self-guided course that allows you to master OpenTelemetry at your own pace. The last modules will be completed by the end of April.",
+    fullDescription: "The OTel Track is a complete and self-guided course that allows you to master OpenTelemetry at your own pace. We are starting the recording process, with the first videos available soon and new videos coming every week.",
     features: [
       { text: "One year access to lessons" },
       { text: "Completion certificate" },
@@ -235,7 +258,7 @@ export const productData: Product[] = [
       },
       {
         title: "In-depth content",
-        description: "Over 50 lessons covering everything about OpenTelemetry."
+        description: "Over 80 lessons covering everything about OpenTelemetry."
       },
       {
         title: "Strong theoretical foundation",
@@ -258,27 +281,27 @@ export const productData: Product[] = [
       {
         title: "The Basics in 3 Lessons",
         lessons: [
-          "Instrumenting an application",
-          "Visualizing telemetry",
-          "Placing a Collector in the middle"
+          "Instrumenting an Application",
+          "Visualizing Telemetry",
+          "Placing a Collector in the Middle"
         ]
       },
       {
         title: "Fundamentals",
         lessons: [
-          "Problems we solve",
+          "Problems We Solve",
           "Audiences",
-          "Project philosophy",
+          "Project Philosophy",
           "Instrumentation",
           "Telemetry",
-          "Observability",
           "Monitoring",
           "OpenTelemetry",
+          "Observability",
           "Bonus: Observability 2.0"
         ]
       },
       {
-        title: "Observability signals",
+        title: "Observability Signals",
         lessons: [
           "Logs",
           "Metrics",
@@ -288,20 +311,20 @@ export const productData: Product[] = [
         ]
       },
       {
-        title: "OTel in practice",
+        title: "OTel in Practice",
         lessons: [
-          "What are we going to observe?",
-          "What are our pain points?",
-          "Adding the OTel SDK",
-          "Instrumenting our initialization",
-          "Observing HTTP calls",
-          "New spans, or events?",
-          "Understanding normal latency between services",
-          "Propagating context manually"
+          "What Are We Going to Observe?",
+          "What Are Our Pain Points?",
+          "Adding OTel SDK",
+          "Instrumenting Our Initialization",
+          "Observing HTTP Calls",
+          "Propagating Context Manually",
+          "New Spans, or Events?",
+          "Understanding Normal Latency Between Services"
         ]
       },
       {
-        title: "Data model",
+        title: "Data Model",
         lessons: [
           "Introduction",
           "Attributes",
@@ -319,84 +342,107 @@ export const productData: Product[] = [
       {
         title: "OpenTelemetry API",
         lessons: [
+          "Events",
           "Audience",
           "Tracing",
-          "Metrics"
+          "Metrics",
+          "Profiles",
+          "Log Bridge"
         ]
       },
       {
         title: "OpenTelemetry SDK",
         lessons: [
-          "The basics to survive",
-          "SDKs in detail",
-          "Using a configuration file"
+          "SDKs in Detail",
+          "The Basics to Survive",
+          "Resources",
+          "Distributed Tracing",
+          "Metrics",
+          "Logs",
+          "Using a Configuration File"
         ]
       },
       {
         title: "OpenTelemetry Collector",
         lessons: [
           "Introduction",
-          "Component types",
+          "Component Types",
           "Getting the Collector",
           "Configuration",
           "Agents vs. Gateways vs. Collectors",
-          "Scaling the Collector",
           "Monitoring Collectors",
           "OTTL",
-          "Resilience techniques",
-          "Security",
-          "Building your Collector"
+          "Resilience Techniques - Queues",
+          "Resilience Techniques - WAL",
+          "Resilience Techniques - Messaging",
+          "Security - TLS",
+          "Security - Authentication",
+          "Building Your Collector",
+          "Connectors: Span Metrics"
+        ]
+      },
+      {
+        title: "OpenTelemetry Operator",
+        lessons: [
+          "Introduction",
+          "Operators for Kubernetes",
+          "CRD - Collector",
+          "Collector Operation Modes",
+          "Installation",
+          "CRD - Auto-Instrumentation",
+          "Target Allocator"
         ]
       },
       {
         title: "Extending the Collector",
         lessons: [
           "Introduction",
+          "Extensions",
           "Receivers",
           "Processors",
           "Exporters",
-          "Extensions",
           "Connectors"
-        ]
-      },
-      {
-        title: "OpenTelemetry Operator",
-        lessons: [
-          "Coming soon",
         ]
       },
       {
         title: "OpAMP",
         lessons: [
-          "Coming soon",
+          "OpAMP"
         ]
       },
       {
         title: "Architecture",
         lessons: [
-          "Coming soon",
+          "Architecture - Instrumentation",
+          "Architecture - Pipeline"
         ]
       },
       {
         title: "Interoperability",
         lessons: [
-          "Coming soon",
+          "Coming soon"
         ]
       },
       {
         title: "Migration",
         lessons: [
-          "Coming soon",
+          "Coming soon"
         ]
       },
       {
-        title: "Observability culture",
+        title: "Observability Culture",
         lessons: [
-          "Coming soon",
+          "Observability Culture"
         ]
       }
     ],
-    price: "€597",
+    price: "€477",
+    originalPrice: "€597",
+    discount: {
+      percentage: 20,
+      label: "Early Bird",
+      couponCode: "EARLYBIRD20DROPS"
+    },
     ctaText: "Buy now",
     ctaLink: "https://mn.dosedetelemetria.com/plans/1891200?bundle_token=d45d84d8fe78847f490ec416f9326179&utm_source=website",
     available: true,
@@ -417,6 +463,6 @@ export function getTestimonialsForProduct(productId: string): string[] {
 
 export function getRandomTestimonialIds(count: number): string[] {
   const allTestimonials = Object.values(productTestimonialMapping).flat();
-  const uniqueTestimonials = [...new Set(allTestimonials)];
+  const uniqueTestimonials = Array.from(new Set(allTestimonials));
   return uniqueTestimonials.sort(() => Math.random() - 0.5).slice(0, count);
 }
