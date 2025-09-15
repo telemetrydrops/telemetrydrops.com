@@ -44,21 +44,7 @@ const PDFLeadCaptureForm = ({ resourceName, resourceDescription }: PDFLeadCaptur
           source: "website",
         });
 
-      if (dbError) {
-        // Fallback to waitlist table if pdf_leads doesn't exist yet
-        console.warn("PDF leads table not available, using waitlist fallback:", dbError.message);
-        const { error: fallbackError } = await supabase
-          .from("waitlist")
-          .insert({
-            name: formData.name,
-            email: formData.email,
-            message: `PDF Download: ${resourceName}`,
-            product_id: "ottl-cheatsheet",
-            product_name: resourceName,
-          });
-
-        if (fallbackError) throw fallbackError;
-      }
+      if (dbError) throw dbError;
 
       // Send email notification (optional - can be implemented later)
       try {
