@@ -169,14 +169,28 @@ export const productData: Product[] = [
           "Configuration",
           "Agents vs. Gateways vs. Collectors",
           "Monitoring Collectors",
-          "OTTL",
+          "OTTL - Introduction",
+          "OTTL - Context",
+          "OTTL - Advanced Cases",
           "Resilience Techniques - Queues",
           "Resilience Techniques - WAL",
           "Resilience Techniques - Messaging",
           "Security - TLS",
           "Security - Authentication",
           "Building Your Collector",
-          "Connectors: Span Metrics"
+          "Connectors: Span Metrics",
+          "Scaling the Collector"
+        ]
+      },
+      {
+        title: "Extending the Collector",
+        lessons: [
+          "Introduction",
+          "Extensions",
+          "Receivers",
+          "Processors",
+          "Exporters",
+          "Connectors"
         ]
       },
       {
@@ -189,17 +203,6 @@ export const productData: Product[] = [
           "Installation",
           "CRD - Auto-Instrumentation",
           "Target Allocator"
-        ]
-      },
-      {
-        title: "Extending the Collector",
-        lessons: [
-          "Introduction",
-          "Extensions",
-          "Receivers",
-          "Processors",
-          "Exporters",
-          "Connectors"
         ]
       },
       {
@@ -216,15 +219,17 @@ export const productData: Product[] = [
         ]
       },
       {
-        title: "Interoperability",
+        title: "AI",
         lessons: [
-          "Coming soon"
+          "A Glimpse of the Future",
+          "AI for Observability",
+          "Observability for AI"
         ]
       },
       {
         title: "Migration",
         lessons: [
-          "Coming soon"
+          "Migration"
         ]
       },
       {
@@ -294,9 +299,9 @@ export const productData: Product[] = [
           "Project Philosophy",
           "Instrumentation",
           "Telemetry",
+          "Observability",
           "Monitoring",
           "OpenTelemetry",
-          "Observability",
           "Bonus: Observability 2.0"
         ]
       },
@@ -371,14 +376,28 @@ export const productData: Product[] = [
           "Configuration",
           "Agents vs. Gateways vs. Collectors",
           "Monitoring Collectors",
-          "OTTL",
+          "OTTL - Introduction",
+          "OTTL - Context",
+          "OTTL - Advanced Cases",
           "Resilience Techniques - Queues",
           "Resilience Techniques - WAL",
           "Resilience Techniques - Messaging",
           "Security - TLS",
           "Security - Authentication",
           "Building Your Collector",
-          "Connectors: Span Metrics"
+          "Connectors: Span Metrics",
+          "Scaling the Collector"
+        ]
+      },
+      {
+        title: "Extending the Collector",
+        lessons: [
+          "Introduction",
+          "Extensions",
+          "Receivers",
+          "Processors",
+          "Exporters",
+          "Connectors"
         ]
       },
       {
@@ -391,17 +410,6 @@ export const productData: Product[] = [
           "Installation",
           "CRD - Auto-Instrumentation",
           "Target Allocator"
-        ]
-      },
-      {
-        title: "Extending the Collector",
-        lessons: [
-          "Introduction",
-          "Extensions",
-          "Receivers",
-          "Processors",
-          "Exporters",
-          "Connectors"
         ]
       },
       {
@@ -418,15 +426,17 @@ export const productData: Product[] = [
         ]
       },
       {
-        title: "Interoperability",
+        title: "AI",
         lessons: [
-          "Coming soon"
+          "A Glimpse of the Future",
+          "AI for Observability",
+          "Observability for AI"
         ]
       },
       {
         title: "Migration",
         lessons: [
-          "Coming soon"
+          "Migration"
         ]
       },
       {
