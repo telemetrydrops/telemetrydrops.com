@@ -34,6 +34,54 @@ export type Database = {
   }
   public: {
     Tables: {
+      event_leads: {
+        Row: {
+          company: string | null
+          created_at: string
+          email: string
+          event_city: string
+          event_end_date: string | null
+          event_id: string
+          event_name: string
+          event_start_date: string
+          id: string
+          message: string | null
+          name: string
+          role: string | null
+          updated_at: string
+        }
+        Insert: {
+          company?: string | null
+          created_at?: string
+          email: string
+          event_city: string
+          event_end_date?: string | null
+          event_id: string
+          event_name: string
+          event_start_date: string
+          id?: string
+          message?: string | null
+          name: string
+          role?: string | null
+          updated_at?: string
+        }
+        Update: {
+          company?: string | null
+          created_at?: string
+          email?: string
+          event_city?: string
+          event_end_date?: string | null
+          event_id?: string
+          event_name?: string
+          event_start_date?: string
+          id?: string
+          message?: string | null
+          name?: string
+          role?: string | null
+          updated_at?: string
+        }
+        Relationships: []
+      }
       pdf_leads: {
         Row: {
           created_at: string
@@ -247,4 +295,3 @@ export const Constants = {
     Enums: {},
   },
 } as const
-
