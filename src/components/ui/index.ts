@@ -7,3 +7,4 @@ export * from './label';
 export * from './textarea';
 export * from './sonner';
 export { default as LeadCaptureForm } from './LeadCaptureForm';
+export { default as EventLeadForm } from './EventLeadForm';

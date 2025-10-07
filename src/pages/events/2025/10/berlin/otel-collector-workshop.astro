@@ -1,0 +1,445 @@
+---
+import Layout from '../../../../../layouts/Layout.astro';
+import SectionHeading from '../../../../../components/astro/SectionHeading.astro';
+import EventLeadForm from '../../../../../components/ui/EventLeadForm';
+
+const eventName = "OpenTelemetry Collector Workshop";
+const eventCity = "Berlin";
+const eventCountry = "Germany";
+const eventDatesDisplay = "October 29-30, 2025";
+const eventId = "otel-collector-workshop-2025-berlin";
+const eventStartDate = "2025-10-29";
+const eventEndDate = "2025-10-30";
+const venue = "Berlin city-center venue (final location shared with confirmed attendees)";
+
+const seoTitle = `${eventName} | ${eventCity} | ${eventDatesDisplay}`;
+const seoDescription =
+  "Two-day, in-person OpenTelemetry Collector workshop in Berlin. Master Collector architecture, pipelines, resiliency, security, and production-grade deployment patterns with hands-on labs.";
+const canonical = "/events/2025/10/berlin/otel-collector-workshop";
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "EducationEvent",
+  "name": eventName,
+  "description":
+    "Two-day, in-person OpenTelemetry Collector workshop covering architecture, pipelines, resiliency, security, and production operations.",
+  "startDate": eventStartDate,
+  "endDate": eventEndDate,
+  "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+  "eventStatus": "https://schema.org/EventScheduled",
+  "location": {
+    "@type": "Place",
+    "name": eventCity,
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": eventCity,
+      "addressCountry": eventCountry,
+    },
+  },
+  "organizer": {
+    "@type": "Organization",
+    "name": "TelemetryDrops",
+    "url": "https://telemetrydrops.com",
+  },
+};
+
+const dayOneSchedule = [
+  {
+    time: "09:00 - 09:15",
+    title: "Welcome & Introduction",
+    items: [
+      "Workshop overview and objectives",
+      "Participant introductions",
+      "Logistics and housekeeping",
+    ],
+  },
+  {
+    time: "09:15 - 10:00",
+    title: "Block 1: The Basics",
+    items: [
+      "Theory (20 min): Telemetry fundamentals, observability pillars, OpenTelemetry overview",
+      "Hands-on (25 min): Development environment setup",
+    ],
+  },
+  {
+    time: "10:00 - 10:30",
+    title: "Morning Coffee Break",
+    type: "break",
+  },
+  {
+    time: "10:30 - 11:15",
+    title: "Block 2: Collector Fundamentals",
+    items: [
+      "Theory (20 min): Receivers, processors, exporters, extensions; signal types",
+      "Hands-on (25 min): Install and run your first collector configuration",
+    ],
+  },
+  {
+    time: "11:15 - 12:00",
+    title: "Block 3: Pipelines Architecture",
+    items: [
+      "Theory (20 min): Multi-pipeline setups, connectors, chaining collectors, design patterns",
+      "Hands-on (25 min): Build multi-pipeline configuration and connect pipelines",
+    ],
+  },
+  {
+    time: "12:00 - 13:30",
+    title: "Lunch Break",
+    type: "break",
+  },
+  {
+    time: "13:30 - 14:15",
+    title: "Block 4: Transforming Telemetry (Part 1)",
+    items: [
+      "Theory (20 min): Transform processor, OTTL basics, contexts, and functions",
+      "Hands-on (25 min): Write OTTL statements to transform span attributes",
+    ],
+  },
+  {
+    time: "14:15 - 15:00",
+    title: "Block 5: Transforming Telemetry (Part 2)",
+    items: [
+      "Theory (20 min): Advanced OTTL, enrichment, PII redaction, performance considerations",
+      "Hands-on (25 min): Complex transformations and parsing structured logs",
+    ],
+  },
+  {
+    time: "15:00 - 15:30",
+    title: "Afternoon Coffee Break",
+    type: "break",
+  },
+  {
+    time: "15:30 - 16:15",
+    title: "Block 6: Resiliency (Part 1)",
+    items: [
+      "Theory (20 min): Batching, memory & persistent queues, retry strategies",
+      "Hands-on (25 min): Configure batching/queueing and test failure scenarios",
+    ],
+  },
+  {
+    time: "16:15 - 17:00",
+    title: "Block 7: Resiliency (Part 2)",
+    items: [
+      "Theory (20 min): WAL, Kafka integration, complex failure scenarios, data loss prevention",
+      "Hands-on (25 min): Configure persistent queues with WAL and Kafka exporter/receiver",
+    ],
+  },
+  {
+    time: "17:00 - 17:45",
+    title: "Day 1 Wrap-up: Q&A and Discussion",
+    items: [
+      "Open Q&A on the day’s topics",
+      "Group discussion of challenges and solutions",
+      "Preview of Day 2 focus areas",
+    ],
+  },
+];
+
+const dayTwoSchedule = [
+  {
+    time: "09:00 - 09:15",
+    title: "Day 2 Welcome & Recap",
+    items: ["Review of Day 1 highlights and learnings"],
+  },
+  {
+    time: "09:15 - 10:00",
+    title: "Block 1: Building Custom Collectors",
+    items: [
+      "Theory (20 min): Collector builder tool, custom distributions, deployment strategies",
+      "Hands-on (25 min): Build a tailored collector distribution with additional components",
+    ],
+  },
+  {
+    time: "10:00 - 10:30",
+    title: "Morning Coffee Break",
+    type: "break",
+  },
+  {
+    time: "10:30 - 11:15",
+    title: "Block 2: Extending the Collector",
+    items: [
+      "Theory (20 min): Component development, custom receivers/processors/exporters, extension practices",
+      "Hands-on (25 min): Develop and test a simple custom processor",
+    ],
+  },
+  {
+    time: "11:15 - 12:00",
+    title: "Block 3: Observing the Collector",
+    items: [
+      "Theory (20 min): Collector telemetry, exposed metrics, debugging approaches",
+      "Hands-on (25 min): Enable collector metrics, build a monitoring dashboard, debug issues",
+    ],
+  },
+  {
+    time: "12:00 - 13:30",
+    title: "Lunch Break",
+    type: "break",
+  },
+  {
+    time: "13:30 - 14:15",
+    title: "Block 4: Collector Deployment Patterns",
+    items: [
+      "Theory (20 min): Agent vs gateway topologies, sidecars, operators, scaling, multi-tenancy",
+      "Hands-on (25 min): Deploy collectors across patterns and configure load balancing",
+    ],
+  },
+  {
+    time: "14:15 - 15:00",
+    title: "Block 5: Sampling 101",
+    items: [
+      "Theory (20 min): Sampling fundamentals, head vs tail sampling, probabilistic strategies",
+      "Hands-on (25 min): Configure multiple sampling strategies and analyze outcomes",
+    ],
+  },
+  {
+    time: "15:00 - 15:30",
+    title: "Afternoon Coffee Break",
+    type: "break",
+  },
+  {
+    time: "15:30 - 16:15",
+    title: "Block 6: Scalable Tail Sampling",
+    items: [
+      "Theory (20 min): Tail sampling architecture and load balancing",
+      "Hands-on (25 min): Implement a production-ready tail sampling pipeline",
+    ],
+  },
+  {
+    time: "16:15 - 17:00",
+    title: "Block 7: Securing the Collector",
+    items: [
+      "Theory (20 min): Authentication, authorization, TLS configuration, secrets management, network security",
+      "Hands-on (25 min): Configure TLS, enforce authentication, harden collector deployments",
+    ],
+  },
+  {
+    time: "17:00 - 17:45",
+    title: "Final Wrap-up: Q&A and Discussion",
+    items: [
+      "Workshop retrospective and production readiness checklist",
+      "Next steps, resources, and community engagement opportunities",
+    ],
+  },
+];
+
+---
+
+<Layout
+	title={seoTitle}
+	description={seoDescription}
+	canonical={canonical}
+	jsonLd={jsonLd}
+>
+	<div class="flex flex-col w-full">
+		<section class="relative overflow-hidden bg-telemetria-darker">
+			<div class="absolute inset-0">
+				<div class="absolute inset-0 bg-gradient-to-br from-telemetria-dark via-telemetria-darker to-black opacity-90"></div>
+				<div class="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(234,88,12,0.15),_transparent_60%)]"></div>
+			</div>
+
+			<div class="relative z-10 container-custom py-24 md:py-32">
+				<div class="grid grid-cols-1 lg:grid-cols-[1.4fr_1fr] gap-14 items-center">
+					<div class="space-y-6">
+						<span class="inline-flex items-center rounded-full bg-white/10 px-4 py-1 text-sm text-white/80 backdrop-blur">
+							In-person workshop · {eventCity}, {eventCountry}
+						</span>
+						<h1 class="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight tracking-tight text-white">
+							{eventName}
+						</h1>
+						<p class="text-lg md:text-xl text-white/80">
+							Deep-dive into OpenTelemetry Collector architecture, pipelines, transformations, resiliency, and secure operations with two intensive days of expert-led instruction and hands-on labs.
+						</p>
+						<div class="flex flex-col md:flex-row md:items-center gap-5">
+							<div class="space-y-1 text-white/70">
+								<p class="flex items-center gap-2">
+									<span class="inline-flex h-8 w-8 items-center justify-center rounded-full bg-telemetria-orange/20 text-telemetria-orange font-semibold">
+										29
+									</span>
+									<strong>{eventDatesDisplay}</strong>
+								</p>
+								<p>
+									{venue}
+								</p>
+								<p>
+									Investment: <span class="font-semibold text-white">&euro;1,970</span> per participant
+								</p>
+							</div>
+							<a
+								class="inline-flex items-center justify-center rounded-md bg-telemetria-orange px-6 py-3 text-base font-semibold text-telemetria-dark transition hover:bg-telemetria-orange/90"
+								href="#register"
+							>
+								Reserve your seat
+							</a>
+						</div>
+					</div>
+
+					<div class="rounded-2xl border border-white/10 bg-telemetria-dark/40 p-8 backdrop-blur space-y-6">
+						<h2 class="text-xl font-semibold text-white mb-4">What you’ll master</h2>
+						<ul class="space-y-3 text-white/70">
+							<li class="flex gap-3">
+								<span class="mt-1 h-2.5 w-2.5 rounded-full bg-telemetria-orange"></span>
+								<span>Collector internals, pipeline design, and multi-signal orchestration</span>
+							</li>
+							<li class="flex gap-3">
+								<span class="mt-1 h-2.5 w-2.5 rounded-full bg-telemetria-orange"></span>
+								<span>Transform processor mastery with OTTL across traces, metrics, and logs</span>
+							</li>
+							<li class="flex gap-3">
+								<span class="mt-1 h-2.5 w-2.5 rounded-full bg-telemetria-orange"></span>
+								<span>Resilient architectures using batching, queueing, WAL, and Kafka</span>
+							</li>
+							<li class="flex gap-3">
+								<span class="mt-1 h-2.5 w-2.5 rounded-full bg-telemetria-orange"></span>
+								<span>Production deployment patterns and secure collector operations</span>
+							</li>
+						</ul>
+						<div class="rounded-lg border border-telemetria-orange/50 bg-telemetria-orange/10 px-4 py-3 text-sm text-telemetria-orange">
+							<strong class="block text-telemetria-orange">OllyGarden customers save 20%</strong>
+							<span class="text-white/80">
+								If your team already partners with OllyGarden, mention it in the form and we’ll apply a 20% discount to your workshop seats.
+							</span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="section-padding bg-background">
+			<div class="container-custom">
+				<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+					<div class="rounded-xl border border-white/10 bg-telemetria-dark/40 p-6">
+						<h3 class="text-lg font-semibold text-white mb-2">Hands-on first</h3>
+						<p class="text-white/70">
+							Every block pairs focused theory with guided lab time so you leave with working Collector configurations you can adapt immediately.
+						</p>
+					</div>
+					<div class="rounded-xl border border-white/10 bg-telemetria-dark/40 p-6">
+						<h3 class="text-lg font-semibold text-white mb-2">Designed by contributors</h3>
+						<p class="text-white/70">
+							Led by maintainers and practitioners who build and run OpenTelemetry in production for high-scale organizations.
+						</p>
+					</div>
+					<div class="rounded-xl border border-white/10 bg-telemetria-dark/40 p-6">
+						<h3 class="text-lg font-semibold text-white mb-2">Production-ready focus</h3>
+						<p class="text-white/70">
+							We emphasize patterns, guardrails, and troubleshooting tactics that map directly to real-world telemetry platforms.
+						</p>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="section-padding bg-telemetria-dark" id="agenda">
+			<div class="container-custom">
+				<SectionHeading
+					title="OpenTelemetry Collector Workshop Schedule"
+					subtitle="A two-day journey from fundamentals to production readiness"
+					centered={true}
+				/>
+
+				<div class="grid grid-cols-1 lg:grid-cols-2 gap-10 mt-12">
+					<div class="space-y-6">
+						<div class="sticky top-6 bg-telemetria-darker/60 border border-white/10 rounded-xl p-6 backdrop-blur">
+							<h3 class="text-2xl font-semibold text-white mb-1">Day 1 · Foundations & Core Concepts</h3>
+							<p class="text-white/70">Build your Collector fundamentals, master telemetry transformation, and make pipelines resilient.</p>
+						</div>
+						<div class="space-y-5">
+							{dayOneSchedule.map((session) => (
+								<div class={`rounded-xl border ${session.type === "break" ? "border-dashed border-white/20 bg-telemetria-dark/30" : "border-white/10 bg-telemetria-dark/60"} p-6`}>
+									<div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 text-white/60 text-sm uppercase tracking-wide">
+										<span>{session.time}</span>
+										<span class={session.type === "break" ? "text-telemetria-orange" : "text-white/50"}>{session.type === "break" ? "Break" : "Workshop block"}</span>
+									</div>
+									<h4 class="text-xl font-semibold text-white mt-2">{session.title}</h4>
+									{session.items && (
+										<ul class="mt-3 space-y-2 text-white/70">
+											{session.items.map((item) => (
+												<li class="flex gap-3">
+													<span class="mt-2 h-1.5 w-1.5 rounded-full bg-telemetria-orange/80"></span>
+													<span>{item}</span>
+												</li>
+											))}
+										</ul>
+									)}
+								</div>
+							))}
+						</div>
+					</div>
+
+					<div class="space-y-6">
+						<div class="sticky top-6 bg-telemetria-darker/60 border border-white/10 rounded-xl p-6 backdrop-blur">
+							<h3 class="text-2xl font-semibold text-white mb-1">Day 2 · Advanced Topics & Production Readiness</h3>
+							<p class="text-white/70">Extend and deploy collectors at scale, add custom components, and harden your platform for production workloads.</p>
+						</div>
+						<div class="space-y-5">
+							{dayTwoSchedule.map((session) => (
+								<div class={`rounded-xl border ${session.type === "break" ? "border-dashed border-white/20 bg-telemetria-dark/30" : "border-white/10 bg-telemetria-dark/60"} p-6`}>
+									<div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 text-white/60 text-sm uppercase tracking-wide">
+										<span>{session.time}</span>
+										<span class={session.type === "break" ? "text-telemetria-orange" : "text-white/50"}>{session.type === "break" ? "Break" : "Workshop block"}</span>
+									</div>
+									<h4 class="text-xl font-semibold text-white mt-2">{session.title}</h4>
+									{session.items && (
+										<ul class="mt-3 space-y-2 text-white/70">
+											{session.items.map((item) => (
+												<li class="flex gap-3">
+													<span class="mt-2 h-1.5 w-1.5 rounded-full bg-telemetria-orange/80"></span>
+													<span>{item}</span>
+												</li>
+											))}
+										</ul>
+									)}
+								</div>
+							))}
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="section-padding bg-background" id="register">
+			<div class="container-custom">
+				<div class="grid grid-cols-1 lg:grid-cols-[1.1fr_0.9fr] gap-12 items-start">
+					<div class="space-y-6">
+						<SectionHeading
+							title="Secure your seat in Berlin"
+							subtitle="Share your interest—we’ll confirm availability, pricing, and next steps right away."
+						/>
+						<div class="rounded-2xl border border-white/10 bg-telemetria-dark/60 p-6 space-y-4 text-white/70">
+							<p>
+								The OpenTelemetry Collector Workshop is capped to keep the experience collaborative and hands-on. Submit the form to receive detailed pricing, logistics, and early access to prep materials.
+							</p>
+								<ul class="space-y-2">
+									<li class="flex gap-3">
+										<span class="mt-1 h-2.5 w-2.5 rounded-full bg-telemetria-orange"></span>
+										<span>Standard pricing: <strong>&euro;1,970</strong> per attendee (contact us for team packages).</span>
+									</li>
+									<li class="flex gap-3">
+										<span class="mt-1 h-2.5 w-2.5 rounded-full bg-telemetria-orange"></span>
+										<span>Ideal for observability engineers, SREs, and platform teams scaling telemetry pipelines.</span>
+									</li>
+									<li class="flex gap-3">
+									<span class="mt-1 h-2.5 w-2.5 rounded-full bg-telemetria-orange"></span>
+									<span>Includes two days of guided labs, reference configurations, and follow-up materials.</span>
+								</li>
+								<li class="flex gap-3">
+									<span class="mt-1 h-2.5 w-2.5 rounded-full bg-telemetria-orange"></span>
+									<span>Group bookings and private training options available—mention your needs in the form.</span>
+								</li>
+							</ul>
+						</div>
+					</div>
+
+					<EventLeadForm
+						eventId={eventId}
+						eventName={eventName}
+						eventCity={`${eventCity}, ${eventCountry}`}
+						eventStartDate={eventStartDate}
+						eventEndDate={eventEndDate}
+						client:load
+					/>
+				</div>
+			</div>
+		</section>
+	</div>
+</Layout>
