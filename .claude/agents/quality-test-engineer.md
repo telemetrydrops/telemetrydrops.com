@@ -1,7 +1,7 @@
 ---
 name: quality-test-engineer
 description: Use this agent when you need to write comprehensive, high-value tests for React/TypeScript applications, particularly when working with the project's tech stack (React 18, TypeScript, Vite, Supabase, TanStack Query, Tailwind CSS). This agent should be used after implementing new features, components, or business logic that requires testing coverage. Examples: <example>Context: User has just implemented a new LeadCaptureForm component that integrates with Supabase. user: 'I just finished implementing the waitlist signup form. Can you help me write tests for it?' assistant: 'I'll use the quality-test-engineer agent to create comprehensive tests for your LeadCaptureForm component, focusing on real integration testing with Supabase and user interaction flows.'</example> <example>Context: User has added new product filtering logic to the product catalog. user: 'I've added product filtering functionality to the catalog page. What tests should I write?' assistant: 'Let me use the quality-test-engineer agent to design high-value tests for your product filtering feature, ensuring we test the actual business logic and user workflows.'</example>
-model: sonnet
+model: haiku
 color: cyan
 ---
 

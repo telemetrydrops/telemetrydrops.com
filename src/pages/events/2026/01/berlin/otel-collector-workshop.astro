@@ -1,19 +1,22 @@
 ---
 import Layout from '../../../../../layouts/Layout.astro';
 import SectionHeading from '../../../../../components/astro/SectionHeading.astro';
+import EventLeadForm from '../../../../../components/ui/EventLeadForm';
 
 const eventName = "OpenTelemetry Collector Workshop";
 const eventCity = "Berlin";
 const eventCountry = "Germany";
-const eventDatesDisplay = "October 29-30, 2025";
-const eventStartDate = "2025-10-29";
-const eventEndDate = "2025-10-30";
-const venue = "Berlin, Germany";
+const eventDatesDisplay = "January 14-15, 2026";
+const eventStartDate = "2026-01-14";
+const eventEndDate = "2026-01-15";
+const eventId = "otel-collector-workshop-2026-berlin";
+const venue = "Berlin city-center venue (final location shared with confirmed attendees)";
+const price = "€1,970";
 
 const seoTitle = `${eventName} | ${eventCity} | ${eventDatesDisplay}`;
 const seoDescription =
   "Two-day, in-person OpenTelemetry Collector workshop in Berlin. Master Collector architecture, pipelines, resiliency, security, and production-grade deployment patterns with hands-on labs.";
-const canonical = "/events/2025/10/berlin/otel-collector-workshop";
+const canonical = "/events/2026/01/berlin/otel-collector-workshop";
 
 const jsonLd = {
   "@context": "https://schema.org",
@@ -126,7 +129,7 @@ const dayOneSchedule = [
     time: "17:00 - 17:45",
     title: "Day 1 Wrap-up: Q&A and Discussion",
     items: [
-      "Open Q&A on the day’s topics",
+      "Open Q&A on the day's topics",
       "Group discussion of challenges and solutions",
       "Preview of Day 2 focus areas",
     ],
@@ -229,35 +232,6 @@ const dayTwoSchedule = [
 	jsonLd={jsonLd}
 >
 	<div class="flex flex-col w-full">
-		<!-- Sign-ups Closed Banner -->
-		<div class="w-full bg-gradient-to-r from-amber-900/20 to-orange-900/20 border-b border-amber-600/30 px-4 py-4">
-			<div class="container-custom">
-				<div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
-					<div class="flex items-start gap-3">
-						<div class="mt-0.5">
-							<svg class="w-5 h-5 text-amber-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-								<path fill-rule="evenodd" d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zm-5-10a.75.75 0 1.5 0 .75.75 0 01-1.5 0zM7 12a.75.75 0 11-1.5 0 .75.75 0 011.5 0z" clip-rule="evenodd" />
-							</svg>
-						</div>
-						<div>
-							<p class="text-sm font-semibold text-amber-100">
-								Registration Closed
-							</p>
-							<p class="text-xs text-amber-100/80 mt-0.5">
-								Sign-ups for this workshop are no longer available. We appreciate your interest in OpenTelemetry training.
-							</p>
-						</div>
-					</div>
-					<a
-						href="/products"
-						class="inline-flex items-center justify-center px-4 py-2 text-xs font-medium text-amber-50 bg-amber-600/30 hover:bg-amber-600/40 border border-amber-500/30 rounded-md transition-colors whitespace-nowrap"
-					>
-						Explore our courses
-					</a>
-				</div>
-			</div>
-		</div>
-
 		<section class="relative overflow-hidden bg-telemetria-darker">
 			<div class="absolute inset-0">
 				<div class="absolute inset-0 bg-gradient-to-br from-telemetria-dark via-telemetria-darker to-black opacity-90"></div>
@@ -280,19 +254,22 @@ const dayTwoSchedule = [
 							<div class="space-y-1 text-white/70">
 								<p class="flex items-center gap-2">
 									<span class="inline-flex h-8 w-8 items-center justify-center rounded-full bg-telemetria-orange/20 text-telemetria-orange font-semibold">
-										29
+										14
 									</span>
 									<strong>{eventDatesDisplay}</strong>
 								</p>
 								<p>
 									{venue}
 								</p>
+								<p class="text-telemetria-orange font-semibold pt-2">
+									{price}
+								</p>
 							</div>
 						</div>
 					</div>
 
 					<div class="rounded-2xl border border-white/10 bg-telemetria-dark/40 p-8 backdrop-blur space-y-6">
-						<h2 class="text-xl font-semibold text-white mb-4">What you’ll master</h2>
+						<h2 class="text-xl font-semibold text-white mb-4">What you'll master</h2>
 						<ul class="space-y-3 text-white/70">
 							<li class="flex gap-3">
 								<span class="mt-1 h-2.5 w-2.5 rounded-full bg-telemetria-orange"></span>
@@ -314,7 +291,7 @@ const dayTwoSchedule = [
 						<div class="rounded-lg border border-telemetria-orange/50 bg-telemetria-orange/10 px-4 py-3 text-sm text-telemetria-orange">
 							<strong class="block text-telemetria-orange">OllyGarden customers save 20%</strong>
 							<span class="text-white/80">
-								If your team already partners with OllyGarden, mention it in the form and we’ll apply a 20% discount to your workshop seats.
+								If your team already partners with OllyGarden, mention it in the form and we'll apply a 20% discount to your workshop seats.
 							</span>
 						</div>
 					</div>
@@ -419,32 +396,18 @@ const dayTwoSchedule = [
 			<div class="container-custom">
 				<div class="max-w-2xl mx-auto">
 					<SectionHeading
-						title="Thank you for your interest"
-						subtitle="Sign-ups for this workshop are now closed."
+						title="Reserve your seat"
+						subtitle="Join us for the OpenTelemetry Collector Workshop"
 						centered={true}
 					/>
-					<div class="rounded-2xl border border-white/10 bg-telemetria-dark/60 p-8 space-y-6 text-white/70 text-center">
-						<p>
-							Thank you for your interest in the OpenTelemetry Collector Workshop. This event has concluded and registration is no longer available.
-						</p>
-						<p>
-							We'd love to help you continue your OpenTelemetry learning journey. Explore our comprehensive courses or reach out to discuss private training options for your team.
-						</p>
-						<div class="flex flex-col sm:flex-row justify-center gap-3 pt-4">
-							<a
-								href="/products"
-								class="inline-flex items-center justify-center px-6 py-3 rounded-lg font-semibold bg-telemetria-orange text-telemetria-dark hover:bg-telemetria-orange/90 transition-colors"
-							>
-								Explore Our Courses
-							</a>
-							<a
-								href="mailto:contact@telemetrydrops.com"
-								class="inline-flex items-center justify-center px-6 py-3 rounded-lg font-semibold border border-white/20 text-white hover:border-white/40 hover:bg-white/5 transition-colors"
-							>
-								Contact Us
-							</a>
-						</div>
-					</div>
+					<EventLeadForm
+						client:load
+						eventId={eventId}
+						eventName={eventName}
+						eventCity={eventCity}
+						eventStartDate={eventStartDate}
+						eventEndDate={eventEndDate}
+					/>
 				</div>
 			</div>
 		</section>

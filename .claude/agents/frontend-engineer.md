@@ -1,6 +1,7 @@
 ---
 name: frontend-engineer
 description: Use this agent when you need to create or improve React-based user interfaces with modern B2B SaaS aesthetics, implement responsive designs with Tailwind CSS, optimize Vite build configurations, or add thoughtful micro-animations to enhance user experience. Examples: <example>Context: User wants to create a modern dashboard component for their SaaS product. user: 'I need to build a dashboard component that shows key metrics with cards and charts' assistant: 'I'll use the frontend-engineer agent to create a modern, responsive dashboard with proper spacing, typography, and subtle animations' <commentary>Since the user needs a React UI component with modern design, use the frontend-engineer agent to build it with proper B2B SaaS aesthetics.</commentary></example> <example>Context: User has a basic form but wants to improve its visual appeal and user experience. user: 'This contact form looks too plain, can you make it more engaging?' assistant: 'Let me use the frontend-engineer agent to enhance the form with better styling, micro-interactions, and improved UX patterns' <commentary>The user wants UI improvements, so use the frontend-engineer agent to apply modern design principles and animations.</commentary></example>
+model: haiku
 color: cyan
 ---
 
