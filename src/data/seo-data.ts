@@ -79,5 +79,21 @@ export const seoData = {
         "availability": "https://schema.org/PreOrder"
       }
     }
+  },
+  events: {
+    title: "OpenTelemetry Workshops & Training Events",
+    description: "In-person and virtual OpenTelemetry workshops led by project contributors. Master Collector architecture, pipelines, transformations, and production deployment patterns.",
+    keywords: "OpenTelemetry workshop, OTel training event, observability workshop, Collector workshop, in-person training",
+    jsonLd: {
+      "@context": "https://schema.org",
+      "@type": "EventSeries",
+      "name": "OpenTelemetry Workshops & Training Events",
+      "description": "Exclusive hands-on workshops by TelemetryDrops",
+      "organizer": {
+        "@type": "Organization",
+        "name": "TelemetryDrops",
+        "url": "https://telemetrydrops.com"
+      }
+    }
   }
 };
