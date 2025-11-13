@@ -240,9 +240,9 @@ export const productData: Product[] = [
       }
     ],
     price: "€2,497",
-    ctaText: "Join waitlist",
-    ctaLink: "/waiting-list",
-    available: false
+    ctaText: "Enroll now",
+    ctaLink: "https://mn.dosedetelemetria.com/plans/1920293?bundle_token=8d02e938ab1be2b8273cc1ca76745f5f&utm_source=manual",
+    available: true
   },
   {
     id: "track",
