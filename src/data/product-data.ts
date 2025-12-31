@@ -446,13 +446,7 @@ export const productData: Product[] = [
         ]
       }
     ],
-    price: "€477",
-    originalPrice: "€597",
-    discount: {
-      percentage: 20,
-      label: "Early Bird",
-      couponCode: "EARLYBIRD20DROPS"
-    },
+    price: "€597",
     ctaText: "Buy now",
     ctaLink: "https://mn.dosedetelemetria.com/plans/1891200?bundle_token=d45d84d8fe78847f490ec416f9326179&utm_source=website",
     available: true,
