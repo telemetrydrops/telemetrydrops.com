@@ -30,7 +30,7 @@ export const eventsData: Event[] = [
     displayDate: 'January 14-15, 2026',
     type: 'workshop',
     price: '€1,970',
-    status: 'open',
+    status: 'closed',
     url: '/events/2026/01/berlin/otel-collector-workshop',
   },
   {
