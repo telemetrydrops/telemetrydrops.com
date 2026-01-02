@@ -239,9 +239,9 @@ export const productData: Product[] = [
         ]
       }
     ],
-    price: "€2,497",
+    price: "€999",
     ctaText: "Enroll now",
-    ctaLink: "https://mn.dosedetelemetria.com/plans/1920293?bundle_token=8d02e938ab1be2b8273cc1ca76745f5f&utm_source=manual",
+    ctaLink: "https://mn.dosedetelemetria.com/plans/1948548?bundle_token=f91ec446224acd04b2236784685ac72e&utm_source=website",
     available: true
   },
   {
@@ -446,9 +446,9 @@ export const productData: Product[] = [
         ]
       }
     ],
-    price: "€597",
+    price: "€499",
     ctaText: "Buy now",
-    ctaLink: "https://mn.dosedetelemetria.com/plans/1891200?bundle_token=d45d84d8fe78847f490ec416f9326179&utm_source=website",
+    ctaLink: "https://mn.dosedetelemetria.com/plans/1948557?bundle_token=f9f52783d3655e0c2be14c012bab2ab5&utm_source=website",
     available: true,
     popular: true
   }
