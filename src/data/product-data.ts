@@ -242,7 +242,7 @@ export const productData: Product[] = [
     price: "€999",
     ctaText: "Enroll now",
     ctaLink: "https://mn.dosedetelemetria.com/plans/1948548?bundle_token=f91ec446224acd04b2236784685ac72e&utm_source=website",
-    available: true
+    available: false
   },
   {
     id: "track",
