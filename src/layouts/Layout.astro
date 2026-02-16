@@ -14,6 +14,7 @@ export interface Props {
   ogType?: 'website' | 'article';
   twitterCard?: 'summary' | 'summary_large_image';
   jsonLd?: object;
+  noindex?: boolean;
 }
 
 const { 
@@ -23,8 +24,9 @@ const {
   keywords, 
   ogImage, 
   ogType, 
-  twitterCard, 
-  jsonLd 
+  twitterCard,
+  jsonLd,
+  noindex
 } = Astro.props;
 ---
 
@@ -43,7 +45,8 @@ const {
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
-    
+    {noindex && <meta name="robots" content="noindex, nofollow" />}
+
     <SEO 
       title={title}
       description={description}

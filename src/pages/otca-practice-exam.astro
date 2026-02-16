@@ -1,0 +1,17 @@
+---
+import Layout from '../layouts/Layout.astro';
+import OTCAQuiz from '../components/ui/OTCAQuiz';
+---
+
+<Layout
+  title="OTCA Practice Exam | Telemetry Drops"
+  description="Test your readiness for the OpenTelemetry Certified Associate (OTCA) exam with 60 practice questions across all four domains. Free simulated exam experience."
+  keywords="OTCA, OpenTelemetry Certified Associate, practice exam, OTel certification, CNCF certification"
+  noindex={true}
+>
+  <section class="min-h-screen bg-telemetria-darker">
+    <div class="container-custom">
+      <OTCAQuiz client:load />
+    </div>
+  </section>
+</Layout>
