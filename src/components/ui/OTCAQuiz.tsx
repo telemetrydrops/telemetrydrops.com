@@ -395,6 +395,43 @@ function ResultsScreen({
     }
   }
 
+  // Track quiz completion once on mount
+  useEffect(() => {
+    // Build domain breakdown for analytics
+    const domainBreakdown: Record<string, { correct: number; total: number }> = {};
+    for (const [domain, stats] of domainStats) {
+      domainBreakdown[domain] = { correct: stats.correct, total: stats.total };
+    }
+
+    window.posthog?.capture('quiz_completed', {
+      total_questions: questions.length,
+      correct_answers: totalCorrect,
+      score_percent: scorePercent,
+      passed,
+      elapsed_seconds: elapsedSeconds,
+      weakest_domain: weakestDomain,
+      domain_breakdown: domainBreakdown,
+    });
+  // Intentionally fire only once when results screen mounts — deps are stable at that point
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  const handleRetakeClick = () => {
+    window.posthog?.capture('quiz_retake_clicked', {
+      previous_score_percent: scorePercent,
+      previous_passed: passed,
+    });
+    onRetake();
+  };
+
+  const handleOTelTrackClick = () => {
+    window.posthog?.capture('otel_track_cta_clicked', {
+      score_percent: scorePercent,
+      passed,
+      source: 'quiz_results',
+    });
+  };
+
   const domains: Domain[] = [
     "fundamentals",
     "api-sdk",
@@ -558,6 +595,7 @@ function ResultsScreen({
           href={OTEL_TRACK_URL}
           target="_blank"
           rel="noopener noreferrer"
+          onClick={handleOTelTrackClick}
           className="inline-flex items-center justify-center w-full px-6 py-3 bg-telemetria-orange text-telemetria-dark hover:bg-telemetria-orange/90 rounded-md transition-colors font-medium"
         >
           Explore the OTel Track
@@ -580,7 +618,7 @@ function ResultsScreen({
       {/* Retake button */}
       <div className="text-center">
         <Button
-          onClick={onRetake}
+          onClick={handleRetakeClick}
           variant="outline"
           className="border-white/10 text-white/70 hover:bg-white/5"
         >
@@ -621,6 +659,12 @@ export default function OTCAQuiz() {
     setTimerActive(true);
     setScreen("quiz");
     window.scrollTo({ top: 0 });
+
+    // Track quiz start in PostHog
+    window.posthog?.capture('quiz_started', {
+      total_questions: selected.length,
+      question_pool_size: quizQuestions.length,
+    });
   }, []);
 
   const handleAnswer = useCallback(

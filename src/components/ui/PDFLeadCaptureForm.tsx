@@ -71,14 +71,41 @@ const PDFLeadCaptureForm = ({ resourceName, resourceDescription }: PDFLeadCaptur
       // Show success state
       setIsSubmitted(true);
 
+      // Track successful PDF download in PostHog
+      window.posthog?.capture('pdf_download_requested', {
+        resource_name: resourceName,
+        resource_type: 'cheatsheet',
+      });
+
+      // Identify user by email for future correlation
+      window.posthog?.identify(formData.email, {
+        name: formData.name,
+        email: formData.email,
+      });
+
       toast({
         title: "Success!",
         description: "Your OTTL cheatsheet is downloading now!",
       });
 
-    } catch (err: any) {
+    } catch (err: unknown) {
+      const errorMessage = err instanceof Error ? err.message : "An error occurred while processing your request. Please try again.";
       console.error("Error submitting form:", err);
-      setError(err.message || "An error occurred while processing your request. Please try again.");
+      setError(errorMessage);
+
+      // Track error in PostHog
+      window.posthog?.capture('pdf_download_error', {
+        resource_name: resourceName,
+        error_message: errorMessage,
+      });
+
+      // Capture exception for error tracking
+      if (err instanceof Error) {
+        window.posthog?.captureException(err, {
+          resource_name: resourceName,
+        });
+      }
+
       toast({
         title: "Error",
         description: "An error occurred while processing your request. Please try again.",

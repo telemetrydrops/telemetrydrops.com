@@ -63,15 +63,45 @@ const LeadCaptureForm = ({ productId, productName }: LeadCaptureFormProps) => {
       if (response.error) throw new Error(response.error.message);
 
       setIsSubmitted(true);
-      
+
+      // Track successful waitlist submission in PostHog
+      window.posthog?.capture('waitlist_form_submitted', {
+        product_id: productId,
+        product_name: productName,
+        has_message: !!formData.message,
+      });
+
+      // Identify user by email for future correlation
+      window.posthog?.identify(formData.email, {
+        name: formData.name,
+        email: formData.email,
+      });
+
       toast({
         title: "Successfully enrolled!",
         description: "Thank you for your interest. We'll be in touch soon.",
       });
-      
-    } catch (err: any) {
+
+    } catch (err: unknown) {
+      const errorMessage = err instanceof Error ? err.message : "An error occurred while processing your enrollment. Please try again.";
       console.error("Error submitting form:", err);
-      setError(err.message || "An error occurred while processing your enrollment. Please try again.");
+      setError(errorMessage);
+
+      // Track error in PostHog
+      window.posthog?.capture('waitlist_form_error', {
+        product_id: productId,
+        product_name: productName,
+        error_message: errorMessage,
+      });
+
+      // Capture exception for error tracking
+      if (err instanceof Error) {
+        window.posthog?.captureException(err, {
+          product_id: productId,
+          product_name: productName,
+        });
+      }
+
       toast({
         title: "Error processing enrollment",
         description: "An error occurred while processing your enrollment. Please try again.",
