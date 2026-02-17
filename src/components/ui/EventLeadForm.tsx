@@ -84,16 +84,49 @@ const EventLeadForm = ({
 
       setIsSubmitted(true);
 
+      // Track successful event registration in PostHog
+      window.posthog?.capture('event_registration_submitted', {
+        event_id: eventId,
+        event_name: eventName,
+        event_city: eventCity,
+        event_start_date: eventStartDate,
+        has_company: !!formData.company,
+        has_role: !!formData.role,
+        has_message: !!formData.message,
+      });
+
+      // Identify user by email for future correlation
+      window.posthog?.identify(formData.email, {
+        name: formData.name,
+        email: formData.email,
+        company: formData.company || undefined,
+        role: formData.role || undefined,
+      });
+
       toast({
         title: "Thanks for your interest!",
-        description: "We’ll get in touch with workshop details shortly.",
+        description: "We'll get in touch with workshop details shortly.",
       });
-    } catch (err: any) {
+    } catch (err: unknown) {
+      const errorMessage = err instanceof Error ? err.message : "An error occurred while submitting your information. Please try again.";
       console.error("Error submitting event lead form:", err);
-      setError(
-        err.message ||
-          "An error occurred while submitting your information. Please try again."
-      );
+      setError(errorMessage);
+
+      // Track error in PostHog
+      window.posthog?.capture('event_registration_error', {
+        event_id: eventId,
+        event_name: eventName,
+        event_city: eventCity,
+        error_message: errorMessage,
+      });
+
+      // Capture exception for error tracking
+      if (err instanceof Error) {
+        window.posthog?.captureException(err, {
+          event_id: eventId,
+          event_name: eventName,
+        });
+      }
 
       toast({
         title: "Unable to submit",
