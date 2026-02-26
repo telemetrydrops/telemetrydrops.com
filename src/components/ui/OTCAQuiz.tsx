@@ -349,6 +349,118 @@ function QuestionScreen({
           })}
         </div>
       </div>
+
+    </div>
+  );
+}
+
+function IncorrectAnswersReview({
+  questions,
+  answers,
+}: {
+  questions: QuizQuestion[];
+  answers: Map<string, AnswerKey>;
+}) {
+  const [open, setOpen] = useState(false);
+
+  const incorrect = questions.filter(
+    (q) => answers.get(q.id) !== q.correctAnswer
+  );
+
+  if (incorrect.length === 0) return null;
+
+  return (
+    <div className="bg-telemetria-dark/50 border border-white/10 rounded-xl mb-8 overflow-hidden">
+      <button
+        onClick={() => setOpen((v) => !v)}
+        className="w-full flex items-center justify-between p-6 text-left hover:bg-white/5 transition-colors"
+      >
+        <div>
+          <h2 className="text-lg font-semibold">Review Incorrect Answers</h2>
+          <p className="text-sm text-white/50 mt-0.5">
+            {incorrect.length} question{incorrect.length !== 1 ? "s" : ""} to review
+          </p>
+        </div>
+        <svg
+          className={cn(
+            "w-5 h-5 text-white/40 flex-shrink-0 transition-transform duration-200",
+            open && "rotate-180"
+          )}
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+        </svg>
+      </button>
+
+      {open && (
+        <div className="border-t border-white/10 divide-y divide-white/5">
+          {incorrect.map((q, i) => {
+            const userAnswer = answers.get(q.id)!;
+            const correctOption = q.options.find((o) => o.key === q.correctAnswer)!;
+            const userOption = q.options.find((o) => o.key === userAnswer)!;
+            return (
+              <div key={q.id} className="p-6">
+                <div className="flex items-center gap-2 mb-3">
+                  <span className="text-xs font-medium text-white/40">
+                    #{i + 1}
+                  </span>
+                  <span
+                    className={cn(
+                      "text-[10px] px-2 py-0.5 rounded-full border",
+                      q.domain === "fundamentals" && "bg-blue-500/10 border-blue-500/20 text-blue-400",
+                      q.domain === "api-sdk" && "bg-green-500/10 border-green-500/20 text-green-400",
+                      q.domain === "collector" && "bg-purple-500/10 border-purple-500/20 text-purple-400",
+                      q.domain === "debugging" && "bg-yellow-500/10 border-yellow-500/20 text-yellow-400"
+                    )}
+                  >
+                    {q.domainLabel}
+                  </span>
+                </div>
+
+                <p className="text-sm text-white/90 mb-4 leading-relaxed">
+                  <MarkdownText text={q.question} />
+                </p>
+
+                <div className="space-y-2 mb-4">
+                  {/* User's wrong answer */}
+                  <div className="flex items-start gap-3 p-3 rounded-lg bg-red-500/5 border border-red-500/20">
+                    <span className="flex-shrink-0 w-6 h-6 rounded-full bg-red-500/20 border border-red-500/30 flex items-center justify-center text-xs font-medium text-red-400">
+                      {userAnswer}
+                    </span>
+                    <div className="flex-1 min-w-0">
+                      <div className="text-xs text-red-400 mb-1">Your answer</div>
+                      <span className="text-sm text-white/70">
+                        <MarkdownText text={userOption.text} />
+                      </span>
+                    </div>
+                  </div>
+
+                  {/* Correct answer */}
+                  <div className="flex items-start gap-3 p-3 rounded-lg bg-green-500/5 border border-green-500/20">
+                    <span className="flex-shrink-0 w-6 h-6 rounded-full bg-green-500/20 border border-green-500/30 flex items-center justify-center text-xs font-medium text-green-400">
+                      {q.correctAnswer}
+                    </span>
+                    <div className="flex-1 min-w-0">
+                      <div className="text-xs text-green-400 mb-1">Correct answer</div>
+                      <span className="text-sm text-white/70">
+                        <MarkdownText text={correctOption.text} />
+                      </span>
+                    </div>
+                  </div>
+                </div>
+
+                {q.explanation && (
+                  <div className="text-sm text-white/50 leading-relaxed bg-white/[0.03] rounded-lg p-3">
+                    <MarkdownText text={q.explanation} />
+                  </div>
+                )}
+              </div>
+            );
+          })}
+        </div>
+      )}
     </div>
   );
 }
@@ -580,6 +692,9 @@ function ResultsScreen({
           })}
         </div>
       </div>
+
+      {/* Incorrect answers review */}
+      <IncorrectAnswersReview questions={questions} answers={answers} />
 
       {/* CTA */}
       <div className="bg-telemetria-dark/50 border border-telemetria-orange/20 rounded-xl p-6 mb-6">
