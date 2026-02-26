@@ -80,6 +80,26 @@ export const seoData = {
       }
     }
   },
+  podcast: {
+    title: "OTel Drops Podcast – Weekly OpenTelemetry Updates",
+    description: "OTel Drops is your weekly digest of everything happening in the OpenTelemetry community. AI-hosted, curated by OTel maintainer Juraci Paixão Kröhling. New episodes every week on Spotify.",
+    keywords: "OTel Drops, OpenTelemetry podcast, OTel podcast, observability podcast, OpenTelemetry community, weekly OTel updates, Bianca, Florian",
+    jsonLd: {
+      "@context": "https://schema.org",
+      "@type": "PodcastSeries",
+      "name": "OTel Drops",
+      "description": "Weekly OpenTelemetry community updates. AI-hosted, curated by Juraci Paixão Kröhling.",
+      "url": "https://telemetrydrops.com/podcast",
+      "producer": {
+        "@type": "Organization",
+        "name": "TelemetryDrops",
+        "url": "https://telemetrydrops.com"
+      },
+      "sameAs": [
+        "https://open.spotify.com/show/3xJnu5gEUbBoqRbd5lzwLO"
+      ]
+    }
+  },
   events: {
     title: "OpenTelemetry Workshops & Training Events",
     description: "In-person and virtual OpenTelemetry workshops led by project contributors. Master Collector architecture, pipelines, transformations, and production deployment patterns.",
