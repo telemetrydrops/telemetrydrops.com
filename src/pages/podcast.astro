@@ -1,0 +1,525 @@
+---
+import Layout from '../layouts/Layout.astro';
+import SectionHeading from '../components/astro/SectionHeading.astro';
+import { seoData } from '../data/seo-data';
+---
+
+<Layout
+	title={seoData.podcast.title}
+	description={seoData.podcast.description}
+	keywords={seoData.podcast.keywords}
+	canonical="/podcast"
+	jsonLd={seoData.podcast.jsonLd}
+>
+	<div class="flex flex-col w-full">
+
+		<!-- Hero Section -->
+		<section class="relative w-full min-h-[90vh] flex flex-col items-center justify-center overflow-hidden bg-telemetria-darker">
+			<div class="absolute inset-0 z-0">
+				<div class="absolute inset-0 bg-telemetria-dark">
+					<div class="absolute inset-0 opacity-40 bg-[radial-gradient(circle_at_30%_50%,rgba(234,88,12,0.15),transparent_60%)]"></div>
+					<div class="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_70%_30%,rgba(251,146,60,0.12),transparent_50%)]"></div>
+				</div>
+				<div class="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-telemetria-orange/30 to-transparent"></div>
+
+				<!-- Animated sound wave decoration -->
+				<div class="absolute bottom-0 left-0 right-0 h-32 opacity-10" aria-hidden="true">
+					<svg viewBox="0 0 1440 120" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" class="w-full h-full">
+						<path d="M0 60 Q180 0 360 60 Q540 120 720 60 Q900 0 1080 60 Q1260 120 1440 60 L1440 120 L0 120 Z" fill="url(#wave-gradient)" />
+						<defs>
+							<linearGradient id="wave-gradient" x1="0" y1="0" x2="1440" y2="0">
+								<stop offset="0%" stop-color="#ea580c" />
+								<stop offset="100%" stop-color="#f97316" />
+							</linearGradient>
+						</defs>
+					</svg>
+				</div>
+			</div>
+
+			<div class="container-custom relative z-10 py-20">
+				<div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+
+					<!-- Left: Text Content -->
+					<div class="animate-fade-in">
+						<!-- Badge -->
+						<div class="inline-flex items-center gap-2 bg-telemetria-orange/10 border border-telemetria-orange/30 rounded-full px-4 py-1.5 mb-6">
+							<span class="relative flex h-2 w-2">
+								<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-telemetria-orange opacity-75"></span>
+								<span class="relative inline-flex rounded-full h-2 w-2 bg-telemetria-orange"></span>
+							</span>
+							<span class="text-telemetria-orange text-sm font-medium tracking-wide uppercase">New episode every week</span>
+						</div>
+
+						<h1 class="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-4">
+							<span class="bg-gradient-to-r from-telemetria-orange via-orange-400 to-yellow-400 bg-clip-text text-transparent">OTel Drops</span>
+						</h1>
+						<p class="text-xl md:text-2xl text-white/70 font-light mb-3">
+							Your weekly OpenTelemetry digest.
+						</p>
+						<p class="text-lg text-white/60 mb-8 leading-relaxed max-w-xl">
+							AI-hosted, human-curated. Every week, Bianca and Florian break down the latest from the OpenTelemetry community — releases, spec changes, real discussions — all in ~20 minutes, zero fluff.
+						</p>
+						<div class="flex flex-col sm:flex-row gap-4">
+							<a
+								href="https://open.spotify.com/show/3xJnu5gEUbBoqRbd5lzwLO"
+								target="_blank"
+								rel="noopener noreferrer"
+								class="inline-flex items-center justify-center gap-3 px-6 py-3 text-base font-semibold rounded-md bg-[#1DB954] text-black hover:bg-[#1DB954]/90 transition-colors"
+							>
+								<!-- Spotify icon -->
+								<svg class="w-5 h-5 shrink-0" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+									<path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.441 17.293a.75.75 0 01-1.032.245c-2.826-1.727-6.384-2.117-10.573-1.16a.75.75 0 11-.336-1.461c4.586-1.05 8.52-.598 11.696 1.344a.75.75 0 01.245 1.032zm1.452-3.23a.938.938 0 01-1.29.307c-3.232-1.986-8.161-2.562-11.985-1.402a.937.937 0 11-.546-1.793c4.37-1.329 9.8-.685 13.514 1.598a.937.937 0 01.307 1.29zm.125-3.362c-3.876-2.302-10.27-2.513-13.972-1.39a1.125 1.125 0 11-.654-2.154c4.249-1.29 11.31-1.04 15.773 1.607a1.125 1.125 0 11-1.147 1.937z"/>
+								</svg>
+								Listen on Spotify
+							</a>
+							<a
+								href="#about"
+								class="inline-flex items-center justify-center px-6 py-3 text-base font-medium rounded-md border border-white/20 text-white hover:bg-white/10 transition-colors"
+							>
+								Learn more
+							</a>
+						</div>
+					</div>
+
+					<!-- Right: Spotify Embed -->
+					<div class="animate-fade-in-right">
+						<div class="relative">
+							<div class="absolute -inset-1 bg-gradient-to-r from-telemetria-orange/30 to-orange-400/20 rounded-2xl blur-xl"></div>
+							<div class="relative rounded-2xl overflow-hidden shadow-2xl border border-white/10">
+								<iframe
+									style="border-radius: 12px"
+									src="https://open.spotify.com/embed/show/3xJnu5gEUbBoqRbd5lzwLO?utm_source=generator&theme=0"
+									width="100%"
+									height="352"
+									style="border: none"
+									allowfullscreen
+									allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+									loading="lazy"
+									title="OTel Drops on Spotify"
+								></iframe>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="absolute bottom-10 left-0 right-0 flex justify-center animate-bounce">
+				<a href="#about" class="text-white/40 hover:text-white/70 transition-colors">
+					<svg class="h-6 w-6 rotate-90" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+					</svg>
+				</a>
+			</div>
+		</section>
+
+		<!-- About the Show -->
+		<section id="about" class="py-24 bg-telemetria-dark">
+			<div class="container-custom">
+				<SectionHeading
+					title="What is OTel Drops?"
+					subtitle="The OpenTelemetry community moves fast. OTel Drops keeps you current."
+				/>
+
+				<div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-16">
+					<!-- Card 1 -->
+					<div class="group bg-white/5 border border-white/10 rounded-2xl p-8 hover:border-telemetria-orange/40 hover:bg-white/8 transition-all duration-300">
+						<div class="w-12 h-12 rounded-xl bg-telemetria-orange/15 flex items-center justify-center mb-6 group-hover:bg-telemetria-orange/25 transition-colors">
+							<svg class="w-6 h-6 text-telemetria-orange" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+							</svg>
+						</div>
+						<h3 class="text-xl font-bold text-white mb-3">AI-hosted, human-curated</h3>
+						<p class="text-white/60 leading-relaxed">
+							Bianca and Florian are AI voices, but every episode is curated by Juraci Paixão Kröhling — an OpenTelemetry maintainer who knows what actually matters.
+						</p>
+					</div>
+
+					<!-- Card 2 -->
+					<div class="group bg-white/5 border border-white/10 rounded-2xl p-8 hover:border-telemetria-orange/40 hover:bg-white/8 transition-all duration-300">
+						<div class="w-12 h-12 rounded-xl bg-telemetria-orange/15 flex items-center justify-center mb-6 group-hover:bg-telemetria-orange/25 transition-colors">
+							<svg class="w-6 h-6 text-telemetria-orange" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+							</svg>
+						</div>
+						<h3 class="text-xl font-bold text-white mb-3">Sourced from everywhere</h3>
+						<p class="text-white/60 leading-relaxed">
+							Each episode draws from GitHub PRs, release notes, CNCF blogs, Reddit discussions, and community proposals — curated and ranked so you don't have to read them all.
+						</p>
+					</div>
+
+					<!-- Card 3 -->
+					<div class="group bg-white/5 border border-white/10 rounded-2xl p-8 hover:border-telemetria-orange/40 hover:bg-white/8 transition-all duration-300">
+						<div class="w-12 h-12 rounded-xl bg-telemetria-orange/15 flex items-center justify-center mb-6 group-hover:bg-telemetria-orange/25 transition-colors">
+							<svg class="w-6 h-6 text-telemetria-orange" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+							</svg>
+						</div>
+						<h3 class="text-xl font-bold text-white mb-3">~20 minutes, weekly</h3>
+						<p class="text-white/60 leading-relaxed">
+							Dense signal, no filler. Every week you get a tight, well-structured episode covering what actually moved in the OTel ecosystem — so you can stay sharp without the time sink.
+						</p>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- Meet the Hosts -->
+		<section class="py-24 bg-telemetria-darker relative overflow-hidden">
+			<div class="absolute inset-0 opacity-5">
+				<div class="absolute top-1/4 left-1/4 w-96 h-96 rounded-full bg-telemetria-orange blur-3xl"></div>
+			</div>
+			<div class="container-custom relative z-10">
+				<SectionHeading
+					title="Meet the Hosts"
+					subtitle="Distinct voices, complementary perspectives, one goal: making OTel accessible."
+				/>
+
+				<div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-16">
+
+					<!-- Bianca -->
+					<div class="relative group">
+						<div class="absolute -inset-0.5 bg-gradient-to-br from-telemetria-orange/30 to-orange-400/10 rounded-2xl blur opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+						<div class="relative bg-white/5 border border-white/10 rounded-2xl p-8 h-full">
+							<!-- Avatar placeholder with gradient -->
+							<div class="w-20 h-20 rounded-full bg-gradient-to-br from-orange-400 to-red-500 flex items-center justify-center mb-6 text-3xl font-bold text-white shadow-lg">
+								B
+							</div>
+							<div class="inline-flex items-center gap-1.5 bg-telemetria-orange/10 border border-telemetria-orange/20 rounded-full px-3 py-1 mb-4">
+								<span class="text-telemetria-orange text-xs font-medium">Lead Host</span>
+							</div>
+							<h3 class="text-2xl font-bold text-white mb-1">Bianca</h3>
+							<p class="text-white/40 text-sm mb-4">Software Engineer turned SRE · German background</p>
+							<p class="text-white/60 leading-relaxed">
+								Thinks in traces, spans, and context propagation. Bianca brings the developer's perspective — instrumentation as a first-class concern, not an afterthought. Energetic, precise, and genuinely excited about good engineering.
+							</p>
+							<div class="mt-6 flex flex-wrap gap-2">
+								<span class="text-xs bg-white/8 text-white/50 rounded-full px-3 py-1">Distributed Systems</span>
+								<span class="text-xs bg-white/8 text-white/50 rounded-full px-3 py-1">Instrumentation</span>
+								<span class="text-xs bg-white/8 text-white/50 rounded-full px-3 py-1">Tracing</span>
+							</div>
+						</div>
+					</div>
+
+					<!-- Florian -->
+					<div class="relative group">
+						<div class="absolute -inset-0.5 bg-gradient-to-br from-telemetria-orange/30 to-orange-400/10 rounded-2xl blur opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+						<div class="relative bg-white/5 border border-white/10 rounded-2xl p-8 h-full">
+							<div class="w-20 h-20 rounded-full bg-gradient-to-br from-blue-400 to-indigo-600 flex items-center justify-center mb-6 text-3xl font-bold text-white shadow-lg">
+								F
+							</div>
+							<div class="inline-flex items-center gap-1.5 bg-blue-500/10 border border-blue-500/20 rounded-full px-3 py-1 mb-4">
+								<span class="text-blue-400 text-xs font-medium">Co-Host</span>
+							</div>
+							<h3 class="text-2xl font-bold text-white mb-1">Florian</h3>
+							<p class="text-white/40 text-sm mb-4">Platform Engineer · Dutch/French background</p>
+							<p class="text-white/60 leading-relaxed">
+								Grew up in Nagios, matured in Prometheus, now fully invested in OTel. Florian keeps it operational — cardinality, cost, and what it actually takes to run telemetry at scale. Measured, dry, dependable.
+							</p>
+							<div class="mt-6 flex flex-wrap gap-2">
+								<span class="text-xs bg-white/8 text-white/50 rounded-full px-3 py-1">Platform Engineering</span>
+								<span class="text-xs bg-white/8 text-white/50 rounded-full px-3 py-1">Metrics</span>
+								<span class="text-xs bg-white/8 text-white/50 rounded-full px-3 py-1">Collector</span>
+							</div>
+						</div>
+					</div>
+
+					<!-- Rose -->
+					<div class="relative group">
+						<div class="absolute -inset-0.5 bg-gradient-to-br from-telemetria-orange/30 to-orange-400/10 rounded-2xl blur opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+						<div class="relative bg-white/5 border border-white/10 rounded-2xl p-8 h-full">
+							<div class="w-20 h-20 rounded-full bg-gradient-to-br from-purple-400 to-pink-500 flex items-center justify-center mb-6 text-3xl font-bold text-white shadow-lg">
+								R
+							</div>
+							<div class="inline-flex items-center gap-1.5 bg-purple-500/10 border border-purple-500/20 rounded-full px-3 py-1 mb-4">
+								<span class="text-purple-400 text-xs font-medium">Quiz Host</span>
+							</div>
+							<h3 class="text-2xl font-bold text-white mb-1">Rose</h3>
+							<p class="text-white/40 text-sm mb-4">OTel Veteran since 2019 · Scottish background</p>
+							<p class="text-white/60 leading-relaxed">
+								Was there for the OpenTracing/OpenCensus merger. Rose hosts the OTel Quiz segment — encyclopedic knowledge of the ecosystem's history, delivered with warmth and a bit of mischief.
+							</p>
+							<div class="mt-6 flex flex-wrap gap-2">
+								<span class="text-xs bg-white/8 text-white/50 rounded-full px-3 py-1">OTel History</span>
+								<span class="text-xs bg-white/8 text-white/50 rounded-full px-3 py-1">Spec Expert</span>
+								<span class="text-xs bg-white/8 text-white/50 rounded-full px-3 py-1">Quiz Host</span>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<!-- Curator note -->
+				<div class="mt-12 max-w-3xl mx-auto">
+					<div class="relative bg-gradient-to-r from-telemetria-orange/10 to-orange-400/5 border border-telemetria-orange/20 rounded-2xl p-8">
+						<div class="absolute top-0 left-8 -translate-y-1/2">
+							<span class="bg-telemetria-orange text-black text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full">Human curator</span>
+						</div>
+						<div class="flex flex-col sm:flex-row items-start gap-6 mt-2">
+							<div class="w-16 h-16 rounded-full bg-gradient-to-br from-telemetria-orange to-yellow-500 flex items-center justify-center text-2xl font-bold text-black shrink-0 shadow-lg">
+								J
+							</div>
+							<div>
+								<h3 class="text-xl font-bold text-white mb-1">Juraci Paixão Kröhling</h3>
+								<p class="text-telemetria-orange/80 text-sm mb-3">OpenTelemetry Maintainer · Founder of Telemetry Drops</p>
+								<p class="text-white/60 leading-relaxed">
+									Every episode is curated by Juraci — a core OpenTelemetry maintainer who filters the week's noise down to what genuinely matters. The hosts are AI voices, but the editorial judgment is very much human.
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- What to Expect -->
+		<section class="py-24 bg-telemetria-dark">
+			<div class="container-custom">
+				<SectionHeading
+					title="What's in each episode?"
+					subtitle="A consistent structure, every week — so you always know what's coming."
+				/>
+
+				<div class="mt-16 max-w-4xl mx-auto">
+					<div class="space-y-4">
+
+						<!-- OTel Quiz -->
+						<div class="flex items-start gap-4 bg-white/5 border border-white/10 rounded-xl p-5 hover:border-white/20 transition-colors">
+							<div class="w-10 h-10 shrink-0 flex items-center justify-center rounded-lg bg-telemetria-orange/10">
+								<!-- Question mark / quiz icon -->
+								<svg class="w-5 h-5 text-telemetria-orange" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+									<circle cx="12" cy="12" r="10"/>
+									<path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/>
+									<circle cx="12" cy="17" r=".5" fill="currentColor" stroke="none"/>
+								</svg>
+							</div>
+							<div>
+								<span class="font-semibold text-white">OTel Quiz</span>
+								<p class="text-white/55 text-sm mt-0.5">Rose opens with a quiz question — answer revealed at the end.</p>
+							</div>
+						</div>
+
+						<!-- Top Stories -->
+						<div class="flex items-start gap-4 bg-white/5 border border-white/10 rounded-xl p-5 hover:border-white/20 transition-colors">
+							<div class="w-10 h-10 shrink-0 flex items-center justify-center rounded-lg bg-telemetria-orange/10">
+								<!-- News / document stack icon -->
+								<svg class="w-5 h-5 text-telemetria-orange" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+									<path d="M4 6h16M4 10h16M4 14h10M4 18h7"/>
+									<rect x="14" y="13" width="6" height="6" rx="1"/>
+								</svg>
+							</div>
+							<div>
+								<span class="font-semibold text-white">Top Stories</span>
+								<p class="text-white/55 text-sm mt-0.5">The week's most important releases, spec changes, and PRs — explained with context.</p>
+							</div>
+						</div>
+
+						<!-- Deep Dive -->
+						<div class="flex items-start gap-4 bg-white/5 border border-white/10 rounded-xl p-5 hover:border-white/20 transition-colors">
+							<div class="w-10 h-10 shrink-0 flex items-center justify-center rounded-lg bg-telemetria-orange/10">
+								<!-- Layers / deep dive icon -->
+								<svg class="w-5 h-5 text-telemetria-orange" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+									<path d="M12 2L2 7l10 5 10-5-10-5z"/>
+									<path d="M2 12l10 5 10-5"/>
+									<path d="M2 17l10 5 10-5"/>
+								</svg>
+							</div>
+							<div>
+								<span class="font-semibold text-white">Deep Dive</span>
+								<p class="text-white/55 text-sm mt-0.5">A focused explainer on one OTel concept, pattern, or debate.</p>
+							</div>
+						</div>
+
+						<!-- Community & Events -->
+						<div class="flex items-start gap-4 bg-white/5 border border-white/10 rounded-xl p-5 hover:border-white/20 transition-colors">
+							<div class="w-10 h-10 shrink-0 flex items-center justify-center rounded-lg bg-telemetria-orange/10">
+								<!-- Calendar icon -->
+								<svg class="w-5 h-5 text-telemetria-orange" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+									<rect x="3" y="4" width="18" height="18" rx="2"/>
+									<path d="M16 2v4M8 2v4M3 10h18"/>
+									<circle cx="8" cy="15" r="1" fill="currentColor" stroke="none"/>
+									<circle cx="12" cy="15" r="1" fill="currentColor" stroke="none"/>
+									<circle cx="16" cy="15" r="1" fill="currentColor" stroke="none"/>
+								</svg>
+							</div>
+							<div>
+								<span class="font-semibold text-white">Community & Events</span>
+								<p class="text-white/55 text-sm mt-0.5">Upcoming conferences, live streams, and community announcements.</p>
+							</div>
+						</div>
+
+						<!-- Quick Hits -->
+						<div class="flex items-start gap-4 bg-white/5 border border-white/10 rounded-xl p-5 hover:border-white/20 transition-colors">
+							<div class="w-10 h-10 shrink-0 flex items-center justify-center rounded-lg bg-telemetria-orange/10">
+								<!-- Lightning bolt icon -->
+								<svg class="w-5 h-5 text-telemetria-orange" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+									<path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+								</svg>
+							</div>
+							<div>
+								<span class="font-semibold text-white">Quick Hits</span>
+								<p class="text-white/55 text-sm mt-0.5">4–6 brief mentions of everything else worth knowing this week.</p>
+							</div>
+						</div>
+
+						<!-- Quiz Answer -->
+						<div class="flex items-start gap-4 bg-white/5 border border-white/10 rounded-xl p-5 hover:border-white/20 transition-colors">
+							<div class="w-10 h-10 shrink-0 flex items-center justify-center rounded-lg bg-telemetria-orange/10">
+								<!-- Checkmark inside circle icon -->
+								<svg class="w-5 h-5 text-telemetria-orange" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+									<circle cx="12" cy="12" r="10"/>
+									<path d="M8 12l3 3 5-6"/>
+								</svg>
+							</div>
+							<div>
+								<span class="font-semibold text-white">Quiz Answer</span>
+								<p class="text-white/55 text-sm mt-0.5">Rose wraps up with the quiz answer and a quick explanation.</p>
+							</div>
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- Why Listen -->
+		<section class="py-24 bg-telemetria-darker relative overflow-hidden">
+			<div class="absolute inset-0 opacity-5">
+				<div class="absolute bottom-0 right-0 w-[600px] h-[600px] rounded-full bg-telemetria-orange blur-3xl translate-x-1/2 translate-y-1/2"></div>
+			</div>
+			<div class="container-custom relative z-10">
+				<div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+					<div>
+						<h2 class="text-3xl md:text-4xl font-bold text-white mb-6">
+							Stay current without the <span class="bg-gradient-to-r from-telemetria-orange to-yellow-400 bg-clip-text text-transparent">noise</span>
+						</h2>
+						<p class="text-white/60 text-lg leading-relaxed mb-8">
+							The OTel ecosystem ships constantly — new Collector releases, SDK updates, spec changes, semantic convention revisions. Keeping up manually is a full-time job.
+						</p>
+						<p class="text-white/60 text-lg leading-relaxed mb-8">
+							OTel Drops does the curation for you. Every Friday, a tight episode covering what actually moved — so you walk into the week informed.
+						</p>
+						<div class="space-y-4">
+							{[
+								"Releases across all OTel SDKs and the Collector",
+								"Breaking changes with migration context",
+								"Spec and semantic convention evolution",
+								"Real community discussions, not just changelogs",
+								"Upcoming events and community announcements",
+							].map((item) => (
+								<div class="flex items-center gap-3">
+									<svg class="w-5 h-5 text-telemetria-orange shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+										<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+									</svg>
+									<span class="text-white/70">{item}</span>
+								</div>
+							))}
+						</div>
+					</div>
+
+					<!-- Stats / Quote block -->
+					<div class="grid grid-cols-1 gap-6">
+						<div class="bg-white/5 border border-white/10 rounded-2xl p-8">
+							<p class="text-white/80 text-lg italic leading-relaxed mb-6">
+								"New releases every two weeks, spec changes constantly landing, community proposals from all directions — OTel Drops turns all of that into a single, digestible episode."
+							</p>
+							<p class="text-telemetria-orange font-medium">— The premise of every episode</p>
+						</div>
+
+						<div class="grid grid-cols-2 gap-4">
+							<div class="bg-white/5 border border-white/10 rounded-xl p-6 text-center">
+								<p class="text-4xl font-bold text-telemetria-orange mb-1">25+</p>
+								<p class="text-white/50 text-sm">GitHub repos tracked</p>
+							</div>
+							<div class="bg-white/5 border border-white/10 rounded-xl p-6 text-center">
+								<p class="text-4xl font-bold text-telemetria-orange mb-1">Weekly</p>
+								<p class="text-white/50 text-sm">New episode cadence</p>
+							</div>
+							<div class="bg-white/5 border border-white/10 rounded-xl p-6 text-center">
+								<p class="text-4xl font-bold text-telemetria-orange mb-1">~20</p>
+								<p class="text-white/50 text-sm">Minutes per episode</p>
+							</div>
+							<div class="bg-white/5 border border-white/10 rounded-xl p-6 text-center">
+								<p class="text-4xl font-bold text-telemetria-orange mb-1">0</p>
+								<p class="text-white/50 text-sm">Marketing fluff</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- Final CTA -->
+		<section class="py-24 bg-telemetria-dark">
+			<div class="container-custom">
+				<div class="relative max-w-3xl mx-auto text-center">
+					<div class="absolute -inset-1 bg-gradient-to-r from-telemetria-orange/20 via-orange-400/10 to-telemetria-orange/20 rounded-3xl blur-2xl"></div>
+					<div class="relative bg-white/5 border border-telemetria-orange/20 rounded-2xl p-12">
+						<!-- Waveform decoration -->
+						<div class="flex items-end justify-center gap-[3px] h-16 mb-8" aria-hidden="true">
+							<div class="wavebar" style="--bar-height: 30%; --bar-delay: 0s;"></div>
+							<div class="wavebar" style="--bar-height: 55%; --bar-delay: 0.1s;"></div>
+							<div class="wavebar" style="--bar-height: 75%; --bar-delay: 0.2s;"></div>
+							<div class="wavebar" style="--bar-height: 45%; --bar-delay: 0.05s;"></div>
+							<div class="wavebar" style="--bar-height: 90%; --bar-delay: 0.3s;"></div>
+							<div class="wavebar" style="--bar-height: 60%; --bar-delay: 0.15s;"></div>
+							<div class="wavebar" style="--bar-height: 100%; --bar-delay: 0.4s;"></div>
+							<div class="wavebar" style="--bar-height: 70%; --bar-delay: 0.25s;"></div>
+							<div class="wavebar" style="--bar-height: 85%; --bar-delay: 0.35s;"></div>
+							<div class="wavebar" style="--bar-height: 50%; --bar-delay: 0.1s;"></div>
+							<div class="wavebar" style="--bar-height: 95%; --bar-delay: 0.45s;"></div>
+							<div class="wavebar" style="--bar-height: 65%; --bar-delay: 0.2s;"></div>
+							<div class="wavebar" style="--bar-height: 80%; --bar-delay: 0.3s;"></div>
+							<div class="wavebar" style="--bar-height: 40%; --bar-delay: 0.05s;"></div>
+							<div class="wavebar" style="--bar-height: 70%; --bar-delay: 0.15s;"></div>
+							<div class="wavebar" style="--bar-height: 55%; --bar-delay: 0.25s;"></div>
+							<div class="wavebar" style="--bar-height: 85%; --bar-delay: 0.35s;"></div>
+							<div class="wavebar" style="--bar-height: 45%; --bar-delay: 0.1s;"></div>
+							<div class="wavebar" style="--bar-height: 65%; --bar-delay: 0.4s;"></div>
+							<div class="wavebar" style="--bar-height: 30%; --bar-delay: 0.2s;"></div>
+						</div>
+
+						<h2 class="text-3xl md:text-4xl font-bold text-white mb-4">
+							Start listening today
+						</h2>
+						<p class="text-white/60 text-lg mb-8">
+							Available on Spotify. A new episode drops every week.
+						</p>
+						<div class="flex flex-col sm:flex-row gap-4 justify-center">
+							<a
+								href="https://open.spotify.com/show/3xJnu5gEUbBoqRbd5lzwLO"
+								target="_blank"
+								rel="noopener noreferrer"
+								class="inline-flex items-center justify-center gap-3 px-8 py-4 text-base font-semibold rounded-md bg-[#1DB954] text-black hover:bg-[#1DB954]/90 transition-colors"
+							>
+								<svg class="w-5 h-5 shrink-0" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+									<path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.441 17.293a.75.75 0 01-1.032.245c-2.826-1.727-6.384-2.117-10.573-1.16a.75.75 0 11-.336-1.461c4.586-1.05 8.52-.598 11.696 1.344a.75.75 0 01.245 1.032zm1.452-3.23a.938.938 0 01-1.29.307c-3.232-1.986-8.161-2.562-11.985-1.402a.937.937 0 11-.546-1.793c4.37-1.329 9.8-.685 13.514 1.598a.937.937 0 01.307 1.29zm.125-3.362c-3.876-2.302-10.27-2.513-13.972-1.39a1.125 1.125 0 11-.654-2.154c4.249-1.29 11.31-1.04 15.773 1.607a1.125 1.125 0 11-1.147 1.937z"/>
+								</svg>
+								Listen on Spotify
+							</a>
+						</div>
+						<p class="text-white/30 text-sm mt-6">
+							Produced by Telemetry Drops · Curated by Juraci Paixão Kröhling · Sponsored by <a href="https://olly.garden" target="_blank" rel="noopener noreferrer" class="text-telemetria-orange/60 hover:text-telemetria-orange transition-colors">OllyGarden</a>
+						</p>
+					</div>
+				</div>
+			</div>
+		</section>
+
+	</div>
+</Layout>
+
+<style>
+	@keyframes wavebar {
+		0%   { height: calc(var(--bar-height) * 0.25); }
+		50%  { height: var(--bar-height); }
+		100% { height: calc(var(--bar-height) * 0.25); }
+	}
+
+	.wavebar {
+		width: 3px;
+		height: var(--bar-height);
+		background: linear-gradient(to top, #ea580c, #fb923c);
+		border-radius: 9999px;
+		animation: wavebar 1s ease-in-out infinite;
+		animation-delay: var(--bar-delay);
+	}
+</style>
