@@ -23,6 +23,10 @@ pnpm-debug.log*
 # jetbrains setting folder
 .idea/
 
+# worktrees and superpowers
+.worktrees/
+.superpowers/
+
 # Supabase
 .branches
 .temp
