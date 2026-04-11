@@ -16,7 +16,7 @@ export const authors: Record<string, Author> = {
   juraci: {
     name: "Juraci Paixão Kröhling",
     role: "OpenTelemetry Maintainer & Instructor",
-    avatar: "https://github.com/jpkrohling.png",
+    avatar: "/authors/juraci.webp",
     bio: "OpenTelemetry maintainer and founder of Telemetry Drops, where he teaches observability engineering through hands-on courses.",
     social: {
       linkedin: "https://www.linkedin.com/in/jpkroehling",
