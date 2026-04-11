@@ -1,0 +1,218 @@
+---
+import { getCollection, render } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
+import BlogSEO from "../../components/astro/BlogSEO.astro";
+import Breadcrumbs from "../../components/astro/Breadcrumbs.astro";
+import TagPill from "../../components/astro/TagPill.astro";
+import AuthorBio from "../../components/astro/AuthorBio.astro";
+import TableOfContents from "../../components/astro/TableOfContents.astro";
+import SeriesNav from "../../components/astro/SeriesNav.astro";
+import { authors } from "../../data/author-data";
+import { tagInfo } from "../../data/tag-data";
+import type { ValidTag } from "../../data/tag-data";
+
+export async function getStaticPaths() {
+  const posts = await getCollection("blog");
+  return posts.map((post) => ({
+    params: { slug: post.data.slug },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content, headings, remarkPluginFrontmatter } = await render(post);
+
+const author = authors[post.data.author];
+const readingTime = post.data.readingTime ?? remarkPluginFrontmatter?.minutesRead ?? 5;
+
+// Series navigation
+let previousPost = undefined;
+let nextPost = undefined;
+if (post.data.series) {
+  const allPosts = await getCollection("blog");
+  const seriesPosts = allPosts
+    .filter((p) => p.data.series === post.data.series)
+    .sort((a, b) => (a.data.seriesOrder ?? 0) - (b.data.seriesOrder ?? 0));
+  const currentIndex = seriesPosts.findIndex((p) => p.data.slug === post.data.slug);
+  if (currentIndex > 0) {
+    previousPost = { slug: seriesPosts[currentIndex - 1].data.slug, title: seriesPosts[currentIndex - 1].data.title };
+  }
+  if (currentIndex < seriesPosts.length - 1) {
+    nextPost = { slug: seriesPosts[currentIndex + 1].data.slug, title: seriesPosts[currentIndex + 1].data.title };
+  }
+}
+
+const publishedFormatted = post.data.publishedAt.toLocaleDateString("en-US", {
+  year: "numeric",
+  month: "long",
+  day: "numeric",
+});
+const updatedFormatted = post.data.updatedAt
+  ? post.data.updatedAt.toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" })
+  : null;
+---
+
+<Layout
+  title={`${post.data.title} | Telemetry Drops Blog`}
+  description={post.data.description}
+  canonical={`/blog/${post.data.slug}/`}
+  keywords={post.data.tags.join(", ")}
+  ogType="article"
+  ogImage={post.data.ogImage}
+>
+  <BlogSEO
+    title={post.data.title}
+    description={post.data.description}
+    slug={post.data.slug}
+    publishedAt={post.data.publishedAt}
+    updatedAt={post.data.updatedAt}
+    authorKey={post.data.author}
+    tags={post.data.tags}
+    faqEntries={post.data.faqEntries}
+  />
+
+  <div class="container-custom py-12">
+    <Breadcrumbs
+      items={[
+        { label: "Home", href: "/" },
+        { label: "Blog", href: "/blog/" },
+        { label: post.data.title },
+      ]}
+    />
+
+    <div class="mt-8 flex gap-12 lg:gap-16">
+      <!-- Main content -->
+      <article class="min-w-0 flex-1 max-w-3xl">
+        <header class="mb-8">
+          <div class="flex flex-wrap items-center gap-3 mb-4">
+            {post.data.tags.map((tag: ValidTag) => (
+              <TagPill tag={tagInfo[tag]?.displayName ?? tag} href={`/blog/tags/${tag}/`} />
+            ))}
+            <span class="text-sm text-white/40">{readingTime} min read</span>
+          </div>
+
+          <h1 class="text-3xl md:text-4xl font-bold text-white leading-tight mb-4">
+            {post.data.title}
+          </h1>
+
+          <div class="flex items-center gap-3 mb-6">
+            <img
+              src={author.avatar}
+              alt={author.name}
+              width={40}
+              height={40}
+              class="rounded-full"
+            />
+            <div>
+              <div class="text-sm font-medium text-white">{author.name}</div>
+              <div class="text-xs text-white/50">
+                <time datetime={post.data.publishedAt.toISOString()}>{publishedFormatted}</time>
+                {updatedFormatted && (
+                  <span>
+                    {" · Updated "}
+                    <time datetime={post.data.updatedAt!.toISOString()}>{updatedFormatted}</time>
+                  </span>
+                )}
+              </div>
+            </div>
+          </div>
+
+          <!-- TL;DR -->
+          <section class="tldr bg-white/5 border-l-4 border-telemetria-orange rounded-r-lg p-4 mb-8">
+            <div class="text-xs font-semibold uppercase tracking-wider text-telemetria-orange mb-1">TL;DR</div>
+            <p class="text-sm text-white/80 leading-relaxed">{post.data.tldr}</p>
+          </section>
+
+          <!-- Mobile TOC -->
+          <details class="lg:hidden border border-white/10 rounded-lg p-4 mb-8">
+            <summary class="text-xs font-semibold uppercase tracking-wider text-white/40 cursor-pointer">
+              Table of contents
+            </summary>
+            <div class="mt-3">
+              <TableOfContents headings={headings} />
+            </div>
+          </details>
+        </header>
+
+        <!-- Article body -->
+        <div class="prose prose-invert prose-orange max-w-none
+          prose-headings:font-semibold prose-headings:text-white
+          prose-h2:text-2xl prose-h2:mt-12 prose-h2:mb-4
+          prose-h3:text-xl prose-h3:mt-8 prose-h3:mb-3
+          prose-p:text-white/80 prose-p:leading-relaxed
+          prose-a:text-telemetria-orange prose-a:no-underline hover:prose-a:underline
+          prose-strong:text-white
+          prose-code:text-telemetria-orange prose-code:bg-white/5 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded prose-code:text-sm prose-code:before:content-none prose-code:after:content-none
+          prose-pre:bg-[#0d1117] prose-pre:border prose-pre:border-white/10 prose-pre:rounded-lg
+          prose-li:text-white/80
+          prose-table:text-sm
+          prose-th:text-white prose-th:font-semibold
+          prose-td:text-white/80
+        ">
+          <Content />
+        </div>
+
+        <!-- Key takeaways -->
+        <section class="border-t border-white/10 pt-8 mt-12">
+          <h2 class="text-lg font-semibold text-white mb-4">Key takeaways</h2>
+          <ul class="space-y-2">
+            {post.data.keyTakeaways.map((takeaway: string) => (
+              <li class="flex items-start gap-2 text-sm text-white/80">
+                <span class="text-telemetria-orange mt-0.5">&#x2022;</span>
+                <span>{takeaway}</span>
+              </li>
+            ))}
+          </ul>
+        </section>
+
+        <!-- FAQ section -->
+        {post.data.faqEntries && post.data.faqEntries.length > 0 && (
+          <section class="border-t border-white/10 pt-8 mt-8">
+            <h2 class="text-lg font-semibold text-white mb-4">Frequently asked questions</h2>
+            <div class="space-y-6">
+              {post.data.faqEntries.map((entry: { question: string; answer: string }) => (
+                <div>
+                  <h3 class="text-sm font-medium text-white mb-1">{entry.question}</h3>
+                  <p class="text-sm text-white/70 leading-relaxed">{entry.answer}</p>
+                </div>
+              ))}
+            </div>
+          </section>
+        )}
+
+        <!-- Author bio -->
+        <div class="border-t border-white/10 pt-8 mt-8">
+          <AuthorBio author={author} />
+          <p class="text-sm text-white/40 mt-4">
+            Telemetry Drops offers hands-on OpenTelemetry courses for engineering teams.
+            <a href="/products/" class="text-telemetria-orange hover:underline">Learn more</a>.
+          </p>
+        </div>
+
+        <!-- Tags -->
+        <div class="border-t border-white/10 pt-6 mt-8 flex flex-wrap gap-2">
+          {post.data.tags.map((tag: ValidTag) => (
+            <TagPill tag={tagInfo[tag]?.displayName ?? tag} href={`/blog/tags/${tag}/`} />
+          ))}
+        </div>
+
+        <!-- Series navigation -->
+        {post.data.series && (
+          <SeriesNav
+            previous={previousPost}
+            next={nextPost}
+            seriesName={post.data.series}
+            seriesSlug={post.data.series}
+          />
+        )}
+      </article>
+
+      <!-- Sticky TOC sidebar (desktop) -->
+      <aside class="hidden lg:block w-64 flex-shrink-0">
+        <div class="sticky top-24">
+          <TableOfContents headings={headings} />
+        </div>
+      </aside>
+    </div>
+  </div>
+</Layout>
