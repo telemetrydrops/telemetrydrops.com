@@ -1,0 +1,49 @@
+---
+interface SeriesPost {
+  slug: string;
+  title: string;
+}
+
+interface Props {
+  previous?: SeriesPost;
+  next?: SeriesPost;
+  seriesName: string;
+  seriesSlug: string;
+}
+
+const { previous, next, seriesName, seriesSlug } = Astro.props;
+---
+
+<nav aria-label="Series navigation" class="border-t border-white/10 pt-6 mt-8">
+  <div class="text-xs font-semibold uppercase tracking-wider text-white/40 mb-4">
+    Series: <a href={`/blog/series/${seriesSlug}/`} class="text-telemetria-orange hover:underline">{seriesName}</a>
+  </div>
+  <div class="flex justify-between gap-4">
+    {previous ? (
+      <a
+        href={`/blog/${previous.slug}/`}
+        class="flex-1 group rounded-lg border border-white/10 bg-white/5 p-4 hover:border-telemetria-orange/30 transition-colors"
+      >
+        <div class="text-xs text-white/40 mb-1">Previous</div>
+        <div class="text-sm text-white/80 group-hover:text-telemetria-orange transition-colors">
+          {previous.title}
+        </div>
+      </a>
+    ) : (
+      <div class="flex-1" />
+    )}
+    {next ? (
+      <a
+        href={`/blog/${next.slug}/`}
+        class="flex-1 group rounded-lg border border-white/10 bg-white/5 p-4 text-right hover:border-telemetria-orange/30 transition-colors"
+      >
+        <div class="text-xs text-white/40 mb-1">Next</div>
+        <div class="text-sm text-white/80 group-hover:text-telemetria-orange transition-colors">
+          {next.title}
+        </div>
+      </a>
+    ) : (
+      <div class="flex-1" />
+    )}
+  </div>
+</nav>
