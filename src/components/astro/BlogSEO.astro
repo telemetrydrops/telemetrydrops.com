@@ -1,0 +1,67 @@
+---
+import { authors } from "../../data/author-data";
+
+interface FaqEntry {
+  question: string;
+  answer: string;
+}
+
+interface Props {
+  title: string;
+  description: string;
+  slug: string;
+  publishedAt: Date;
+  updatedAt?: Date;
+  authorKey: string;
+  tags: string[];
+  faqEntries?: FaqEntry[];
+}
+
+const { title, description, slug, publishedAt, updatedAt, authorKey, tags, faqEntries } = Astro.props;
+
+const author = authors[authorKey];
+const canonicalUrl = `https://telemetrydrops.com/blog/${slug}/`;
+
+const techArticle = {
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  headline: title,
+  description: description,
+  datePublished: publishedAt.toISOString(),
+  dateModified: (updatedAt ?? publishedAt).toISOString(),
+  author: {
+    "@type": "Person",
+    name: author.name,
+    jobTitle: author.role,
+    url: author.social.linkedin ?? author.social.github ?? "",
+    sameAs: [author.social.linkedin, author.social.github, author.social.bluesky].filter(Boolean),
+  },
+  publisher: {
+    "@type": "Organization",
+    name: "TelemetryDrops",
+    url: "https://telemetrydrops.com",
+    logo: "https://telemetrydrops.com/logo.svg",
+  },
+  keywords: tags,
+  url: canonicalUrl,
+  mainEntityOfPage: canonicalUrl,
+};
+
+const faqPage = faqEntries && faqEntries.length > 0
+  ? {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      mainEntity: faqEntries.map((entry) => ({
+        "@type": "Question",
+        name: entry.question,
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: entry.answer,
+        },
+      })),
+    }
+  : null;
+---
+
+<script type="application/ld+json" set:html={JSON.stringify(techArticle)} />
+{faqPage && <script type="application/ld+json" set:html={JSON.stringify(faqPage)} />}
