@@ -1,0 +1,87 @@
+---
+interface Heading {
+  depth: number;
+  slug: string;
+  text: string;
+}
+
+interface Props {
+  headings: Heading[];
+}
+
+const { headings } = Astro.props;
+
+// Only show h2 and h3 headings
+const tocHeadings = headings.filter((h) => h.depth >= 2 && h.depth <= 3);
+---
+
+{tocHeadings.length > 0 && (
+  <nav aria-label="Table of contents" class="toc">
+    <div class="text-xs font-semibold uppercase tracking-wider text-white/40 mb-3">
+      On this page
+    </div>
+    <ul class="space-y-1 border-l border-white/10 text-sm" id="toc-list">
+      {tocHeadings.map((heading) => (
+        <li>
+          <a
+            href={`#${heading.slug}`}
+            class:list={[
+              "block border-l-2 -ml-px py-1 transition-colors hover:text-telemetria-orange hover:border-telemetria-orange",
+              heading.depth === 2 ? "pl-4 text-white/60 border-transparent" : "pl-8 text-white/40 border-transparent",
+            ]}
+            data-toc-link
+          >
+            {heading.text}
+          </a>
+        </li>
+      ))}
+    </ul>
+  </nav>
+)}
+
+<script>
+  function setupTocHighlighting() {
+    const tocLinks = document.querySelectorAll('[data-toc-link]');
+    if (tocLinks.length === 0) return;
+
+    const headingIds = Array.from(tocLinks).map((link) => {
+      const href = link.getAttribute('href');
+      return href ? href.slice(1) : '';
+    });
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) {
+            const id = entry.target.id;
+            tocLinks.forEach((link) => {
+              const href = link.getAttribute('href');
+              if (href === `#${id}`) {
+                link.classList.add('text-telemetria-orange', 'border-telemetria-orange');
+                link.classList.remove('text-white/60', 'text-white/40', 'border-transparent');
+              } else {
+                link.classList.remove('text-telemetria-orange', 'border-telemetria-orange');
+                link.classList.add('border-transparent');
+                // Restore original opacity based on depth
+                if (link.classList.contains('pl-4')) {
+                  link.classList.add('text-white/60');
+                } else {
+                  link.classList.add('text-white/40');
+                }
+              }
+            });
+          }
+        }
+      },
+      { rootMargin: '-80px 0px -60% 0px', threshold: 0 }
+    );
+
+    headingIds.forEach((id) => {
+      const el = document.getElementById(id);
+      if (el) observer.observe(el);
+    });
+  }
+
+  document.addEventListener('DOMContentLoaded', setupTocHighlighting);
+  document.addEventListener('astro:page-load', setupTocHighlighting);
+</script>
