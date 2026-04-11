@@ -1,0 +1,106 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
+import BlogPostCard from "../../components/astro/BlogPostCard.astro";
+import { seoData } from "../../data/seo-data";
+import { tagInfo } from "../../data/tag-data";
+import type { ValidTag } from "../../data/tag-data";
+
+const posts = (await getCollection("blog")).sort(
+  (a, b) => b.data.publishedAt.valueOf() - a.data.publishedAt.valueOf()
+);
+
+// Collect tags that are actually used
+const usedTags = [...new Set(posts.flatMap((p) => p.data.tags))].sort() as ValidTag[];
+---
+
+<Layout
+  title={seoData.blog.title}
+  description={seoData.blog.description}
+  keywords={seoData.blog.keywords}
+  canonical="/blog/"
+  jsonLd={seoData.blog.jsonLd}
+>
+  <div class="container-custom py-16">
+    <div class="mb-12">
+      <h1 class="text-4xl font-bold text-white mb-3">Blog</h1>
+      <p class="text-lg text-white/60">Practical OpenTelemetry and observability engineering</p>
+    </div>
+
+    <!-- Tag filter bar -->
+    <div class="flex flex-wrap gap-2 mb-10" id="tag-filter">
+      <button
+        class="tag-filter-btn inline-block text-xs font-medium px-3 py-1 rounded-full transition-colors bg-telemetria-orange text-white"
+        data-tag="all"
+      >
+        All
+      </button>
+      {usedTags.map((tag) => (
+        <button
+          class="tag-filter-btn inline-block text-xs font-medium px-3 py-1 rounded-full transition-colors bg-white/5 text-telemetria-orange hover:bg-white/10"
+          data-tag={tag}
+        >
+          {tagInfo[tag]?.displayName ?? tag}
+        </button>
+      ))}
+    </div>
+
+    <!-- Card grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6" id="posts-grid">
+      {posts.map((post) => (
+        <BlogPostCard
+          title={post.data.title}
+          description={post.data.description}
+          slug={post.data.slug}
+          tags={post.data.tags}
+          publishedAt={post.data.publishedAt}
+          readingTime={post.data.readingTime ?? 5}
+        />
+      ))}
+    </div>
+
+    <!-- Empty state -->
+    <div class="hidden text-center py-12 text-white/40" id="no-posts">
+      No posts found for this tag.
+    </div>
+  </div>
+</Layout>
+
+<script>
+  function setupTagFilter() {
+    const buttons = document.querySelectorAll('.tag-filter-btn');
+    const grid = document.getElementById('posts-grid');
+    const noPostsEl = document.getElementById('no-posts');
+    if (!grid || !noPostsEl) return;
+
+    const cards = grid.querySelectorAll<HTMLElement>('[data-tags]');
+
+    buttons.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const tag = btn.getAttribute('data-tag');
+
+        // Update button styles
+        buttons.forEach((b) => {
+          b.classList.remove('bg-telemetria-orange', 'text-white');
+          b.classList.add('bg-white/5', 'text-telemetria-orange');
+        });
+        btn.classList.add('bg-telemetria-orange', 'text-white');
+        btn.classList.remove('bg-white/5', 'text-telemetria-orange');
+
+        // Filter cards
+        let visibleCount = 0;
+        cards.forEach((card) => {
+          const cardTags = card.getAttribute('data-tags')?.split(',') ?? [];
+          const show = tag === 'all' || cardTags.includes(tag!);
+          card.style.display = show ? '' : 'none';
+          if (show) visibleCount++;
+        });
+
+        noPostsEl.classList.toggle('hidden', visibleCount > 0);
+      });
+    });
+  }
+
+  document.addEventListener('DOMContentLoaded', setupTagFilter);
+  document.addEventListener('astro:page-load', setupTagFilter);
+</script>
