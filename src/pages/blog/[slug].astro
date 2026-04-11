@@ -59,6 +59,11 @@ const updatedFormatted = post.data.updatedAt
   keywords={post.data.tags.join(", ")}
   ogType="article"
   ogImage={post.data.ogImage}
+  articleMeta={{
+    publishedTime: post.data.publishedAt.toISOString(),
+    modifiedTime: (post.data.updatedAt ?? post.data.publishedAt).toISOString(),
+    tags: post.data.tags,
+  }}
 >
   <BlogSEO
     title={post.data.title}

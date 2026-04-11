@@ -16,18 +16,24 @@ export interface Props {
   twitterCard?: 'summary' | 'summary_large_image';
   jsonLd?: object;
   noindex?: boolean;
+  articleMeta?: {
+    publishedTime: string;
+    modifiedTime: string;
+    tags: string[];
+  };
 }
 
-const { 
-  title, 
-  description, 
-  canonical, 
-  keywords, 
-  ogImage, 
-  ogType, 
+const {
+  title,
+  description,
+  canonical,
+  keywords,
+  ogImage,
+  ogType,
   twitterCard,
   jsonLd,
-  noindex
+  noindex,
+  articleMeta
 } = Astro.props;
 ---
 
@@ -57,6 +63,7 @@ const {
       ogType={ogType}
       twitterCard={twitterCard}
       jsonLd={jsonLd}
+      articleMeta={articleMeta}
     />
 
     <!-- PostHog Analytics -->
