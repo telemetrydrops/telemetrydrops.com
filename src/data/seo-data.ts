@@ -115,5 +115,21 @@ export const seoData = {
         "url": "https://telemetrydrops.com"
       }
     }
+  },
+  blog: {
+    title: "OpenTelemetry Blog — Practical Observability Engineering",
+    description: "Technical articles on OpenTelemetry, observability engineering, and telemetry best practices. Written by OTel maintainers and practitioners.",
+    keywords: "OpenTelemetry blog, observability engineering, OTel articles, telemetry best practices",
+    jsonLd: {
+      "@context": "https://schema.org",
+      "@type": "Blog",
+      "name": "Telemetry Drops Blog",
+      "description": "Practical OpenTelemetry and observability engineering",
+      "publisher": {
+        "@type": "Organization",
+        "name": "TelemetryDrops",
+        "url": "https://telemetrydrops.com"
+      }
+    }
   }
 };
