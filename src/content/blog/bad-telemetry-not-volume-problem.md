@@ -2,7 +2,7 @@
 title: "You don't have too much telemetry. You have bad telemetry."
 slug: "bad-telemetry-not-volume-problem"
 description: "Why observability cost problems are governance problems, not volume problems. A practical framework for identifying and eliminating telemetry waste before reaching for sampling."
-publishedAt: 2026-04-15
+publishedAt: 2026-03-18
 author: "juraci"
 tags: ["collector", "cost-optimization"]
 tldr: "Most organizations don't have a telemetry volume problem. They have a governance problem. Fix bad telemetry at the source before sampling."
