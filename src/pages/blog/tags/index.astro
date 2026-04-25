@@ -38,7 +38,7 @@ const sortedTags = [...tagCounts.entries()].sort((a, b) => b[1] - a[1]);
       {sortedTags.map(([tag, count]) => (
         <a
           href={`/blog/tags/${tag}/`}
-          class="group rounded-lg border border-white/10 bg-white/[0.02] p-5 hover:border-telemetria-orange/30 transition-colors"
+          class="group rounded-lg border border-white/10 bg-white/2 p-5 hover:border-telemetria-orange/30 transition-colors"
         >
           <div class="text-lg font-semibold text-white group-hover:text-telemetria-orange transition-colors">
             {tagInfo[tag as ValidTag]?.displayName ?? tag}

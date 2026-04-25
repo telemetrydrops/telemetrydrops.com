@@ -145,7 +145,7 @@ const updatedFormatted = post.data.updatedAt
           prose-h2:text-2xl prose-h2:mt-12 prose-h2:mb-4
           prose-h3:text-xl prose-h3:mt-8 prose-h3:mb-3
           prose-p:text-white/80 prose-p:leading-relaxed
-          prose-a:text-telemetria-orange prose-a:no-underline hover:prose-a:underline
+          prose-a:text-telemetria-orange prose-a:no-underline prose-a:hover:underline
           prose-strong:text-white
           prose-code:text-telemetria-orange prose-code:bg-white/5 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded prose-code:text-sm prose-code:before:content-none prose-code:after:content-none
           prose-pre:bg-[#0d1117] prose-pre:border prose-pre:border-white/10 prose-pre:rounded-lg
@@ -213,7 +213,7 @@ const updatedFormatted = post.data.updatedAt
       </article>
 
       <!-- Sticky TOC sidebar (desktop) -->
-      <aside class="hidden lg:block w-64 flex-shrink-0">
+      <aside class="hidden lg:block w-64 shrink-0">
         <div class="sticky top-24">
           <TableOfContents headings={headings} />
         </div>

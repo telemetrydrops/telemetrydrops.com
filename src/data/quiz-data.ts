@@ -1800,7 +1800,7 @@ export const quizQuestions: QuizQuestion[] = [
       { key: "A", text: `Records all spans and marks every one for export` },
       { key: "B", text: `Samples every span but defers the export decision to the Collector` },
       { key: "C", text: `Samples only root spans and propagates the decision to child spans` },
-      { key: "D", text: `Records spans in a ring buffer and exports only when the buffer is full` },
+      { key: "D", text: `Records spans in a ring-3 buffer and exports only when the buffer is full` },
     ],
     correctAnswer: "A",
     explanation: `The AlwaysOn sampler creates recording spans for every operation, meaning all spans are captured and exported. It is commonly used during development or in low-traffic services. In production high-traffic environments, it is typically replaced by TraceIdRatio or ParentBased samplers to manage costs.`,

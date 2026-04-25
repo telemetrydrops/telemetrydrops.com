@@ -230,12 +230,12 @@ const dayTwoSchedule = [
 >
 	<div class="flex flex-col w-full">
 		<!-- Sign-ups Closed Banner -->
-		<div class="w-full bg-gradient-to-r from-amber-900/20 to-orange-900/20 border-b border-amber-600/30 px-4 py-4">
+		<div class="w-full bg-linear-to-r from-amber-900/20 to-orange-900/20 border-b border-amber-600/30 px-4 py-4">
 			<div class="container-custom">
 				<div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
 					<div class="flex items-start gap-3">
 						<div class="mt-0.5">
-							<svg class="w-5 h-5 text-amber-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+							<svg class="w-5 h-5 text-amber-500 shrink-0" fill="currentColor" viewBox="0 0 20 20">
 								<path fill-rule="evenodd" d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zm-5-10a.75.75 0 1.5 0 .75.75 0 01-1.5 0zM7 12a.75.75 0 11-1.5 0 .75.75 0 011.5 0z" clip-rule="evenodd" />
 							</svg>
 						</div>
@@ -260,14 +260,14 @@ const dayTwoSchedule = [
 
 		<section class="relative overflow-hidden bg-telemetria-darker">
 			<div class="absolute inset-0">
-				<div class="absolute inset-0 bg-gradient-to-br from-telemetria-dark via-telemetria-darker to-black opacity-90"></div>
-				<div class="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(234,88,12,0.15),_transparent_60%)]"></div>
+				<div class="absolute inset-0 bg-linear-to-br from-telemetria-dark via-telemetria-darker to-black opacity-90"></div>
+				<div class="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(234,88,12,0.15),transparent_60%)]"></div>
 			</div>
 
 			<div class="relative z-10 container-custom py-24 md:py-32">
 				<div class="grid grid-cols-1 lg:grid-cols-[1.4fr_1fr] gap-14 items-center">
 					<div class="space-y-6">
-						<span class="inline-flex items-center rounded-full bg-white/10 px-4 py-1 text-sm text-white/80 backdrop-blur">
+						<span class="inline-flex items-center rounded-full bg-white/10 px-4 py-1 text-sm text-white/80 backdrop-blur-sm">
 							In-person workshop · {eventCity}, {eventCountry}
 						</span>
 						<h1 class="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight tracking-tight text-white">
@@ -291,7 +291,7 @@ const dayTwoSchedule = [
 						</div>
 					</div>
 
-					<div class="rounded-2xl border border-white/10 bg-telemetria-dark/40 p-8 backdrop-blur space-y-6">
+					<div class="rounded-2xl border border-white/10 bg-telemetria-dark/40 p-8 backdrop-blur-sm space-y-6">
 						<h2 class="text-xl font-semibold text-white mb-4">What you’ll master</h2>
 						<ul class="space-y-3 text-white/70">
 							<li class="flex gap-3">
@@ -357,7 +357,7 @@ const dayTwoSchedule = [
 
 				<div class="grid grid-cols-1 lg:grid-cols-2 gap-10 mt-12">
 					<div class="space-y-6">
-						<div class="sticky top-6 bg-telemetria-darker/60 border border-white/10 rounded-xl p-6 backdrop-blur">
+						<div class="sticky top-6 bg-telemetria-darker/60 border border-white/10 rounded-xl p-6 backdrop-blur-sm">
 							<h3 class="text-2xl font-semibold text-white mb-1">Day 1 · Foundations & Core Concepts</h3>
 							<p class="text-white/70">Build your Collector fundamentals, master telemetry transformation, and make pipelines resilient.</p>
 						</div>
@@ -385,7 +385,7 @@ const dayTwoSchedule = [
 					</div>
 
 					<div class="space-y-6">
-						<div class="sticky top-6 bg-telemetria-darker/60 border border-white/10 rounded-xl p-6 backdrop-blur">
+						<div class="sticky top-6 bg-telemetria-darker/60 border border-white/10 rounded-xl p-6 backdrop-blur-sm">
 							<h3 class="text-2xl font-semibold text-white mb-1">Day 2 · Advanced Topics & Production Readiness</h3>
 							<p class="text-white/70">Extend and deploy collectors at scale, add custom components, and harden your platform for production workloads.</p>
 						</div>

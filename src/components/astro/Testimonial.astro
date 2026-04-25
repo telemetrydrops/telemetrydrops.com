@@ -52,15 +52,15 @@ const structuredData = {
 <script type="application/ld+json" set:html={JSON.stringify(structuredData)}></script>
 
 <div class={cn(
-  "flex flex-col h-full rounded-lg border bg-card p-6 shadow",
+  "flex flex-col h-full rounded-lg border bg-card p-6 shadow-sm",
   className
 )}>
-  <div class="text-lg italic text-muted-foreground flex-grow mb-6">
+  <div class="text-lg italic text-muted-foreground grow mb-6">
     "{quote}"
   </div>
 
   <div class="flex items-center space-x-4 mt-auto">
-    <div class="h-12 w-12 border-2 border-telemetria-orange/30 rounded-full overflow-hidden flex items-center justify-center bg-telemetria-orange/20 text-telemetria-orange flex-shrink-0">
+    <div class="h-12 w-12 border-2 border-telemetria-orange/30 rounded-full overflow-hidden flex items-center justify-center bg-telemetria-orange/20 text-telemetria-orange shrink-0">
       {avatarUrl ? (
         <img src={avatarUrl} alt={author} class="w-full h-full object-cover" />
       ) : (

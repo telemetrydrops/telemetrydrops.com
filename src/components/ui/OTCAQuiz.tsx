@@ -273,7 +273,7 @@ function QuestionScreen({
             <div className="flex items-start gap-3">
               <span
                 className={cn(
-                  "flex-shrink-0 w-7 h-7 rounded-full flex items-center justify-center text-sm font-medium border",
+                  "shrink-0 w-7 h-7 rounded-full flex items-center justify-center text-sm font-medium border",
                   selectedAnswer === option.key
                     ? "bg-telemetria-orange text-telemetria-dark border-telemetria-orange"
                     : "border-white/20 text-white/60"
@@ -383,7 +383,7 @@ function IncorrectAnswersReview({
         </div>
         <svg
           className={cn(
-            "w-5 h-5 text-white/40 flex-shrink-0 transition-transform duration-200",
+            "w-5 h-5 text-white/40 shrink-0 transition-transform duration-200",
             open && "rotate-180"
           )}
           fill="none"
@@ -426,7 +426,7 @@ function IncorrectAnswersReview({
                 <div className="space-y-2 mb-4">
                   {/* User's wrong answer */}
                   <div className="flex items-start gap-3 p-3 rounded-lg bg-red-500/5 border border-red-500/20">
-                    <span className="flex-shrink-0 w-6 h-6 rounded-full bg-red-500/20 border border-red-500/30 flex items-center justify-center text-xs font-medium text-red-400">
+                    <span className="shrink-0 w-6 h-6 rounded-full bg-red-500/20 border border-red-500/30 flex items-center justify-center text-xs font-medium text-red-400">
                       {userAnswer}
                     </span>
                     <div className="flex-1 min-w-0">
@@ -439,7 +439,7 @@ function IncorrectAnswersReview({
 
                   {/* Correct answer */}
                   <div className="flex items-start gap-3 p-3 rounded-lg bg-green-500/5 border border-green-500/20">
-                    <span className="flex-shrink-0 w-6 h-6 rounded-full bg-green-500/20 border border-green-500/30 flex items-center justify-center text-xs font-medium text-green-400">
+                    <span className="shrink-0 w-6 h-6 rounded-full bg-green-500/20 border border-green-500/30 flex items-center justify-center text-xs font-medium text-green-400">
                       {q.correctAnswer}
                     </span>
                     <div className="flex-1 min-w-0">
@@ -452,7 +452,7 @@ function IncorrectAnswersReview({
                 </div>
 
                 {q.explanation && (
-                  <div className="text-sm text-white/50 leading-relaxed bg-white/[0.03] rounded-lg p-3">
+                  <div className="text-sm text-white/50 leading-relaxed bg-white/3 rounded-lg p-3">
                     <MarkdownText text={q.explanation} />
                   </div>
                 )}
