@@ -161,7 +161,7 @@ attributes:
     brief: "Customer tier for pricing and feature gates."
 ```
 
-Three things to notice. First, every attribute has a `stability` field. Weaver refuses to generate from a schema where stability is missing, which forces you to answer the question up front rather than in a postmortem. Second, the attribute keys are namespaced with `ecommerce.` The Weaver project recommends dot-separated lowercase with a domain prefix, and in a minute we will turn that recommendation into a CI check. Third, `ecommerce.payment.method` and `ecommerce.customer.tier` are enums. Weaver knows the set of allowed values, and generated code can expose each as a named constant.
+Three things to notice. First, every attribute has a `stability` field. Weaver refuses to generate from a schema where stability is missing, which forces you to answer the question up front rather than in a postmortem. Second, the attribute keys are namespaced with `ecommerce.` The Weaver project recommends dot-separated lowercase with a domain prefix, and in a minute we will turn that recommendation into a continuous integration (CI) check. Third, `ecommerce.payment.method` and `ecommerce.customer.tier` are enums. Weaver knows the set of allowed values, and generated code can expose each as a named constant.
 
 Metrics follow the same pattern:
 
@@ -595,6 +595,16 @@ A few directions open up from this baseline.
 
 **Write custom Rego policies.** The built-in OpenTelemetry policies are a strong baseline, but organizations often have additional rules, such as mandatory attribute prefixes, required attributes on every customer-facing span, or caps on the number of enum values on high-cardinality attributes. Rego lets you encode those and enforce them alongside the built-in checks.
 
-Each of these is a project in its own right. Starting with schema, codegen, application wiring, and CI gets a team to the point where telemetry has a contract and the contract is enforced. That is the foundation the rest builds on.
+**Generate a type-safe instrumentation SDK.** Constants are the floor, not the ceiling. The same registry can drive a generator that emits a type-safe instrumentation API on top of the OpenTelemetry SDK, where attribute values flow through typed signatures and metric instruments are constructed by name- and unit-aware helpers. That removes the remaining string-typed escape hatches and keeps editor autocompletion aligned with your registry. It is more template work than the constants shown here, and only a handful of OpenTelemetry languages have community examples to copy from today, but the registry already carries every piece of information such a generator would need.
+
+**Reach for the rest of the Weaver toolbox.** This post covers `check`, `generate`, and `diff`. There is more in the box: `serve` runs a local UI for browsing and searching the registry, `stats` reports on its size and shape, `infer` reverse-engineers a registry from an OTLP stream, and `mcp` exposes the registry to AI agents through the Model Context Protocol. Each unlocks a different workflow once the foundation in this post is in place.
+
+**Watch the [opentelemetry-weaver-packages](https://github.com/open-telemetry/opentelemetry-weaver-packages) project.** It is an effort to ship batteries-included templates and policies so adopting Weaver does not have to start with writing Jinja and Rego from scratch. The manual path in this post still pays off for understanding what the tool is doing, but for new projects, packages will be the shortest route.
+
+Each of these is a project in its own right. Starting with schema, codegen, application wiring, and CI gets a team to the point where telemetry has a contract and the contract is enforced. That is the foundation the rest builds on; a follow-up post will work through these directions in depth.
 
 The code for the example monolith lives at [telemetrydrops/otel-in-practice](https://github.com/telemetrydrops/otel-in-practice) on the `adopt-weaver` branch, and the Weaver reference, including the full CLI documentation, is at [open-telemetry/weaver](https://github.com/open-telemetry/weaver). A good next step after reading this post is to copy the pieces above into your own repository, delete your equivalent of `const.go`, and see which drift your schema catches on the first run.
+
+## Acknowledgments
+
+Thanks to Jeremy Blythe, Michael Hausenblas, and Laurent Querel for reviewing an earlier draft of this post and shaping the final version with their feedback.
