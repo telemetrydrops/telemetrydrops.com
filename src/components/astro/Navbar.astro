@@ -73,35 +73,35 @@ const isActive = (path: string) => {
       </button>
     </div>
   </div>
-
-  <!-- Mobile Navigation -->
-  <div
-    class="fixed inset-0 bg-telemetria-darker/98 backdrop-blur-lg transition-transform duration-300 ease-in-out md:hidden translate-x-full"
-    id="mobile-menu"
-  >
-    <div class="flex flex-col h-full justify-center items-center gap-8 px-4 pt-16">
-      {navLinks.map((link) => (
-        <a
-          href={link.path}
-          class={cn(
-            "text-xl font-medium transition-colors hover:text-telemetria-orange mobile-menu-link",
-            isActive(link.path) ? "text-telemetria-orange" : "text-white/90"
-          )}
-        >
-          {link.name}
-        </a>
-      ))}
-      <a 
-        href="https://www.youtube.com/@TelemetryDrops" 
-        target="_blank" 
-        rel="noopener noreferrer"
-        class="bg-telemetria-orange text-telemetria-dark hover:bg-telemetria-orange/90 mt-4 w-full max-w-[200px] px-4 py-2 rounded-md transition-colors inline-flex items-center justify-center text-sm font-medium"
-      >
-        Subscribe
-      </a>
-    </div>
-  </div>
 </header>
+
+<!-- Keep the fixed menu outside the blurred header so it remains viewport-sized in Safari. -->
+<div
+  class="fixed inset-0 z-40 bg-telemetria-darker/98 backdrop-blur-lg transition-transform duration-300 ease-in-out md:hidden translate-x-full"
+  id="mobile-menu"
+>
+  <div class="flex flex-col h-full justify-center items-center gap-8 px-4 pt-16">
+    {navLinks.map((link) => (
+      <a
+        href={link.path}
+        class={cn(
+          "text-xl font-medium transition-colors hover:text-telemetria-orange mobile-menu-link",
+          isActive(link.path) ? "text-telemetria-orange" : "text-white/90"
+        )}
+      >
+        {link.name}
+      </a>
+    ))}
+    <a
+      href="https://www.youtube.com/@TelemetryDrops"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="bg-telemetria-orange text-telemetria-dark hover:bg-telemetria-orange/90 mt-4 w-full max-w-[200px] px-4 py-2 rounded-md transition-colors inline-flex items-center justify-center text-sm font-medium"
+    >
+      Subscribe
+    </a>
+  </div>
+</div>
 
 <script>
   // Navbar scroll effect
