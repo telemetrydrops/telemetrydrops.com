@@ -4,20 +4,9 @@ Telemetry Drops is a public OpenTelemetry education and marketing site with an e
 
 ## Live assessment
 
-[Is Agentic report](https://is-agentic.com/scan/telemetrydrops.com), measured on October 3, 2026 at 08:31 UTC: **70/100**. The raw public API evidence is in `seo-agent-readiness-baseline.json`. This measures the deployed site, not the working-tree changes. Its inferred App classification does not describe the site's primary business function; the site declares Business. The declaration selects a report view and does not award points.
+[Is Agentic report](https://is-agentic.com/scan/telemetrydrops.com), measured on October 4, 2026 at 19:53 UTC: **75/100** overall. The website view reports **90%** readiness with all six essential website checks passing. The overall report includes API and CLI criteria despite this site having no public purchase API. The site's Business declaration selects a report view and does not award points. The report UI and API group secondary findings differently; neither is an exhaustive inventory or a ranking forecast. `seo-agent-readiness-baseline.json` is the archived October 3 measurement, not the current result.
 
-| Area | Live evidence | Implementation in this checkout |
-| --- | --- | --- |
-| Content access | Homepage has 5,367 characters of raw content, but skips H1 to H3 | Sequential homepage headings; named video control and a direct YouTube link |
-| Retrieval | HTML returned to Markdown requests; no `Vary: Accept` | Build-generated Markdown of each page's main content; Netlify content negotiation |
-| Missing pages | HTTP 404 is correct; Markdown error body absent | Keep 404 status and supply Markdown recovery links when requested |
-| Agent guidance | No when-to-use instruction file | Generated `/llms.txt` describes use cases, current courses, resources, and boundaries |
-| Business identity | Organization schema lacks contact and address | Real support details and Berlin address from the imprint; linked contact page |
-| Brand discovery | Scanner finds the domain at position 6 for its brand query | Consistent organization name, alternate brand name, site name, and contact details; external discovery needs monitoring |
-| Pricing discovery | Browser report flags pricing; public JSON issue list differs | Course and catalog Offer schemas derive price and availability from product data; `/pricing` redirects to the catalog |
-| Agent navigation | Observed journey tries `/docs` and `/courses` and reaches 404s | Permanent redirects to the technical blog and course catalog |
-
-The report UI and API show different secondary findings despite sharing the score and timestamp. Treat each as an observation rather than an exhaustive inventory or guaranteed ranking forecast.
+Production verification covers successful HTML and Markdown retrieval with `Vary: Accept`, Markdown 404 recovery, contact and address data, and price/availability parity. The homepage Lighthouse assessment on October 4 scored SEO 92, accessibility 96 and agent browsing 3/3; performance was 70 mobile and 66 desktop. Mobile lab LCP was 8.6 seconds and desktop lab TBT was 1,060 milliseconds. PageSpeed had no real-user data; these results do not establish field Core Web Vitals or ranking performance.
 
 ## SEO and answer quality
 
@@ -27,9 +16,12 @@ The build generates the sitemap from all indexable HTML pages, including every b
 
 Course Offer data uses the catalog as its source: OTel Track is €499 and purchasable; OTel Specialization is €1,999 and unavailable for purchase, with a waitlist. Metadata omits stale early-bird pricing and does not describe waitlist enrollment as a preorder. The homepage describes one year of access, matching the course catalog, and describes the completion certificate explicitly. Course completion must not be represented as CNCF OTCA certification.
 
+The `/learn/` hub organizes public guides by Collector pipelines, instrumentation and telemetry contracts, and community learning. The instructor page at `/instructors/juraci-paixao-krohling/` provides project evidence and the local Person identity referenced by article author schema. Homepage and course pages link to that identity. Testimonials remain visible without unsupported numeric ratings or standalone Review markup. Waitlist navigation uses ordinary fragment links, and archived January 2026 registration is closed.
+
+
 Markdown is generated from the built main content, preserving headings, links, code blocks, and comparison tables. It includes the canonical source URL and page description. HTML advertises the Markdown alternate, blog RSS, and agent guide. Separate Markdown assets are marked noindex to avoid competing with canonical HTML in search.
 
-Google's [AI search guidance](https://developers.google.com/search/docs/appearance/ai-features) prioritizes ordinary SEO and useful content; it requires no special AI schema or instruction file. The agent guide and Markdown support make retrieval easier for compatible clients but do not promise inclusion in AI answers. Structured data should remain consistent with visible facts. FAQ markup is not a promise of a rich result.
+Google's [AI search guidance](https://developers.google.com/search/docs/fundamentals/ai-optimization-guide) prioritizes ordinary SEO and useful content; it requires no special AI schema or instruction file. The agent guide and Markdown support make retrieval easier for compatible clients but do not promise inclusion in AI answers. Structured data should remain consistent with visible facts. FAQ markup is not a promise of a rich result.
 
 ## Deployment and verification
 

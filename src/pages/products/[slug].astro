@@ -57,7 +57,7 @@ const seoInfo = getSEOData();
 			</div>
 
 			<div class="container-custom relative z-10 py-16 md:py-20">
-				<a 
+				<a
 					href="/products" 
 					class="inline-flex items-center text-white/70 hover:text-telemetria-orange transition-colors mb-8"
 				>
@@ -85,7 +85,7 @@ const seoInfo = getSEOData();
 									)}
 								</div>
 								{product.available ? (
-									<a 
+									<a
 										href={product.ctaLink} 
 										target="_blank" 
 										rel="noopener noreferrer"
@@ -94,12 +94,12 @@ const seoInfo = getSEOData();
 										{product.ctaText}
 									</a>
 								) : (
-									<button 
+									<a
 										class="inline-flex items-center justify-center px-4 py-2 text-sm font-medium rounded-md transition-colors bg-white/20 text-white hover:bg-telemetria-orange/90 hover:text-telemetria-dark w-fit"
-										onclick="document.querySelector('.waitlist-section')?.scrollIntoView({ behavior: 'smooth' })"
+										href="#waitlist"
 									>
 										{product.ctaText}
-									</button>
+									</a>
 								)}
 							</div>
 
@@ -138,6 +138,16 @@ const seoInfo = getSEOData();
 			</div>
 		</section>
 
+        <section class="section-padding bg-background">
+            <div class="container-custom max-w-4xl space-y-5">
+                <h2 class="text-2xl font-semibold">Before you choose this course</h2>
+                <p class="text-white/80">{product.available ? 'This course is available for purchase through our external enrollment platform.' : 'Enrollment is currently closed. Join the waitlist for updates; this page does not accept purchases.'} The listed price is {product.price} EUR.</p>
+                <p class="text-white/80">{product.id === 'track' ? 'OTel Track is self-paced and includes one year of access.' : 'OTel Specialization is an eight-week cohort program with weekly conversations and personalized project feedback.'}</p>
+                <p class="text-white/80">Your instructor is <a class="text-telemetria-orange hover:underline" href="/instructors/juraci-paixao-krohling/">Juraci Paixão Kröhling</a>. Explore his contributions and technical guides before choosing your training.</p>
+                <p class="text-white/80">The completion certificate is separate from CNCF’s OpenTelemetry Certified Associate (OTCA) credential. Review our <a class="text-telemetria-orange hover:underline" href="/terms-of-use/">terms and cancellation policy</a>, or <a class="text-telemetria-orange hover:underline" href="/contact/">ask us about course suitability</a>.</p>
+            </div>
+        </section>
+
 		<!-- Features -->
 		<section class="section-padding bg-background">
 			<div class="container-custom">
@@ -147,7 +157,7 @@ const seoInfo = getSEOData();
 				/>
 
 				<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-					{product.detailedFeatures?.map((feature: DetailedFeature, index: number) => (
+					{product.detailedFeatures?.map((feature: DetailedFeature) => (
 						<div class="bg-telemetria-dark/50 p-6 rounded-lg border border-white/10">
 							<h3 class="text-xl font-bold mb-3">{feature.title}</h3>
 							<p class="text-white/70">{feature.description}</p>
@@ -159,7 +169,7 @@ const seoInfo = getSEOData();
 
 		<!-- Lead Capture Form (only for unavailable products) -->
 		{!product.available && (
-			<section class="section-padding bg-telemetria-darker waitlist-section">
+			<section class="section-padding bg-telemetria-darker" id="waitlist">
 				<div class="container-custom">
 					<div class="max-w-lg mx-auto text-center">
 						<h2 class="text-2xl font-bold mb-4">Join the Waitlist</h2>
@@ -246,7 +256,7 @@ const seoInfo = getSEOData();
 						Master observability and OpenTelemetry and stand out in the market with skills that are in high demand.
 					</p>
 					{product.available ? (
-						<a 
+						<a
 							href={product.ctaLink} 
 							target="_blank" 
 							rel="noopener noreferrer"
@@ -256,12 +266,12 @@ const seoInfo = getSEOData();
 						</a>
 					) : (
 						<div class="space-y-4">
-							<button 
+							<a
 								class="inline-flex items-center justify-center px-4 py-2 text-sm font-medium rounded-md transition-colors bg-white/20 text-white hover:bg-telemetria-orange/90 hover:text-telemetria-dark"
-								onclick="document.querySelector('.waitlist-section')?.scrollIntoView({ behavior: 'smooth' })"
+								href="#waitlist"
 							>
 								{product.ctaText}
-							</button>
+							</a>
 							<div class="pt-2">
 								<p class="text-sm text-white/70">
 									This course is not yet available for purchase. Sign up for the waitlist above to be notified when we open new spots.

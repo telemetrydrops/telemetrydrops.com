@@ -1,7 +1,6 @@
 ---
 import Layout from '../../../../../layouts/Layout.astro';
 import SectionHeading from '../../../../../components/astro/SectionHeading.astro';
-import EventLeadForm from '../../../../../components/ui/EventLeadForm';
 
 const eventName = "OpenTelemetry Collector Workshop";
 const eventCity = "Berlin";
@@ -9,7 +8,6 @@ const eventCountry = "Germany";
 const eventDatesDisplay = "January 14-15, 2026";
 const eventStartDate = "2026-01-14";
 const eventEndDate = "2026-01-15";
-const eventId = "otel-collector-workshop-2026-berlin";
 const venue = "Berlin city-center venue (final location shared with confirmed attendees)";
 const price = "€1,970";
 
@@ -242,7 +240,7 @@ const dayTwoSchedule = [
 				<div class="grid grid-cols-1 lg:grid-cols-[1.4fr_1fr] gap-14 items-center">
 					<div class="space-y-6">
 						<span class="inline-flex items-center rounded-full bg-white/10 px-4 py-1 text-sm text-white/80 backdrop-blur-sm">
-							In-person workshop · {eventCity}, {eventCountry}
+							In-person workshop · {eventCity}, {eventCountry} · Archived — registration closed
 						</span>
 						<h1 class="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight tracking-tight text-white">
 							{eventName}
@@ -288,12 +286,7 @@ const dayTwoSchedule = [
 								<span>Production deployment patterns and secure collector operations</span>
 							</li>
 						</ul>
-						<div class="rounded-lg border border-telemetria-orange/50 bg-telemetria-orange/10 px-4 py-3 text-sm text-telemetria-orange">
-							<strong class="block text-telemetria-orange">OllyGarden customers save 20%</strong>
-							<span class="text-white/80">
-								If your team already partners with OllyGarden, mention it in the form and we'll apply a 20% discount to your workshop seats.
-							</span>
-						</div>
+
 					</div>
 				</div>
 			</div>
@@ -396,18 +389,11 @@ const dayTwoSchedule = [
 			<div class="container-custom">
 				<div class="max-w-2xl mx-auto">
 					<SectionHeading
-						title="Reserve your seat"
-						subtitle="Join us for the OpenTelemetry Collector Workshop"
+						title="Registration closed"
+						subtitle="The January 14–15, 2026 workshop is archived."
 						centered={true}
 					/>
-					<EventLeadForm
-						client:load
-						eventId={eventId}
-						eventName={eventName}
-						eventCity={eventCity}
-						eventStartDate={eventStartDate}
-						eventEndDate={eventEndDate}
-					/>
+                    <p class="text-white/80 text-center">Registration is no longer available for these dates. The curriculum remains here as a reference. <a class="text-telemetria-orange hover:underline" href="/contact/">Ask about future workshops or training for your team</a>.</p>
 				</div>
 			</div>
 		</section>

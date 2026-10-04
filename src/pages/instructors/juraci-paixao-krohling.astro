@@ -1,0 +1,65 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Breadcrumbs from '../../components/astro/Breadcrumbs.astro';
+import { authors } from '../../data/author-data';
+
+const author = authors.juraci;
+const url = `https://telemetrydrops.com${author.profilePath}`;
+const person = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  '@id': `${url}#person`,
+  name: author.name,
+  url,
+  image: `https://telemetrydrops.com${author.avatar}`,
+  jobTitle: author.role,
+  description: author.bio,
+  sameAs: Object.values(author.social),
+  worksFor: { '@type': 'Organization', '@id': 'https://telemetrydrops.com/#organization', name: 'Telemetry Drops' },
+};
+---
+
+<Layout title="Juraci Paixão Kröhling — OpenTelemetry Instructor" description="Meet Juraci Paixão Kröhling, OpenTelemetry maintainer and Telemetry Drops instructor. Explore his project contributions, technical writing, and courses." jsonLd={person}>
+  <div class="container-custom py-16 max-w-4xl space-y-12">
+    <Breadcrumbs items={[{ label: 'Home', href: '/' }, { label: author.name }]} />
+    <header class="flex flex-col sm:flex-row gap-8 items-start">
+      <img src={author.avatar} alt={author.name} width="160" height="160" class="rounded-full w-40 h-40" />
+      <div class="space-y-4">
+        <p class="text-telemetria-orange font-medium">Your OpenTelemetry instructor</p>
+        <h1 class="text-3xl md:text-4xl font-bold">{author.name}</h1>
+        <p class="text-xl text-white/80">{author.bio}</p>
+        <p class="text-white/70">Juraci teaches the decisions behind instrumentation and telemetry pipelines: how the data model works, how components fit together, and how to reason about observability in production.</p>
+      </div>
+    </header>
+    <section class="space-y-4">
+      <h2 class="text-2xl font-semibold">Experience you can verify</h2>
+      <p class="text-white/80">Juraci contributes to OpenTelemetry and serves on its Governance Committee. His work includes the Collector Builder and OpenTelemetry Operator. He is based in Germany and is a co-founder of OllyGarden.</p>
+      <ul class="space-y-3 text-telemetria-orange">
+        <li><a class="hover:underline" href="https://github.com/open-telemetry/community/blob/main/community-members.md">OpenTelemetry Governance Committee roster</a></li>
+        <li><a class="hover:underline" href="https://github.com/open-telemetry/opentelemetry-collector/tree/main/cmd/builder">OpenTelemetry Collector Builder project</a></li>
+        <li><a class="hover:underline" href="https://github.com/open-telemetry/opentelemetry-operator">OpenTelemetry Operator project</a></li>
+        <li><a class="hover:underline" href={author.social.github}>Juraci's GitHub contributions</a></li>
+        <li><a class="hover:underline" href={author.social.linkedin}>Juraci on LinkedIn</a></li>
+      </ul>
+    </section>
+    <section class="space-y-4">
+      <h2 class="text-2xl font-semibold">Explore his approach before choosing a course</h2>
+      <p class="text-white/80">Read a practical guide, examine a working configuration, or watch the introductory lesson on our homepage. These public resources let you judge the depth and teaching approach for yourself.</p>
+      <ul class="space-y-3 text-telemetria-orange">
+        <li><a class="hover:underline" href="/blog/weaver-from-zero-to-hero/">Weaver: from telemetry schemas to generated code</a></li>
+        <li><a class="hover:underline" href="/blog/severity-based-log-routing/">Route logs by severity with the Collector</a></li>
+        <li><a class="hover:underline" href="/blog/bad-telemetry-not-volume-problem/">Diagnose telemetry quality and cost problems</a></li>
+      </ul>
+    </section>
+    <section class="rounded-xl border border-white/10 p-8 space-y-4">
+      <h2 class="text-2xl font-semibold">Learn with Telemetry Drops</h2>
+      <p class="text-white/80">Choose self-paced study with OTel Track or explore the eight-week OTel Specialization with weekly mentoring and project feedback. Compare the curriculum, price and current availability before deciding.</p>
+      <div class="flex flex-wrap gap-6 text-telemetria-orange">
+        <a class="hover:underline" href="/products/">Compare OpenTelemetry courses</a>
+        <a class="hover:underline" href="/learn/">Explore the learning paths</a>
+        <a class="hover:underline" href="/contact/">Discuss training for your team</a>
+      </div>
+      <p class="text-sm text-white/70">Telemetry Drops is operated by Dose de Telemetria GmbH. Course completion certificates are separate from CNCF's OpenTelemetry Certified Associate (OTCA) credential.</p>
+    </section>
+  </div>
+</Layout>

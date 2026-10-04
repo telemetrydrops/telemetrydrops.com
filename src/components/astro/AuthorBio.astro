@@ -18,7 +18,7 @@ const { author } = Astro.props;
     loading="lazy"
   />
   <div>
-    <div class="font-semibold text-white">{author.name}</div>
+    <a href={author.profilePath} class="font-semibold text-white hover:text-telemetria-orange">{author.name}</a>
     <div class="text-sm text-white/50 mb-2">{author.role}</div>
     <p class="text-sm text-white/70 mb-3">{author.bio}</p>
     <div class="flex gap-3">

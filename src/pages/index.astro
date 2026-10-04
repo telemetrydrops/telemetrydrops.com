@@ -28,7 +28,7 @@ const testimonials = getRandomTestimonials(6);
 			<div class="container-custom relative z-10 pt-16 md:pt-20">
 				<div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
 					<!-- Text Content - Left Side -->
-					<div class="animate-fade-in">
+					<div>
 						<div class="inline-block mb-4">
 							<img
 								src="/logo.svg"
@@ -37,32 +37,33 @@ const testimonials = getRandomTestimonials(6);
 							/>
 						</div>
 						<h1 class="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-6">
-							Master <span class="bg-linear-to-r from-telemetria-orange via-orange-400 to-yellow-400 bg-clip-text text-transparent">OpenTelemetry</span> with Expert-Led Training
+							Master <span class="bg-linear-to-r from-telemetria-orange via-orange-400 to-yellow-400 bg-clip-text text-transparent">OpenTelemetry</span> with Training from Project Contributors
 						</h1>
 						<p class="text-xl text-white/80 mb-8">
-							Learn from project contributors through hands-on courses and earn a completion certificate. Explore our comprehensive training programs designed to accelerate your observability practice.
+							Learn instrumentation, the API and SDK, and production Collector pipelines with OpenTelemetry maintainer Juraci Paixão Kröhling. Choose self-paced study or mentored training.
 						</p>
 						<div class="flex flex-col sm:flex-row gap-4">
 							<a
 								href="/products"
 								class="inline-flex items-center justify-center px-6 py-3 text-base font-medium rounded-md transition-colors bg-telemetria-orange text-telemetria-dark hover:bg-telemetria-orange/90"
 							>
-								Explore our products
+								Compare OpenTelemetry courses
 							</a>
 							<a
-								href="/products"
+								href="/learn/"
 								class="inline-flex items-center justify-center px-6 py-3 text-base font-medium rounded-md transition-colors border border-white/20 text-white hover:bg-white/10"
 							>
-								Learn more
+								Explore free learning paths
 							</a>
 						</div>
 					</div>
 					
 					<!-- Video - Right Side -->
-					<div class="animate-fade-in-right">
+					<div>
 						<VideoEmbed 
 							videoId="fzunHHA37gM" 
-							title="Introduction to OpenTelemetry" 
+							title="Introduction to OpenTelemetry"
+                            priority={true}
 						/>
 					</div>
 				</div>
@@ -96,11 +97,11 @@ const testimonials = getRandomTestimonials(6);
 							advanced skills in OpenTelemetry with specialized guidance.
 						</p>
 						<div class="mt-auto">
-							<a 
+							<a
 								href="/products/otel-specialization/"
 								class="inline-flex items-center justify-center w-full px-4 py-2 border border-telemetria-orange/30 text-telemetria-orange hover:bg-telemetria-orange hover:text-telemetria-dark hover:border-telemetria-orange rounded-md transition-colors"
 							>
-								Learn more 
+								View Specialization details
 								<svg class="ml-2 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
 									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
 								</svg>
@@ -118,7 +119,7 @@ const testimonials = getRandomTestimonials(6);
 							From basic to advanced in observability and instrumentation.
 						</p>
 						<div class="mt-auto">
-							<a 
+							<a
 								href="/products/otel-track/"
 								class="inline-flex items-center justify-center w-full px-4 py-2 bg-telemetria-orange text-telemetria-dark hover:bg-telemetria-orange/90 rounded-md transition-colors"
 							>
@@ -137,8 +138,8 @@ const testimonials = getRandomTestimonials(6);
 		<section class="section-padding bg-telemetria-darker">
 			<div class="container-custom">
 				<SectionHeading
-					title="Become the OTel Expert your team relies on in 8 weeks"
-					subtitle="Everything you need to know about our comprehensive OpenTelemetry training program"
+					title="Build the OpenTelemetry skills your team relies on"
+					subtitle="Understand instrumentation, telemetry pipelines, and the decisions behind them"
 					centered={true}
 				/>
 				
@@ -214,12 +215,13 @@ const testimonials = getRandomTestimonials(6);
 							<div class="glass-morphism rounded-xl p-6 text-center">
 								<div class="w-32 h-32 mx-auto mb-4 rounded-full overflow-hidden border-2 border-telemetria-orange/30">
 									<img 
-										src="https://github.com/jpkrohling.png" 
+										src="/authors/juraci.webp"
+                                        width="128" height="128" loading="lazy"
 										alt="Juraci Paixão Kröhling" 
 										class="w-full h-full object-cover"
 									/>
 								</div>
-								<h3 class="text-2xl font-bold mb-2">Juraci Paixão Kröhling</h3>
+								<h3 class="text-2xl font-bold mb-2"><a class="hover:text-telemetria-orange" href="/instructors/juraci-paixao-krohling/">Juraci Paixão Kröhling</a></h3>
 								<p class="text-telemetria-orange text-sm font-medium mb-4">OpenTelemetry Governance Committee Member</p>
 								
 								<div class="space-y-3 text-left">
@@ -356,7 +358,7 @@ const testimonials = getRandomTestimonials(6);
 					centered={true}
 				/>
 				<div class="flex flex-col sm:flex-row gap-4 justify-center">
-					<a 
+					<a
 						href="https://www.youtube.com/@TelemetryDrops" 
 						target="_blank" 
 						rel="noopener noreferrer"
@@ -367,7 +369,7 @@ const testimonials = getRandomTestimonials(6);
 						</svg>
 						Subscribe on YouTube
 					</a>
-					<a 
+					<a
 						href="https://www.linkedin.com/company/telemetrydrops" 
 						target="_blank" 
 						rel="noopener noreferrer" 

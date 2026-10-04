@@ -109,7 +109,7 @@ const updatedFormatted = post.data.updatedAt
               class="rounded-full"
             />
             <div>
-              <div class="text-sm font-medium text-white">{author.name}</div>
+              <a href={author.profilePath} class="text-sm font-medium text-white hover:text-telemetria-orange">{author.name}</a>
               <div class="text-xs text-white/50">
                 <time datetime={post.data.publishedAt.toISOString()}>{publishedFormatted}</time>
                 {updatedFormatted && (
