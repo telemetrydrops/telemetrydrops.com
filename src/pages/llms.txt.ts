@@ -21,6 +21,8 @@ Course completion certificates are distinct from CNCF's OTCA certification. The 
 
 ## Resources
 
+- [Learning paths](https://telemetrydrops.com/learn/): free guides organized by engineering goal.
+- [Instructor](https://telemetrydrops.com/instructors/juraci-paixao-krohling/): Juraci’s background and project contribution links.
 - [Course comparison](https://telemetrydrops.com/products/)
 - [Technical blog](https://telemetrydrops.com/blog/)
 - [OTTL cheatsheet](https://telemetrydrops.com/ottl-cheatsheet/)

@@ -3,9 +3,10 @@ export interface Props {
   videoId: string;
   title: string;
   thumbnail?: string;
+  priority?: boolean;
 }
 
-const { videoId, title, thumbnail } = Astro.props;
+const { videoId, title, thumbnail, priority = false } = Astro.props;
 
 const defaultThumbnail = `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`;
 const usedThumbnail = thumbnail || defaultThumbnail;
@@ -20,7 +21,10 @@ const usedThumbnail = thumbnail || defaultThumbnail;
     <img
       src={usedThumbnail}
       alt={title}
-      loading="lazy"
+      width="1280"
+      height="720"
+      loading={priority ? "eager" : "lazy"}
+      fetchpriority={priority ? "high" : "auto"}
       class="absolute inset-0 w-full h-full object-cover"
     />
     <div class="absolute inset-0 bg-telemetria-darker/40 group-hover:bg-telemetria-darker/50 transition-all duration-300"></div>

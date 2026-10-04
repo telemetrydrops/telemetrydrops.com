@@ -40,7 +40,7 @@ export const productData: Product[] = [
     slug: "otel-specialization",
     title: "OTel Specialization",
     description: "Intensive training with weekly conversations and practical projects",
-    fullDescription: "Our OpenTelemetry specialization is an immersive 8-week program with weekly conversations, practical projects, and personalized feedback from the best market experts.",
+    fullDescription: "Our OpenTelemetry specialization is an immersive 8-week program with weekly conversations, practical projects, and personalized feedback from OpenTelemetry practitioners.",
     features: [
       { text: "Limited cohort enrollment" },
       { text: "Weekly expert conversations" },
@@ -63,7 +63,7 @@ export const productData: Product[] = [
         description: "Access to a private group where you can interact with other students and share experiences."
       },
       {
-        title: "Recognized certificate",
+        title: "Completion certificate",
         description: "Upon completing the course, you receive a certificate that attests to your OpenTelemetry skills."
       },
       {
@@ -240,7 +240,7 @@ export const productData: Product[] = [
       }
     ],
     price: "€1,999",
-    ctaText: "Enroll now",
+    ctaText: "Join waitlist",
     ctaLink: "https://mn.dosedetelemetria.com/plans/1948548?bundle_token=f91ec446224acd04b2236784685ac72e&utm_source=website",
     available: false
   },

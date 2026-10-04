@@ -8,6 +8,7 @@ export interface Author {
   name: string;
   role: string;
   avatar: string;
+  profilePath: string;
   bio: string;
   social: AuthorSocial;
 }
@@ -17,6 +18,7 @@ export const authors: Record<string, Author> = {
     name: "Juraci Paixão Kröhling",
     role: "OpenTelemetry Maintainer & Instructor",
     avatar: "/authors/juraci.webp",
+    profilePath: "/instructors/juraci-paixao-krohling/",
     bio: "OpenTelemetry maintainer and founder of Telemetry Drops, where he teaches observability engineering through hands-on courses.",
     social: {
       linkedin: "https://www.linkedin.com/in/jpkroehling",

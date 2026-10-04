@@ -69,3 +69,31 @@ test('agents can read prices consistent with visible course pages and navigate t
   const comparison = await readFile('dist/products/index.md', 'utf8');
   assert.match(comparison, /\| Price \| €1,999 \| €499 \|/);
 });
+
+test('training pages identify their instructor and do not advertise unavailable enrollment or unsupported ratings', async () => {
+  const profilePath = '/instructors/juraci-paixao-krohling/';
+  const profile = elements(parse(await readFile(`dist${profilePath}index.html`, 'utf8')));
+  const person = JSON.parse(profile.find((node) => node.tagName === 'script' && attribute(node, 'type') === 'application/ld+json').childNodes[0].value);
+  assert.equal(person['@type'], 'Person');
+  assert.equal(person.url, `https://telemetrydrops.com${profilePath}`);
+  const specialization = await readFile('dist/products/otel-specialization/index.md', 'utf8');
+  assert.doesNotMatch(specialization, /Enroll now/);
+  assert.match(specialization, /Join waitlist/);
+  const courseHtml = await readFile('dist/products/otel-specialization/index.html', 'utf8');
+  assert.match(courseHtml, /href="#waitlist"/);
+  assert.match(courseHtml, /id="waitlist"/);
+  for (const file of files) {
+    const nodes = elements(parse(await readFile(file, 'utf8')));
+    for (const script of nodes.filter((node) => node.tagName === 'script' && attribute(node, 'type') === 'application/ld+json')) {
+      const schema = JSON.parse(script.childNodes.map((node) => node.value ?? '').join(''));
+      assert.notEqual(schema['@type'], 'Review', file);
+      if (schema['@type'] === 'TechArticle') assert.equal(schema.author['@id'], person['@id']);
+    }
+  }
+  const archived = await readFile('dist/events/2026/01/berlin/otel-collector-workshop/index.md', 'utf8');
+  assert.match(archived, /Registration closed/);
+  assert.doesNotMatch(archived, /Reserve your seat|Save your spot/);
+  const learning = await readFile('dist/learn/index.md', 'utf8');
+  assert.match(learning, /Weaver/);
+  assert.match(learning, /severity-based/);
+});
