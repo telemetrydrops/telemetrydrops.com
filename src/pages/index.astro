@@ -40,7 +40,7 @@ const testimonials = getRandomTestimonials(6);
 							Master <span class="bg-linear-to-r from-telemetria-orange via-orange-400 to-yellow-400 bg-clip-text text-transparent">OpenTelemetry</span> with Expert-Led Training
 						</h1>
 						<p class="text-xl text-white/80 mb-8">
-							Learn from project contributors through hands-on courses and get certified. Explore our comprehensive training programs designed to accelerate your observability practice.
+							Learn from project contributors through hands-on courses and earn a completion certificate. Explore our comprehensive training programs designed to accelerate your observability practice.
 						</p>
 						<div class="flex flex-col sm:flex-row gap-4">
 							<a
@@ -69,7 +69,7 @@ const testimonials = getRandomTestimonials(6);
 			</div>
 
 			<div class="absolute bottom-10 left-0 right-0 flex justify-center animate-bounce">
-				<a href="#products" class="text-white/50 hover:text-white transition-colors">
+				<a href="#products" aria-label="Explore OpenTelemetry courses" class="text-white/50 hover:text-white transition-colors">
 					<svg class="h-6 w-6 rotate-90" fill="none" stroke="currentColor" viewBox="0 0 24 24">
 						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
 					</svg>
@@ -97,7 +97,7 @@ const testimonials = getRandomTestimonials(6);
 						</p>
 						<div class="mt-auto">
 							<a 
-								href="/products#specialization"
+								href="/products/otel-specialization/"
 								class="inline-flex items-center justify-center w-full px-4 py-2 border border-telemetria-orange/30 text-telemetria-orange hover:bg-telemetria-orange hover:text-telemetria-dark hover:border-telemetria-orange rounded-md transition-colors"
 							>
 								Learn more 
@@ -114,12 +114,12 @@ const testimonials = getRandomTestimonials(6);
 							Available now
 						</div>
 						<p class="text-white/80 mb-6">
-							Complete course available at your own pace, with recorded lessons, practical exercises and lifetime access. 
+							Complete course available at your own pace, with recorded lessons, practical exercises and one year of access.
 							From basic to advanced in observability and instrumentation.
 						</p>
 						<div class="mt-auto">
 							<a 
-								href="/products#track"
+								href="/products/otel-track/"
 								class="inline-flex items-center justify-center w-full px-4 py-2 bg-telemetria-orange text-telemetria-dark hover:bg-telemetria-orange/90 rounded-md transition-colors"
 							>
 								Explore course 
@@ -248,7 +248,7 @@ const testimonials = getRandomTestimonials(6);
 						<!-- Instructor Bio and Achievements -->
 						<div class="lg:col-span-2 space-y-6">
 							<div class="glass-morphism rounded-xl p-6">
-								<h4 class="text-xl font-bold mb-4 text-telemetria-orange">About Your Instructor</h4>
+								<h3 class="text-xl font-bold mb-4 text-telemetria-orange">About Your Instructor</h3>
 								<div class="space-y-4 text-white/80">
 									<p>
 										Juraci is a Brazilian software engineer with extensive experience in telemetry systems and a strong commitment to open-source software. Based in Germany since 2011, his career includes significant contributions to companies renowned for their open-source initiatives, such as Red Hat and Grafana Labs.
@@ -261,12 +261,12 @@ const testimonials = getRandomTestimonials(6);
 							
 							<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
 								<div class="glass-morphism rounded-xl p-6">
-									<h4 class="text-lg font-bold mb-3 flex items-center gap-2">
+									<h3 class="text-lg font-bold mb-3 flex items-center gap-2">
 										<svg class="w-5 h-5 text-telemetria-orange" fill="none" stroke="currentColor" viewBox="0 0 24 24">
 											<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
 										</svg>
 										Technical Contributions
-									</h4>
+									</h3>
 									<ul class="space-y-2 text-sm text-white/70">
 										<li>• OpenTelemetry Collector Builder (ocb) author</li>
 										<li>• OpenTelemetry Operator creator</li>
@@ -276,12 +276,12 @@ const testimonials = getRandomTestimonials(6);
 								</div>
 								
 								<div class="glass-morphism rounded-xl p-6">
-									<h4 class="text-lg font-bold mb-3 flex items-center gap-2">
+									<h3 class="text-lg font-bold mb-3 flex items-center gap-2">
 										<svg class="w-5 h-5 text-telemetria-orange" fill="none" stroke="currentColor" viewBox="0 0 24 24">
 											<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z"></path>
 										</svg>
 										Speaking Experience
-									</h4>
+									</h3>
 									<ul class="space-y-2 text-sm text-white/70">
 										<li>• KubeCon EU & NA</li>
 										<li>• Open Source Summit</li>
@@ -331,7 +331,7 @@ const testimonials = getRandomTestimonials(6);
 							
 							<div class="flex-1 flex flex-col">
 								<div class="mb-3">
-									<h4 class="font-semibold text-white">{testimonial.author}</h4>
+									<h3 class="font-semibold text-white">{testimonial.author}</h3>
 									<p class="text-sm text-white/60">
 										{testimonial.role}{testimonial.company && ` at ${testimonial.company}`}
 									</p>

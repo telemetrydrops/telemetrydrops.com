@@ -5,7 +5,7 @@ import Testimonial from '../../components/astro/Testimonial.astro';
 import LeadCaptureForm from '../../components/ui/LeadCaptureForm';
 import { productData, type Product, type DetailedFeature, type CurriculumModule } from '../../data/product-data';
 import { getProductTestimonials } from '../../data/testimonial-data';
-import { seoData } from '../../data/seo-data';
+import { seoData, courseSchema } from '../../data/seo-data';
 
 export async function getStaticPaths() {
   return productData.map((product) => ({
@@ -44,7 +44,7 @@ const seoInfo = getSEOData();
 	description={seoInfo.description}
 	keywords={seoInfo.keywords}
 	canonical={`/products/${slug}`}
-	jsonLd={seoInfo.jsonLd}
+	jsonLd={courseSchema(product)}
 >
 	<div class="flex flex-col w-full">
 		<!-- Hero Section -->
