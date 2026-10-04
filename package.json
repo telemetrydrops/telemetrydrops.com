@@ -10,7 +10,7 @@
     "astro": "astro",
     "lint": "astro check",
     "type-check": "tsc --noEmit",
-    "test:seo": "node --test scripts/seo.test.mjs netlify/edge-functions/markdown.test.mjs"
+    "test:seo": "node --test scripts/seo.test.mjs scripts/markdown.test.mjs"
   },
   "dependencies": {
     "@astrojs/react": "^5.0.4",

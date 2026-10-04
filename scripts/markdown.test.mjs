@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import handler, { prefersMarkdown } from './markdown.js';
+import handler, { prefersMarkdown } from '../netlify/edge-functions/markdown.js';
 
 test('negotiation respects explicit Markdown preferences and exclusions', () => {
   for (const accept of ['', '*/*', 'text/html', 'text/markdown;q=0', 'text/html, text/markdown;q=0.5']) assert.equal(prefersMarkdown(accept), false, accept);
