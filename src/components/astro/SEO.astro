@@ -1,10 +1,14 @@
 ---
+import { ogCardForPath } from '../../lib/og-cards';
+import { seoData } from '../../data/seo-data';
+
 export interface Props {
   title: string;
   description: string;
   canonical?: string;
   keywords?: string;
   ogImage?: string;
+  ogImageAlt?: string;
   ogType?: 'website' | 'article';
   twitterCard?: 'summary' | 'summary_large_image';
   jsonLd?: object;
@@ -20,21 +24,43 @@ const {
   description,
   canonical,
   keywords,
-  ogImage = "/og-image.webp",
+  ogImage,
+  ogImageAlt,
   ogType = "website",
   twitterCard = "summary_large_image",
   jsonLd,
   articleMeta
 } = Astro.props;
 
-const fullTitle = /Telemetry\s?Drops/i.test(title) ? title : `${title} | TelemetryDrops`;
+const suffix = ' | Telemetry Drops';
+const fullTitle = /Telemetry\s?Drops/i.test(title) || title.length + suffix.length > 60 ? title : `${title}${suffix}`;
 const site = Astro.site ?? new URL('https://telemetrydrops.com');
 const pageUrl = new URL(canonical ?? Astro.url.pathname, site);
 pageUrl.search = '';
 pageUrl.hash = '';
 pageUrl.pathname = `${pageUrl.pathname.replace(/\/$/, '')}/`;
 const url = pageUrl.href;
-const imageUrl = new URL(ogImage, site).href;
+const card = ogCardForPath(pageUrl.pathname);
+const imageUrl = new URL(ogImage ?? card.image, site).href;
+const imageAlt = ogImageAlt ?? (ogImage ? title : card.alt);
+const imageType = ({ '.png': 'image/png', '.webp': 'image/webp', '.jpg': 'image/jpeg', '.jpeg': 'image/jpeg' } as Record<string, string>)[new URL(imageUrl).pathname.toLowerCase().match(/\.[^.]+$/)?.[0] ?? ''];
+const organization = seoData.home.jsonLd;
+const siteGraph = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    ...(jsonLd === organization ? [] : [organization]),
+    {
+      '@type': 'WebSite', '@id': `${site}#website`, url: site.href,
+      name: 'Telemetry Drops', inLanguage: 'en', publisher: { '@id': organization['@id'] },
+    },
+    {
+      '@type': 'WebPage', '@id': `${url}#webpage`, url, name: fullTitle, description,
+      inLanguage: 'en', isPartOf: { '@id': `${site}#website` },
+      about: { '@id': organization['@id'] },
+      primaryImageOfPage: { '@type': 'ImageObject', url: imageUrl, caption: imageAlt },
+    },
+  ],
+};
 ---
 
 <!-- Primary Meta Tags -->
@@ -58,6 +84,8 @@ const imageUrl = new URL(ogImage, site).href;
 <meta property="og:type" content={ogType} />
 <meta property="og:url" content={url} />
 <meta property="og:image" content={imageUrl} />
+<meta property="og:image:alt" content={imageAlt} />
+{imageType && <meta property="og:image:type" content={imageType} />}
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
 
@@ -76,8 +104,10 @@ const imageUrl = new URL(ogImage, site).href;
 <meta name="twitter:title" content={fullTitle} />
 <meta name="twitter:description" content={description} />
 <meta name="twitter:image" content={imageUrl} />
+<meta name="twitter:image:alt" content={imageAlt} />
 
 <!-- JSON-LD Structured Data -->
 {jsonLd && (
   <script is:inline type="application/ld+json" set:html={JSON.stringify(jsonLd).replace(/</g, '\\u003c')}></script>
 )}
+<script is:inline type="application/ld+json" set:html={JSON.stringify(siteGraph).replace(/</g, "\\u003c")} />

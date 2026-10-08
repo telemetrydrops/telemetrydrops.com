@@ -1,4 +1,5 @@
 ---
+import { ogCardForPath } from '../../lib/og-cards';
 import { authors } from "../../data/author-data";
 
 interface FaqEntry {
@@ -14,10 +15,11 @@ interface Props {
   updatedAt?: Date;
   authorKey: string;
   tags: string[];
+  ogImage?: string;
   faqEntries?: FaqEntry[];
 }
 
-const { title, description, slug, publishedAt, updatedAt, authorKey, tags, faqEntries } = Astro.props;
+const { title, description, slug, publishedAt, updatedAt, authorKey, tags, faqEntries, ogImage } = Astro.props;
 
 const author = authors[authorKey];
 const canonicalUrl = `https://telemetrydrops.com/blog/${slug}/`;
@@ -25,6 +27,8 @@ const canonicalUrl = `https://telemetrydrops.com/blog/${slug}/`;
 const techArticle = {
   "@context": "https://schema.org",
   "@type": "TechArticle",
+  '@id': `${canonicalUrl}#article`,
+  image: new URL(ogImage ?? ogCardForPath(new URL(canonicalUrl).pathname).image, 'https://telemetrydrops.com').href,
   headline: title,
   description: description,
   datePublished: publishedAt.toISOString(),
@@ -46,7 +50,7 @@ const techArticle = {
   },
   keywords: tags,
   url: canonicalUrl,
-  mainEntityOfPage: canonicalUrl,
+  mainEntityOfPage: { '@id': `${canonicalUrl}#webpage` },
 };
 
 const faqPage = faqEntries && faqEntries.length > 0
@@ -65,5 +69,5 @@ const faqPage = faqEntries && faqEntries.length > 0
   : null;
 ---
 
-<script type="application/ld+json" set:html={JSON.stringify(techArticle)} />
-{faqPage && <script type="application/ld+json" set:html={JSON.stringify(faqPage)} />}
+<script is:inline type="application/ld+json" set:html={JSON.stringify(techArticle).replace(/</g, "\\u003c")} />
+{faqPage && <script is:inline type="application/ld+json" set:html={JSON.stringify(faqPage).replace(/</g, "\\u003c")} />}

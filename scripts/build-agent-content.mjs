@@ -36,6 +36,7 @@ markdown.addRule('tables', {
 
 export async function buildAgentContent(directory) {
   const urls = [];
+  const publicContent = [];
   for (const file of await htmlFiles(directory)) {
     const nodes = elements(parse(await readFile(file, 'utf8')));
     const canonical = attribute(nodes.find((node) => node.tagName === 'link' && attribute(node, 'rel') === 'canonical'), 'href');
@@ -50,10 +51,16 @@ export async function buildAgentContent(directory) {
     const body = `Source: ${canonical}\n\n${description}\n\n${markdown.turndown(serialize(main))}\n`;
     await writeFile(file.replace(/\.html$/, '.md'), body);
     const noindex = nodes.some((node) => node.tagName === 'meta' && attribute(node, 'name') === 'robots' && /noindex/i.test(attribute(node, 'content') ?? ''));
-    if (!noindex) urls.push(canonical);
+    if (!noindex) {
+      urls.push(canonical);
+      publicContent.push({ canonical, body });
+    }
   }
   const escapeXml = (text) => text.replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('"', '&quot;');
   await writeFile(join(directory, 'sitemap.xml'), `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls.sort().map((url) => `  <url><loc>${escapeXml(url)}</loc></url>`).join('\n')}\n</urlset>\n`);
+  const guide = await readFile(join(directory, 'llms.txt'), 'utf8');
+  publicContent.sort((a, b) => a.canonical.localeCompare(b.canonical));
+  await writeFile(join(directory, 'llms-full.txt'), `${guide}\n\n## Full public content\n\n${publicContent.map(({ body }) => body).join('\n---\n\n')}`);
   console.log(`Generated Markdown for every HTML page and a sitemap with ${urls.length} indexable URLs.`);
 }
 

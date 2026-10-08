@@ -26,7 +26,6 @@ Course completion certificates are distinct from CNCF's OTCA certification. The 
 - [Course comparison](https://telemetrydrops.com/products/)
 - [Technical blog](https://telemetrydrops.com/blog/)
 - [OTTL cheatsheet](https://telemetrydrops.com/ottl-cheatsheet/)
-- [OTCA practice exam](https://telemetrydrops.com/otca-practice-exam/): interactive practice requires JavaScript; not an official certification exam.
 - [Workshops and events](https://telemetrydrops.com/events/)
 - [OTel Drops podcast](https://telemetrydrops.com/podcast/): AI-hosted community updates curated by Juraci.
 
@@ -40,6 +39,7 @@ ${posts.map((post) => `- [${post.data.title}](https://telemetrydrops.com/blog/${
 - [Company imprint](https://telemetrydrops.com/imprint/)
 - [Privacy policy](https://telemetrydrops.com/privacy-policy/)
 - [Terms of use](https://telemetrydrops.com/terms-of-use/)
+- [Full public content](https://telemetrydrops.com/llms-full.txt): all indexable pages as Markdown.
 - [Sitemap](https://telemetrydrops.com/sitemap.xml)
 - [Blog RSS](https://telemetrydrops.com/blog/rss.xml)
 `;

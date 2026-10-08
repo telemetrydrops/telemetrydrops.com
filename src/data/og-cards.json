@@ -1,0 +1,42 @@
+[
+  {
+    "path": "/",
+    "image": "/og/home.png",
+    "label": "EXPERT-LED TRAINING",
+    "headline": "Master\n*OpenTelemetry.*",
+    "body": "Hands-on courses and practical guidance\nfrom OpenTelemetry project contributors.",
+    "alt": "Telemetry Drops: Master OpenTelemetry. Expert-led training and practical guidance."
+  },
+  {
+    "path": "/products/",
+    "image": "/og/products.png",
+    "label": "COURSES & MENTORING",
+    "headline": "Build your\n*OTel expertise.*",
+    "body": "Compare self-paced learning and mentored\ntraining. Turn knowledge into practice.",
+    "alt": "Telemetry Drops courses: Build your OTel expertise with self-paced learning and mentoring."
+  },
+  {
+    "path": "/blog/",
+    "image": "/og/blog.png",
+    "label": "PRACTICAL ENGINEERING",
+    "headline": "Better telemetry.\n*Better answers.*",
+    "body": "Collector pipelines, instrumentation, and\nobservability lessons from practitioners.",
+    "alt": "Telemetry Drops Blog: Better telemetry. Better answers. Practical observability engineering."
+  },
+  {
+    "path": "/podcast/",
+    "image": "/og/podcast.png",
+    "label": "OTEL DROPS PODCAST",
+    "headline": "Your weekly\n*OTel digest.*",
+    "body": "OpenTelemetry community updates.\nAI-hosted. Curated by Juraci Paix\u00e3o Kr\u00f6hling.",
+    "alt": "OTel Drops podcast: Your weekly OTel digest. AI-hosted community updates curated by Juraci Paix\u00e3o Kr\u00f6hling."
+  },
+  {
+    "path": "/events/",
+    "image": "/og/events.png",
+    "label": "WORKSHOPS & EVENTS",
+    "headline": "Learn by doing.\n*Together.*",
+    "body": "Hands-on OpenTelemetry workshops\nwith project contributors.",
+    "alt": "Telemetry Drops events: Learn by doing. Together. Hands-on OpenTelemetry workshops."
+  }
+]
