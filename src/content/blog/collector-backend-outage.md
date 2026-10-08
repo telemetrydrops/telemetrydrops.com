@@ -2,7 +2,7 @@
 title: "What happens when your telemetry backend goes down?"
 slug: "collector-backend-outage"
 description: "Follow a backend outage through the OpenTelemetry Collector's retries, queues, and persistent storage—and test what survives a Collector restart."
-publishedAt: 2026-10-03
+publishedAt: 2026-10-16
 author: "juraci"
 tags: ["collector", "architecture"]
 tldr: "A sending queue buys time during a backend outage. Persistent storage lets queued telemetry survive a Collector restart. Neither removes capacity limits or guarantees delivery: test the failure boundaries before you need them."
