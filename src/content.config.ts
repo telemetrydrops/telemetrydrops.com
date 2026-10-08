@@ -18,6 +18,7 @@ const blog = defineCollection({
     series: z.string().optional(),
     seriesOrder: z.number().optional(),
     ogImage: z.string().optional(),
+    ogImageAlt: z.string().optional(),
     readingTime: z.number().optional(),
     tldr: z.string(),
     keyTakeaways: z.array(z.string()).min(1),

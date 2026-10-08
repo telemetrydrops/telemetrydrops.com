@@ -1,6 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFile, access } from 'node:fs/promises';
+import { createHash } from 'node:crypto';
 import { parse } from 'parse5';
 import { elements, attribute, htmlFiles } from './build-agent-content.mjs';
 
@@ -96,4 +97,68 @@ test('training pages identify their instructor and do not advertise unavailable 
   const learning = await readFile('dist/learn/index.md', 'utf8');
   assert.match(learning, /Weaver/);
   assert.match(learning, /severity-based/);
+});
+
+
+test('the five branded cards have correct dimensions and are selected by page and section', async () => {
+  const cards = JSON.parse(await readFile('src/data/og-cards.json', 'utf8'));
+  const hashes = new Set();
+  for (const card of cards) {
+    const png = await readFile(`dist${card.image}`);
+    assert.equal(png.subarray(0, 8).toString('hex'), '89504e470d0a1a0a');
+    assert.equal(png.readUInt32BE(16), 1200);
+    assert.equal(png.readUInt32BE(20), 630);
+    hashes.add(createHash('sha256').update(png).digest('hex'));
+    const nodes = elements(parse(await readFile(`dist${card.path}index.html`, 'utf8')));
+    const meta = (name) => attribute(nodes.find((node) => attribute(node, 'property') === name || attribute(node, 'name') === name), 'content');
+    assert.equal(meta('og:image'), `https://telemetrydrops.com${card.image}`);
+    assert.equal(meta('twitter:image'), meta('og:image'));
+    assert.equal(meta('og:image:alt'), card.alt);
+    assert.equal(meta('twitter:image:alt'), card.alt);
+    assert.equal(meta('og:image:type'), 'image/png');
+  }
+  assert.equal(hashes.size, 5, 'Cards must contain different page copy');
+  for (const file of files.filter((file) => /dist\/(blog|products|events)\//.test(file))) {
+    const nodes = elements(parse(await readFile(file, 'utf8')));
+    const image = attribute(nodes.find((node) => attribute(node, 'property') === 'og:image'), 'content');
+    assert.ok(image.startsWith('https://'), file);
+    if (image.startsWith('https://telemetrydrops.com/')) await access(`dist${new URL(image).pathname}`);
+  }
+});
+
+test('page schema connects to a stable publisher, website, and preview image', async () => {
+  for (const file of files) {
+    const nodes = elements(parse(await readFile(file, 'utf8')));
+    const schemas = nodes.filter((node) => node.tagName === 'script' && attribute(node, 'type') === 'application/ld+json')
+      .map((node) => JSON.parse(node.childNodes.map((child) => child.value ?? '').join('')));
+    const graph = schemas.flatMap((schema) => schema['@graph'] ?? [schema]);
+    const org = graph.find((node) => node['@type'] === 'Organization');
+    const website = graph.find((node) => node['@type'] === 'WebSite');
+    const page = graph.find((node) => node['@type'] === 'WebPage');
+    const canonical = attribute(nodes.find((node) => attribute(node, 'rel') === 'canonical'), 'href');
+    const image = attribute(nodes.find((node) => attribute(node, 'property') === 'og:image'), 'content');
+    assert.equal(website.publisher['@id'], org['@id'], file);
+    assert.equal(page.isPartOf['@id'], website['@id'], file);
+    assert.equal(page.url, canonical, file);
+    assert.equal(page.primaryImageOfPage.url, image, file);
+    const article = graph.find((node) => node['@type'] === 'TechArticle');
+    if (article) {
+      assert.equal(article.mainEntityOfPage['@id'], page['@id'], file);
+      assert.equal(article.image, image, file);
+    }
+  }
+});
+
+test('full agent export contains exactly the indexable page content', async () => {
+  const full = await readFile('dist/llms-full.txt', 'utf8');
+  const sources = [...full.matchAll(/^Source: (.+)$/gm)].map((match) => match[1]);
+  assert.deepEqual(sources.sort(), [...urls].sort());
+  assert.ok(!sources.some((url) => /404|otca-practice-exam/.test(url)));
+  const guide = await readFile('dist/llms.txt', 'utf8');
+  assert.doesNotMatch(guide, /https:\/\/telemetrydrops.com\/otca-practice-exam\//);
+  for (const file of files) {
+    const nodes = elements(parse(await readFile(file, 'utf8')));
+    const canonical = attribute(nodes.find((node) => attribute(node, 'rel') === 'canonical'), 'href');
+    if (urls.includes(canonical)) assert.ok(full.includes(await readFile(file.replace(/\.html$/, '.md'), 'utf8')), file);
+  }
 });

@@ -12,6 +12,7 @@ export interface Props {
   canonical?: string;
   keywords?: string;
   ogImage?: string;
+  ogImageAlt?: string;
   ogType?: 'website' | 'article';
   twitterCard?: 'summary' | 'summary_large_image';
   jsonLd?: object;
@@ -29,6 +30,7 @@ const {
   canonical,
   keywords,
   ogImage,
+  ogImageAlt,
   ogType,
   twitterCard,
   jsonLd,
@@ -52,7 +54,7 @@ const {
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
-    {noindex && <meta name="robots" content="noindex, follow" />}
+    <meta name="robots" content={noindex ? "noindex, follow" : "index, follow, max-image-preview:large"} />
 
     <SEO
       title={title}
@@ -60,6 +62,7 @@ const {
       canonical={canonical}
       keywords={keywords}
       ogImage={ogImage}
+      ogImageAlt={ogImageAlt}
       ogType={ogType}
       twitterCard={twitterCard}
       jsonLd={jsonLd}

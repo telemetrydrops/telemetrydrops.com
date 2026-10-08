@@ -59,6 +59,7 @@ const updatedFormatted = post.data.updatedAt
   keywords={post.data.tags.join(", ")}
   ogType="article"
   ogImage={post.data.ogImage}
+  ogImageAlt={post.data.ogImageAlt}
   articleMeta={{
     publishedTime: post.data.publishedAt.toISOString(),
     modifiedTime: (post.data.updatedAt ?? post.data.publishedAt).toISOString(),
@@ -73,6 +74,7 @@ const updatedFormatted = post.data.updatedAt
     updatedAt={post.data.updatedAt}
     authorKey={post.data.author}
     tags={post.data.tags}
+    ogImage={post.data.ogImage}
     faqEntries={post.data.faqEntries}
   />
 
